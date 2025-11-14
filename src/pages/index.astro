@@ -1,0 +1,60 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import directus, { directusMedia } from "@/server/directus";
+import { readItems, readFile } from "@directus/sdk";
+import { staticData } from "@/server/static-data";
+import MainBannerHome from "@/components/orgnisms/MainBannerHome.astro";
+import BannerHome2 from "@/components/orgnisms/BannerHome2.astro";
+import SpanishCoursesHome from "@/components/orgnisms/SpanishCoursesHome.astro";
+import { date } from "astro:schema";
+const data = await directus?.request(readItems("Home"));
+const fileBanner = await directusMedia(data?.Image_Main_Banner || "");
+const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "");
+
+const dataMainBanner = {
+  phrase: data?.Phrase_Main_Banner,
+  title: data?.Title_Main_Banner,
+  summary: data?.Summary_Main_Banner,
+  button1: {
+    text: data?.Button1_Main_Banner,
+    link: "/book-your-free-class",
+  },
+  button2: {
+    text: data?.Button2_Main_Banner,
+    link: "/spanish-courses",
+  },
+  image: fileBanner?.src_path,
+};
+
+const dataBanner2 = {
+  phrase: data?.Phrase_Levels_Starting,
+  title: data?.Title_Levels_Starting,
+  summary: data?.Summary_Levels_Starting,
+  titleList: data?.Phrase_Title_List_Levels_Starting,
+  listLevels: data?.List_Levels_Starting,
+  button: {
+    label: data?.Button_Levels_Starting,
+    link: "/about-us",
+  },
+  image: fileBanner2?.src_path,
+};
+
+const dataSpanishCourses = {
+  title: data?.Title_List_Courses,
+  phrase: data?.Summary_List_Courses,
+  items: data?.Course_List_Courses?.map((c: any) => ({
+    icon: c.Icon,
+    title: c.Title,
+    summary: c.Summary,
+  })),
+};
+---
+
+<LayoutPage
+  title={staticData.home.title}
+  description={staticData.home.description}
+>
+  <MainBannerHome {...dataMainBanner} />
+  <BannerHome2 {...dataBanner2} />
+  <SpanishCoursesHome {...dataSpanishCourses} />
+</LayoutPage>

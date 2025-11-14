@@ -1,0 +1,46 @@
+---
+import ItemMenu from "@/components/atoms/ItemMenu.astro";
+
+type MenuItem = {
+  id?: string;
+  label: string;
+  slug: string;
+  subItems?: MenuItem[];
+};
+
+interface Props {
+  menuItems: MenuItem[];
+  withSubItems?: boolean;
+  className?: string;
+}
+
+const { menuItems = [], withSubItems = false, className = "" } = Astro.props;
+const isActive = (slug: string): boolean => {
+  return Astro.url.pathname === slug;
+};
+---
+
+<ul class={className}>
+  {
+    menuItems?.map((item) => {
+      const renderMenuItem = (menuItem: MenuItem): any[] => {
+        const hasItems = !!menuItem?.subItems && menuItem?.subItems?.length > 0;
+
+        return (
+          <ItemMenu
+            id={menuItem?.id ? parseInt(menuItem?.id) : undefined}
+            label={menuItem?.label}
+            slug={menuItem?.slug}
+            hasItems={hasItems && withSubItems}
+            isActive={isActive(menuItem?.slug)}
+          >
+            {withSubItems &&
+              menuItem?.subItems?.map((subItem) => renderMenuItem(subItem))}
+          </ItemMenu>
+        );
+      };
+
+      return renderMenuItem(item);
+    })
+  }
+</ul>

@@ -1,0 +1,48 @@
+---
+import ItemCourse from "../species/itemCourse.astro";
+
+type item = {
+  icon: string;
+  title: string;
+  summary: string;
+  button: {
+    label: string;
+    link: string;
+  };
+};
+
+interface Props {
+  phrase?: string;
+  title?: string;
+  items: item[];
+}
+
+const { items, phrase, title } = Astro.props;
+---
+
+<section class="features-section margin-top-100 courses-spanish">
+  <img
+    src="assets/img/home/graduation.png"
+    class="shape"
+    alt="graduation cap"
+  />
+  <div class="container custom-container-01">
+    <div class="title-section">
+      <p class="paragraph">
+        {phrase}
+      </p>
+      <h2 class="title">
+        {title}
+      </h2>
+    </div>
+    <div class="row">
+      {
+        items?.map((item: any, i: number) => (
+          <div class="col-lg-4 col-md-6">
+            <ItemCourse {...item} classes={`item-${(i % 3) + 1}`} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

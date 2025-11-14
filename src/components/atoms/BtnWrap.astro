@@ -1,0 +1,20 @@
+---
+interface Props {
+  label?: string;
+  class?: string;
+  icon?: string;
+  type?: "link" | "button";
+  link?: string;
+  idAction?: string;
+  action?: (e?: any) => void;
+}
+
+const { label, class: className, icon, type, link }: Props = Astro.props;
+---
+
+<div class="btn-wrap">
+  <a href={(type === "link" && link) || "#"} class={className || "btn-classic"}>
+    {icon ? <i class={icon} /> : ""}
+    {label || ""}
+  </a>
+</div>

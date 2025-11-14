@@ -1,0 +1,160 @@
+#componentContentPost2 .image video{
+  border-radius: 20px;
+  margin-right: 15px;
+  aspect-ratio: 60/36 !important;
+}
+
+#blockContentPost2 .body-content{
+  float: none !important;
+  width: 100% !important;
+}
+
+#blockContentPost2 .st-btn{
+  display: block !important;
+}
+
+#blockContentPost2 .share > div{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+}
+
+@media (max-width: 768px){
+  #blockContentPost2 .share .st-btn{
+    padding: 3px;
+    height: 24px;
+
+    & img{
+      top: 0 !important;
+    }
+  }
+
+  #blockContentPost2 .custom-page-extra .title-section .title{
+    font-size: 14px !important;
+  }
+}
+
+#blockContentPost2 .custom-page-extra .title-section .title{
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666 !important;
+  margin-bottom: 15px !important;
+
+  &::after{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #D9D9D9;
+  }
+}
+
+#blockContentPost2{
+  overflow: hidden;
+  padding: 0 0 80px;
+}
+
+#blockContentPost2 .custom-content{
+  padding: 0 15px;
+}
+
+#blockContentPost2 .body-content .custom-item-image{
+  padding: 0 30px 20px 0 !important;
+}
+
+#blockContentPost2 .category-list .card-item .summary p{
+  margin-bottom: 0;
+}
+
+#blockContentPost2 .custom-page-extra{
+  &:is( img, video){
+    border-radius: 500px;
+    max-height: 100px;
+    max-width: 100px;
+    filter: grayscale(100%);
+    transition: .3s;
+  }
+}
+
+#blockContentPost2 .custom-page-extra .created-date{
+  color: #777777;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+.button-icon{
+  color: #777 !important;
+  position: relative;
+  top: -10px;
+  width: 30px !important;
+}
+
+#blockContentPost2 .custom-page-extra .item-title .title{
+  height: 100%;
+}
+
+#blockContentPost2 .content-image img,
+#blockContentPost2 img{
+  border-radius: 30px;
+}
+
+@media (max-width: 1400px){
+  #blockContentPost2 .custom-page-extra .title{
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 1200px){
+  #blockContentPost2{
+    padding: 0 0 50px;
+  }
+
+  #blockContentPost2 .custom-page-extra .title{
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 991.98px){
+  #blockContentPost2{
+    padding: 0 0 30px;
+  }
+
+  #blockContentPost2 .body-content{
+    width: 100% !important;
+    padding: 15px;
+  }
+
+  ul{
+    padding-left: 20px;
+  }
+
+  .custom-page-content .item-category .category::after{
+    bottom: 26px;
+    left: -5px;
+    width: 23%;
+    height: 22px;
+  }
+}
+
+@media (max-width: 768px){
+  .custom-page-content .item-category .category{
+    font-size: 15px !important;
+  }
+
+  .item-date .date{
+    font-size: 14px !important;
+  }
+
+  .custom-page-content .item-category .category::after{
+    bottom: 26px;
+    left: -5px;
+    width: 28%;
+    height: 23px;
+  }
+}

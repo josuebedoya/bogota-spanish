@@ -1,0 +1,35 @@
+---
+import { staticData } from "@/server/static-data";
+
+interface Props {
+  icon: string;
+  title: string;
+  summary: string;
+  button: {
+    label: string;
+    link: string;
+  };
+  classes?: string;
+}
+
+const { icon, title, summary, button, classes } = Astro.props;
+console.log(title);
+---
+
+<div class={`icon-box-item ${classes ?? ""}`}>
+  <div class="icon">
+    <i class={`fa-solid fa-${icon}`}></i>
+  </div>
+  <div class="content">
+    <h4 class="title">{title}</h4>
+    <p>
+      {summary}
+    </p>
+  </div>
+  <div class="btn-wrap">
+    <a href={button?.link} class="more-btn"
+      >{staticData.courses.btn}
+      <i class="fa-solid fa-angle-right icon-btn"></i>
+    </a>
+  </div>
+</div>

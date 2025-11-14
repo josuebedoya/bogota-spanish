@@ -1,0 +1,29 @@
+---
+import BtnWrap from "../atoms/BtnWrap.astro";
+---
+
+<div class="subscribe-form">
+  <div class="form-group">
+    <input
+      type="email"
+      value=""
+      name="emailnewsletter"
+      placeholder="Enter your Email..."
+      class="form-control"
+      required="true"
+      aria-required="true"
+    />
+    <BtnWrap
+      class="subscribe-btn action-suscribe"
+      label="Subscribe"
+      icon="fa-regular fa-bell"
+    />
+  </div>
+
+  <div class="popup-message">
+    <div class="icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div class="text">Successfully Subscribed</div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import directus from "@/server/directus";
+import { readItems } from "@directus/sdk";
+
+const data = await directus?.request(readItems("Home"));
+---
+
+<LayoutPage title="Home Page" description="Welcome to the Home Page">
+  <h1>Home Page</h1>
+  <p style="height: 100px;">This is the content of the contact page.</p>
+</LayoutPage>

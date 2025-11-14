@@ -1,0 +1,66 @@
+---
+import directus from "@/server/directus";
+import { readItems } from "@directus/sdk";
+import Menu from "@/components/species/Menu.astro";
+import BtnsHeader from "../species/BtnsHeader.astro";
+
+const data = await directus?.request(
+  readItems("Menu", {
+    status: { _eq: "published" },
+  })
+);
+
+const menuItems = data
+  ?.filter((item: any) => item?.Position?.[0] === "0")
+  .map((item: any, i: number) => ({
+    id: item.id || i + 1,
+    label: item["Title_Item"],
+    slug: item["Link_Item"] || "",
+  }));
+---
+
+<header>
+  <div class="nav-area-wrapper-relative">
+    <nav class="navbar navbar-area navbar-expand-lg navigation-style-02">
+      <div
+        class="container custom-container custom-container-01 c-header-content"
+      >
+        <div class="responsive-menu">
+          <div class="logo-wrapper">
+            <a
+              href={menuItems?.find((e) => e.slug === "/" || e.slug === "/home")
+                ?.slug || "/"}
+              class="logo"
+            >
+              <img
+                src="assets/img/logos/logo.png"
+                alt="The Bogotá Spanish School"
+                class="logo-desktop"
+              />
+              <img
+                src="assets/img/logos/logo-mobile.png"
+                alt="The Bogotá Spanish School"
+                class="logo-mobile"
+              />
+            </a>
+          </div>
+          <BtnsHeader class="btns-mobile" />
+          <button
+            class="navbar-toggler navbar-bs-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#themeim_main_menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="themeim_main_menu">
+          <Menu menuItems={menuItems} withSubItems className="navbar-nav" />
+        </div>
+        <BtnsHeader class="btns-desktop" />
+      </div>
+    </nav>
+  </div>
+</header>

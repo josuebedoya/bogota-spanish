@@ -1,0 +1,41 @@
+---
+import { staticData } from "@/server/static-data";
+---
+
+<div class="copyright-area">
+  <div class="container custom-container-01">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="copyright-area-inner">
+          <p>
+            © {new Date().getFullYear()}. {staticData.footer.copyright}
+            <a
+              href="https://www.imaginacolombia.com/"
+              target="_blank"
+              rel="noopener noreferrer"><span>Imagina</span></a
+            >
+          </p>
+          <div class="footer-social-area">
+            <ul class="social-icon-02">
+              <li>
+                <a href={staticData.footer.social.facebook}
+                  ><i class="fab fa-facebook-f"></i></a
+                >
+              </li>
+              <li>
+                <a href={staticData.footer.social.instagram}
+                  ><i class="fab fa-instagram"></i></a
+                >
+              </li>
+              <li>
+                <a href={staticData.footer.social.linkedin}
+                  ><i class="fab fa-linkedin-in"></i></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

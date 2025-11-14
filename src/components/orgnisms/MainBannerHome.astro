@@ -1,0 +1,88 @@
+---
+type btn = {
+    text: string;
+    link: string;
+};
+interface Props {
+    phrase: string;
+    title: string;
+    summary: string;
+    button1: btn;
+    button2: btn;
+    image?: string;
+}
+
+const { phrase, title, summary, button1, button2, image = null } = Astro.props;
+
+const wordResalted = title.split(" ")[3];
+const firstPart = title.split(" ").slice(0, 3).join(" ");
+const restOfTitle = title.split(" ").slice(4).join(" ");
+---
+
+<section class="banner-area home-01">
+    <div class="container custom-container-01">
+        <div class="banner-wrapper">
+            <div class="row">
+                <div class="col-xl-7 col-lg-10 content-section">
+                    <div class="banner-inner">
+                        <p class="subtitle">{phrase}</p>
+                        <h1 class="title">
+                            {firstPart}
+                            <span>{wordResalted}</span>
+                            {restOfTitle}
+                        </h1>
+                        <p>
+                            {summary}
+                        </p>
+                        <div class="header-btn">
+                            <div class="btn-wrap">
+                                <a
+                                    href={button1.link}
+                                    class="btn-common flat-btn btn-active"
+                                    >{button1.text}</a
+                                >
+                            </div>
+                            <div class="btn-wrap margin-left-20">
+                                <a
+                                    href={button2.link}
+                                    class="btn-common fill-btn"
+                                    >{button2.text}</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 picture-section">
+                    <div class="thumbnail">
+                        <img
+                            src="assets/img/home/Ellipse-01.png"
+                            class="element-01"
+                            alt="Ellipse"
+                        />
+                        <img
+                            src="assets/img/home/Ellipse-02.png"
+                            class="element-02"
+                            alt="Ellipse"
+                        />
+                        <img
+                            src="assets/img/home/Vector-15.png"
+                            class="element-03"
+                            alt="vector"
+                        />
+                        <img
+                            src="assets/img/home/plane.png"
+                            class="element-04"
+                            alt="plane"
+                        />
+                        <img
+                            src="assets/img/home/location.png"
+                            class="element-05"
+                            alt="location"
+                        />
+                        <img src={image} class="banner-img" alt={phrase} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

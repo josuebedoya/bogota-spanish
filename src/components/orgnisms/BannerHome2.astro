@@ -1,0 +1,74 @@
+---
+import BtnWrap from "../atoms/BtnWrap.astro";
+
+interface Props {
+    phrase?: string;
+    title?: string;
+    summary?: string;
+    titleList?: string;
+    listLevels?: { Icon: string; Summary_Text: string }[];
+    button?: {
+        label: string;
+        link: string;
+    };
+}
+const { phrase, title, summary, titleList, listLevels }: Props = Astro.props;
+---
+
+<div
+    class="about-page-area-wrapper single-page-section-top-space single-page-section-bottom-space"
+>
+    <!-- about area start here  -->
+    <section class="about-section-area section-bottom-space">
+        <div class="container custom-container-01">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 order-lg-1 order-2">
+                    <div class="about-content">
+                        {phrase && <p class="subtitle">{phrase}</p>}
+                        <h3 class="content-title">{title}</h3>
+
+                        <p class="paragraph">{summary}</p>
+
+                        {titleList && <p class="paragraph"><strong>{titleList}</strong></p>}
+
+                        {listLevels && <div class="icon-box-with-text-wrap">
+                            <ul class="ul icon-box-with-text style-01">
+                                <!-- Map to list items levels -->
+                                {
+                                    listLevels?.map((item, i) => (
+                                        <li class="single-icon-box-with-text">
+                                            <div
+                                                class={`icon-wrap color-0${(i % 5) + 1}`}
+                                            >
+                                                <i class={item.Icon} />
+                                            </div>
+                                            <div class="content">
+                                                <p class="text">
+                                                    {item.Summary_Text}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>}
+
+                        <BtnWrap
+                            label={Astro.props.button.label}
+                            link={Astro.props.button.link}
+                            class="btn-common btn-new"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 order-lg-2 order-1 sc-1">
+                    <div class="thumbnail">
+                        <div class="right-frame">
+                            <img src="assets/img/home/home-hero-2.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about area end here  -->
+</div>

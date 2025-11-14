@@ -6,7 +6,8 @@ import { staticData } from "@/server/static-data";
 import MainBannerHome from "@/components/orgnisms/MainBannerHome.astro";
 import BannerHome2 from "@/components/orgnisms/BannerHome2.astro";
 import SpanishCoursesHome from "@/components/orgnisms/SpanishCoursesHome.astro";
-import { date } from "astro:schema";
+import Faq from "@/components/orgnisms/Faq.astro";
+import WhatSayOurStudents from "@/components/orgnisms/WhatSayOurStudents.astro";
 const data = await directus?.request(readItems("Home"));
 const fileBanner = await directusMedia(data?.Image_Main_Banner || "");
 const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "");
@@ -57,4 +58,6 @@ const dataSpanishCourses = {
   <MainBannerHome {...dataMainBanner} />
   <BannerHome2 {...dataBanner2} />
   <SpanishCoursesHome {...dataSpanishCourses} />
+  <WhatSayOurStudents />
+  <Faq />
 </LayoutPage>

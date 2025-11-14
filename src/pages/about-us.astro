@@ -1,22 +1,31 @@
 ---
+import MeetExpertTutors from "@/components/orgnisms/MeetExpertTutors.astro";
+import MainBannerAbout from "@/components/orgnisms/MainBannerAbout.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus from "@/server/directus";
+import directus, { directusMedia } from "@/server/directus";
 import { readItems } from "@directus/sdk";
-
 const data = await directus.request(
   readItems("Home", {
     filter: { id: { _eq: 2 } },
-    fields: [
-      "id",
-      "Stories.Stories_id.*"
-    ],
+    fields: ["id", "Stories.Stories_id.*", "*"],
   }),
 );
-console.log(data?.Stories?.map(i=> i));
+const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "");
+
+const dataBanner2 = {
+  title: data?.Title_Levels_Starting,
+  summary: data?.Summary_Levels_Starting,
+  image: fileBanner2?.src_path,
+};
 ---
 
-<LayoutPage title="Home Page" description="Welcome to the Home Page">
-  <h1>Home Page</h1>
-  <p style="height: 100px;">This is the content of the contact page.</p>
-  {data}
+<LayoutPage title="About us" description="¡Hola! We are The Bogotá Spanish School, and we believe that learning Spanish should be an exciting and deeply personal adventure.">
+  <div
+    class="about-page-area-wrapper single-page-section-top-space single-page-section-bottom-space"
+  >
+    <h1>Home Page</h1>
+    <p style="height: 100px;">This is the content of the contact page.</p>
+    <MainBannerAbout {...dataBanner2} />
+    <MeetExpertTutors />
+  </div>
 </LayoutPage>

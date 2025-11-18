@@ -1,14 +1,16 @@
 ---
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus, { directusMedia } from "@/server/directus";
-import { readItems, readFile } from "@directus/sdk";
+/* import directus, { directusMedia } from "@/server/directus";
+import { readItems, readFile } from "@directus/sdk"; */
 import { staticData } from "@/server/static-data";
 import MainBannerHome from "@/components/orgnisms/MainBannerHome.astro";
 import BannerHome2 from "@/components/orgnisms/BannerHome2.astro";
 import SpanishCoursesHome from "@/components/orgnisms/SpanishCoursesHome.astro";
 import Faq from "@/components/orgnisms/Faq.astro";
 import WhatSayOurStudents from "@/components/orgnisms/WhatSayOurStudents.astro";
-const data = await directus?.request(readItems("Home"));
+import BookingTasterSession from "@/components/orgnisms/BookingTasterSession.astro";
+import { array } from "astro:schema";
+/* const data = await directus?.request(readItems("Home"));
 const fileBanner = await directusMedia(data?.Image_Main_Banner || "");
 const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "");
 
@@ -48,6 +50,41 @@ const dataSpanishCourses = {
     title: c.Title,
     summary: c.Summary,
   })),
+}; */
+
+const dataSayOurStudents = {
+  phrase: "FROM OUR STUDENTS",
+  title: "What our students say about us",
+  items: [1, 3, 4, 5].map((i) => ({
+    title: "Annette Black",
+    summary: "University of Alberta ~ Canada",
+    image:
+      "https://img.freepik.com/foto-gratis/retrato-joven-guapo-brazos-cruzados-sosteniendo-auriculares-blancos-alrededor-su-cuello_23-2148096439.jpg?semt=ais_hybrid&w=740&q=80",
+    videoUrl: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+  })),
+};
+
+const dataBookingTasterSession = {
+  title: "Booking a free taster session",
+  summary: `<p><strong>Experience how fun and personal learning Spanish can be.</strong><br> Join us for a free taster session and discover our one-to-one, tailor-made classes designed entirely around you — your goals, your pace, and your interests.</p>
+
+<p>Our expert tutors will guide you through a personalized introduction to our method, so you can feel the difference from the very first class.</p>
+<p> Start your Spanish journey today — <strong>your first lesson is on us!</strong></p>`,
+  button: {
+    label: "Book a free class",
+    link: "/book-a-free-class",
+  },
+  image: "/assets/img/home/booking-a-tester.png",
+};
+
+const dataFaq = {
+  title: "Frequently asked questions",
+  summary:
+    "Still do you have any questions to know? Feel free to ask our experts here.",
+  items: [...Array(8)].map((_, i) => ({
+    title: `Question ${i + 1}: How can I book a class?`,
+    body: `Answer: To book a class, simply visit our booking page, select your preferred date and time, and follow the prompts to confirm your session.`,
+  })),
 };
 ---
 
@@ -55,9 +92,10 @@ const dataSpanishCourses = {
   title={staticData.home.title}
   description={staticData.home.description}
 >
-  <MainBannerHome {...dataMainBanner} />
+  <!--   <MainBannerHome {...dataMainBanner} />
   <BannerHome2 {...dataBanner2} />
-  <SpanishCoursesHome {...dataSpanishCourses} />
-  <WhatSayOurStudents />
-  <Faq />
+  <SpanishCoursesHome {...dataSpanishCourses} /> -->
+  <WhatSayOurStudents {...dataSayOurStudents} />
+  <BookingTasterSession {...dataBookingTasterSession} />
+  <Faq {...dataFaq} />
 </LayoutPage>

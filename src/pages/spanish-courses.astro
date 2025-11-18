@@ -1,0 +1,24 @@
+---
+import BookingTasterSession from "@/components/orgnisms/BookingTasterSession.astro";
+import LayoutPage from "@/layouts/LayoutPage.astro";
+
+const dataBookingTasterSession = {
+  title: "Booking a free taster session",
+  summary: `<p><strong>Experience how fun and personal learning Spanish can be.</strong><br> Join us for a free taster session and discover our one-to-one, tailor-made classes designed entirely around you — your goals, your pace, and your interests.</p>
+
+<p>Our expert tutors will guide you through a personalized introduction to our method, so you can feel the difference from the very first class.</p>
+<p> Start your Spanish journey today — <strong>your first lesson is on us!</strong></p>`,
+  button: {
+    label: "Book a free class",
+    link: "/book-a-free-class",
+  },
+  image: "/assets/img/home/booking-a-tester.png",
+};
+---
+
+<LayoutPage
+  title="Spanish Courses"
+  description="Whether you’re a complete beginner or already advanced, our lessons are designed entirely around your goals—be it for business, travel, or personal growth. "
+>
+  <BookingTasterSession {...dataBookingTasterSession} />
+</LayoutPage>

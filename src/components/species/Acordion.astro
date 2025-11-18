@@ -1,0 +1,28 @@
+---
+import ItemAcordion from "@/components/atoms/ItemAcordion.astro";
+
+interface Props {
+  id: string;
+  items: {
+    title: string;
+    body: string;
+  }[];
+}
+
+const { id, items } = Astro.props;
+---
+
+<div class="accordion-wrapper">
+  <div id={id}>
+    {
+      items?.map((item, index) => (
+        <ItemAcordion
+          title={item.title}
+          body={item.body}
+          index={index + 1}
+          parent={id}
+        />
+      ))
+    }
+  </div>
+</div>

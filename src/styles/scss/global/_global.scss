@@ -1223,6 +1223,34 @@ ul {
     margin-bottom: 0;
 }
 
+.paragraph.large-size {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 500;
+}
+
+@media (min-width:992px) {
+    .py-lg-30 {
+        padding-block: 8rem !important;
+    }
+}
+
+@media (max-width:992px) {
+    .py-15 {
+        padding-block: 3.4rem !important;
+    }
+
+}
+
+.py-15 {
+    padding-block: 3.4rem;
+}
+
+.px-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .section-top-space {
     padding-top: 70px;
 }

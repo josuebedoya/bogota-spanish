@@ -1,0 +1,47 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import { staticData } from "@/server/static-data";
+
+const data = {
+  name: " Name Tutor ",
+  summary: "Description or phrase about the tutor",
+  rol: " Instructor Rol ",
+  profile:
+    "https://img.freepik.com/fotos-premium/hombre-biracial-feliz-cabello-negro-sobre-pared-blanca-su-casa_13339-342156.jpg?semt=ais_hybrid&w=740&q=80",
+
+  description: `<p>Hi, I'm Liz Cortés, a passionate and experienced Spanish teacher dedicated to helping you master the language. With over a decade of teaching experience and a degree in Spanish and Foreign Languages from Universidad Pedagógica Nacional of Colombia, I'm excited to guide you on your learning journey.
+<br>
+<br>
+My love for teaching and the Spanish language extends beyond the classroom. I hold a diploma in didactics and teaching of Spanish as a foreign language which has equipped me with proven methodologies to make learning engaging and effective.
+<br>
+<br>
+I believe that learning a new language is a journey of discovery. Beyond grammar and vocabulary, I'm committed to helping you explore the cultural richness of the Spanish-speaking world. In my spare time, I love listening to music, singing and staying updated on new teaching techniques to make our classes more dynamic and fun.</p>`,
+};
+---
+
+<LayoutPage title={data.name} description={data.summary}>
+  <div
+    class="team-details-wrapper single-page-section-top-space single-page-section-bottom-space"
+  >
+    <!-- about area start here  -->
+    <section class="about-section-area-wrapper section-bottom-space">
+      <div class="container custom-container-01">
+        <div class="row align-items-center row-reverse">
+          <div class="col-lg-6 col-md-12">
+            <div class="about-content">
+              <h3 class="content-title">{staticData.about_instructor.title}</h3>
+
+              <div class="paragraph" set:html={data?.description} />
+            </div>
+          </div>
+          <div class="offset-xl-1 col-lg-6 col-md-7 col-xl-4">
+              <div class="thumb">
+                <img src={data?.profile} alt={data?.name} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutPage>

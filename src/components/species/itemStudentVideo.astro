@@ -1,0 +1,25 @@
+---
+import ShipeSvg2 from "../atoms/ShipeSvg2.astro";
+
+interface Props {
+  title: string;
+  summary: string;
+  image: string;
+  videoUrl: string;
+}
+
+const { title, summary, image, videoUrl } = Astro.props as Props;
+---
+
+<div class="image-box-item item-video-student">
+  <div class="thumbnail">
+    <img src={image} alt={title} />
+    <a class="video-play-btn mfp-iframe" href={videoUrl}>
+      <ShipeSvg2 />
+    </a>
+    <div class="content">
+      <h6 class="title">{title}</h6>
+      <p>{summary}</p>
+    </div>
+  </div>
+</div>

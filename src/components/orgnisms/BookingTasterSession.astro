@@ -1,31 +1,37 @@
+---
+import BtnWrap from "../atoms/BtnWrap.astro";
+
+interface Props {
+  title: string;
+  summary: string;
+  button: {
+    label: string;
+    link: string;
+  };
+  image: string;
+}
+
+const { title, summary, button, image } = Astro.props;
+---
+
 <section class="about-section-area-wrapper section-bottom-space">
   <div class="container custom-container-01">
     <div class="row align-items-center justify-content-between">
       <div class="col-lg-6 col-md-12">
         <div class="about-content">
-          <h3 class="content-title">Career Counseling</h3>
+          <h3 class="content-title">{title}</h3>
+          <div set:html={summary} />
 
-          <p class="paragraph font-weight-600 color-heading">
-            OEVS is committed to serving the top-class services to help you
-            fulfil your desire to go abroad to pursue your higher study in the
-            best possible institutions in some of the world’s finest countries..
-          </p>
-
-          <p class="paragraph">
-            We have dedicated consultants with ample expertise in this foreign
-            education industry for more than 10 years, making the OEVS one of
-            the top education consultancies in Bangladesh with their most
-            practical advice.
-          </p>
-
-          <div class="btn-wrap">
-            <a href="#" class="btn-common btn-new">Get Free Consultation</a>
-          </div>
+          <BtnWrap
+            label={button?.label}
+            link={button?.link}
+            class="btn-common btn-new"
+          />
         </div>
       </div>
       <div class="col-lg-6 col-md-12">
         <div class="thumbnail text-right">
-          <img src="assets/img/services-details/01.png" alt="" />
+          <img src={image} alt={title} />
         </div>
       </div>
     </div>

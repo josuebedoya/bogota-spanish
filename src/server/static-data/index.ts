@@ -24,5 +24,9 @@ export const staticData = {
 	},
 	courses: {
 		btn: 'Learn More'
+	},
+
+	about_instructor: {
+		title: 'About the Instructor',
 	}
 };

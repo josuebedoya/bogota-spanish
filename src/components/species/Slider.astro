@@ -1,0 +1,12 @@
+---
+interface Props {
+  classes?: string;
+  config?: Record<string, any>;
+  as?: string;
+}
+const { classes, config } = Astro.props;
+---
+
+<div class={`slick-main slick-main global-slick-init ${classes}`} {...config}>
+  <slot />
+</div>

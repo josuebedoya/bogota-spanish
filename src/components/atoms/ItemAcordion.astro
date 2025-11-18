@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  parent: string;
+  index: number;
+}
+
+const { title, body, index, parent } = Astro.props;
+---
+
+<div class="card">
+  <div class="card-header" id={`heading${index}`}>
+    <h5 class="mb-0">
+      <a
+        class="collapsed"
+        role="button"
+        data-bs-toggle="collapse"
+        data-bs-target={`#collapse${index}`}
+        aria-expanded="false"
+        aria-controls={`collapse${index}`}
+      >
+        {title}
+      </a>
+    </h5>
+  </div>
+  <div id={`collapse${index}`} class="collapse" data-bs-parent={`#${parent}`}>
+    <div class="card-body">
+      {body}
+    </div>
+  </div>
+</div>

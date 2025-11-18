@@ -1,183 +1,33 @@
+---
+import Acordion from "../species/Acordion.astro";
+
+interface Props {
+  title: string;
+  summary?: string;
+  items: {
+    title: string;
+    body: string;
+  }[];
+}
+const { items, title, summary } = Astro.props;
+---
+
 <section class="faq-section-area margin-top-90">
   <div class="container custom-container-01">
     <div class="row">
       <div class="col-lg-6">
         <div class="theme-section-title">
           <span class="subtitle">FAQ</span>
-          <h4 class="title">Frequently asked question</h4>
+          <h4 class="title">{title}</h4>
         </div>
         <div class="faq-content">
           <h6 class="subtitle">
-            Still do you have any questions to know? <br /> Feel free to ask our
-            experts here.
+            {summary}
           </h6>
-          <div class="btn-wrap">
-            <a href="#0" class="btn-common flat-btn">ASK YOUR QUESTIONS</a>
-          </div>
         </div>
       </div>
       <div class="col-lg-6">
-        <div class="accordion-wrapper">
-          <!-- accordion wrapper -->
-          <div id="accordionOne">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    role="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="false"
-                    aria-controls="collapseOne"
-                  >
-                    1. How is get admission in abroad university?
-                  </a>
-                </h5>
-              </div>
-              <div
-                id="collapseOne"
-                class="collapse"
-                data-bs-parent="#accordionOne"
-              >
-                <div class="card-body">
-                  Norway, USA, UK, Germany & Italy is most safest country in the
-                  world for Bangladeshi students for higer study.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    role="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
-                    2. Do you offer complete solution for students?
-                  </a>
-                </h5>
-              </div>
-              <div
-                id="collapseTwo"
-                class="collapse"
-                data-bs-parent="#accordionOne"
-              >
-                <div class="card-body">
-                  Norway, USA, UK, Germany & Italy is most safest country in the
-                  world for Bangladeshi students for higer study.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    role="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
-                    3. Which country is safe and better for higher study?
-                  </a>
-                </h5>
-              </div>
-              <div
-                id="collapseThree"
-                class="collapse show"
-                data-bs-parent="#accordionOne"
-              >
-                <div class="card-body">
-                  Norway, USA, UK, Germany & Italy is most safest country in the
-                  world for Bangladeshi students for higer study.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingFour">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    role="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFour"
-                    aria-expanded="false"
-                    aria-controls="collapseFour"
-                  >
-                    4. Which country offer PR after study getting job?
-                  </a>
-                </h5>
-              </div>
-              <div
-                id="collapseFour"
-                class="collapse"
-                data-bs-parent="#accordionOne"
-              >
-                <div class="card-body">
-                  Norway, USA, UK, Germany & Italy is most safest country in the
-                  world for Bangladeshi students for higer study.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingFive">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    role="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFive"
-                    aria-expanded="false"
-                    aria-controls="collapseFive"
-                  >
-                    5. Can i get scholarship with my low cGPA?
-                  </a>
-                </h5>
-              </div>
-              <div
-                id="collapseFive"
-                class="collapse"
-                data-bs-parent="#accordionOne"
-              >
-                <div class="card-body">
-                  Norway, USA, UK, Germany & Italy is most safest country in the
-                  world for Bangladeshi students for higer study.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingSix">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    role="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseSix"
-                    aria-expanded="false"
-                    aria-controls="collapseSix"
-                  >
-                    6. Do you allow accomadation for students in abroad?
-                  </a>
-                </h5>
-              </div>
-              <div
-                id="collapseSix"
-                class="collapse"
-                data-bs-parent="#accordionOne"
-              >
-                <div class="card-body">
-                  Norway, USA, UK, Germany & Italy is most safest country in the
-                  world for Bangladeshi students for higer study.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Acordion id="accordionOne" items={items} />
       </div>
     </div>
   </div>

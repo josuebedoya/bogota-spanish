@@ -2,7 +2,8 @@
 import MeetExpertTutors from "@/components/orgnisms/MeetExpertTutors.astro";
 import MainBannerAbout from "@/components/orgnisms/MainBannerAbout.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus, { directusMedia } from "@/server/directus";
+import OurPhilosophy from "@/components/orgnisms/OurPhilosophy.astro";
+/* import directus, { directusMedia } from "@/server/directus";
 import { readItems } from "@directus/sdk";
 const data = await directus.request(
   readItems("Home", {
@@ -16,16 +17,45 @@ const dataBanner2 = {
   title: data?.Title_Levels_Starting,
   summary: data?.Summary_Levels_Starting,
   image: fileBanner2?.src_path,
+}; */
+
+const dataMeetTutors = {
+  phrase: "Meet Our Expert Tutors",
+  title: "Get to know the team behind The Bogotá Spanish School Experts",
+  summary: "Expert tutors bringing Spanish to life just for you.",
+  items: [...Array(6)].map((_, i) => ({
+    image:
+      "https://img.freepik.com/foto-gratis/retrato-mujer-caucasica-sonriendo_53876-24998.jpg",
+    name: `Tutor Name ${i + 1}`,
+    chargue: `Specialist ${i + 1}`,
+    as: "ItemTutor",
+  })),
+};
+
+const dataOurPhilosophy = {
+  title: "Our Philosophy",
+  summary:
+    "¡Hola! We are The Bogotá Spanish School, and we believe that learning Spanish should be an exciting and deeply personal adventure.",
+  description: `
+    <p>At The Bogotá Spanish School, we understand that every learner is unique. That's why we tailor our teaching methods to fit your individual needs, ensuring that your journey to fluency is both effective and enjoyable.</p>
+    <p>Our experienced tutors are passionate about sharing their love for the Spanish language and culture. They create a supportive and engaging environment where you can practice speaking, listening, reading, and writing in real-life contexts.</p>
+    <p>We believe that learning a language is more than just memorizing vocabulary and grammar rules. It's about immersing yourself in the culture, connecting with people, and experiencing the joy of communication. That's why we incorporate cultural activities and real-world scenarios into our lessons.</p>
+    <p>Join us at The Bogotá Spanish School and embark on a personalized language learning adventure that will open doors to new opportunities and enrich your life.</p>
+  `,
+  image:
+    "https://img.freepik.com/foto-gratis/mujer-negocios-empoderada-que-trabaja-ciudad_23-2149589077.jpg?semt=ais_hybrid&w=740&q=80",
 };
 ---
 
-<LayoutPage title="About us" description="¡Hola! We are The Bogotá Spanish School, and we believe that learning Spanish should be an exciting and deeply personal adventure.">
+<LayoutPage
+  title="About us"
+  description="¡Hola! We are The Bogotá Spanish School, and we believe that learning Spanish should be an exciting and deeply personal adventure."
+>
   <div
     class="about-page-area-wrapper single-page-section-top-space single-page-section-bottom-space"
   >
-    <h1>Home Page</h1>
-    <p style="height: 100px;">This is the content of the contact page.</p>
-    <MainBannerAbout {...dataBanner2} />
-    <MeetExpertTutors />
+    <!--  <MainBannerAbout {...dataBanner2} /> -->
+    <MeetExpertTutors {...dataMeetTutors} />
+    <OurPhilosophy {...dataOurPhilosophy} />
   </div>
 </LayoutPage>

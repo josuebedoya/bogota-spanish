@@ -1,0 +1,104 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import directus from "@/server/directus";
+import { readItems } from "@directus/sdk";
+import Social from "@/components/species/Social.astro";
+import ContactList2 from "@/components/species/ContactList2.astro";
+import Form from "@/components/species/Form.astro";
+
+const dataPage = await directus.request(readItems("Contact_us"));
+const dataSocial = await directus?.request(readItems("info_contact"));
+
+const dataForm = [
+  {
+    type: "text",
+    name: "FullName",
+    placeholder: "Full Name",
+    required: true,
+    icon: "fa-solid fa-user",
+  },
+  {
+    type: "email",
+    name: "email",
+    placeholder: "Email Address",
+    required: true,
+    icon: "fa-solid fa-envelope-open",
+  },
+  {
+    type: "tel",
+    name: "phone",
+    placeholder: "Phone Number",
+    required: true,
+    icon: "fa-solid fa-phone",
+  },
+  {
+    type: "text",
+    name: "city",
+    placeholder: "City",
+    required: true,
+    icon: "fa-solid fa-location-dot",
+  },
+  {
+    type: "textarea",
+    name: "city",
+    placeholder: "Write description...",
+    required: false,
+    widthFull: true,
+  },
+];
+---
+
+<LayoutPage
+  title={dataPage?.title_page || "Contact us"}
+  description={dataPage?.summary_page || ""}
+>
+  <div
+    class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
+  >
+    <div class="breadcrumb-wrap style-01">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="breadcrumb-content">
+              <h3 class="title">{dataPage?.title_page}</h3>
+              <div class="details" set:html={dataPage?.summary_page} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="contact-form-area-wrapper section-bottom-space">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="apply-form-inner">
+              <div class="row justify-content-between">
+                <div class="col-lg-5">
+                  <div class="contact-address">
+                    <h3 class="title">Get in touch</h3>
+                    <ContactList2 data={dataSocial} />
+                    <Social
+                      data={dataSocial?.social || []}
+                      classes="ul social-media-list style-01 color-02"
+                      classesItem="single-social-item"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="contact-form">
+                    <Form
+                      title="Personal Information"
+                      fields={dataForm}
+                      classesCols="col-md-6 py-3"
+                      submitLabel="Submit Message"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutPage>

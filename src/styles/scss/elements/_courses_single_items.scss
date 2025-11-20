@@ -1,4 +1,6 @@
 // Courses Single Items Styling Here
+@use "../global/variables" as *;
+
 .course-single-item {
     background: $white;
     transition: .5s all ease;

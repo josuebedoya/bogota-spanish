@@ -1,6 +1,9 @@
 /*-------------------------
     ## Preloader Css
 ---------------------------*/
+
+@use "../global/variables" as *;
+
 .preloader-inner {
   position: fixed;
   left: 0;

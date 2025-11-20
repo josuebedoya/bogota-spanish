@@ -1,4 +1,5 @@
 ---
+import { toCodes } from "astro:i18n";
 import BtnWrap from "../atoms/BtnWrap.astro";
 
 interface Props {
@@ -11,9 +12,10 @@ interface Props {
         label: string;
         link: string;
     };
-    image: string
+    image: string;
+    imageLeft?: boolean;
 }
-const { phrase, title, summary, titleList, listLevels, button,image }: Props = Astro.props;
+const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= false }: Props = Astro.props;
 ---
 
 <section class="about-section-area section-bottom-space">
@@ -24,7 +26,7 @@ const { phrase, title, summary, titleList, listLevels, button,image }: Props = A
                         {phrase && <p class="subtitle">{phrase}</p>}
                         <h3 class="content-title">{title}</h3>
 
-                        <p class="paragraph">{summary}</p>
+                        <p class="paragraph" set:html={summary}></p>
 
                         {titleList && <p class="paragraph"><strong>{titleList}</strong></p>}
 
@@ -52,13 +54,14 @@ const { phrase, title, summary, titleList, listLevels, button,image }: Props = A
                          {button && <BtnWrap
                             label={button?.label}
                             link={button?.link}
+                            type="link"
                             class="btn-common btn-new"
                         /> }
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 order-lg-2 order-1 sc-1">
+                <div class={`col-lg-6 col-md-12 ${!imageLeft ?'order-lg-2 order-1': 'order-0 pr-5'} sc-1`}>
                     <div class="thumbnail">
-                        <div class="right-frame">
+                        <div class={`${imageLeft ? "left-frame" : "right-frame"}`}>
                             <img src={image} alt={title} />
                         </div>
                     </div>

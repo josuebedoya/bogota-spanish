@@ -1,3 +1,6 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
 /*--------------------------------------------------------------
 	## WIdgets
 --------------------------------------------------------------*/
@@ -941,6 +944,7 @@
 
     &.single-info-item {
       display: inline-flex;
+      width: 100%;
 
       a {
         display: inline-flex;

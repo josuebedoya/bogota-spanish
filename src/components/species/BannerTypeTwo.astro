@@ -9,24 +9,31 @@ interface Props {
     link: string;
   };
   image: string;
+  withGradient?: boolean;
 }
 
-const { title, summary, button, image } = Astro.props;
+const { title, summary, button, image, withGradient = true } = Astro.props;
 ---
 
-<section class="about-section-area-wrapper section-bottom-space">
+<section
+  class={`about-section-area-wrapper section-bottom-space margin-top-110 py-15 ${withGradient ? "bg-colors-gradient" : ""}`}
+>
   <div class="container custom-container-01">
     <div class="row align-items-center justify-content-between">
       <div class="col-lg-6 col-md-12">
         <div class="about-content">
           <h3 class="content-title">{title}</h3>
           <div set:html={summary} />
-
-          <BtnWrap
-            label={button?.label}
-            link={button?.link}
-            class="btn-common btn-new"
-          />
+          {
+            button?.label && (
+              <BtnWrap
+                label={button?.label}
+                link={button?.link}
+                type="link"
+                class="btn-common btn-new"
+              />
+            )
+          }
         </div>
       </div>
       <div class="col-lg-6 col-md-12">

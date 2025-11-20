@@ -1,0 +1,26 @@
+---
+import { staticData } from "@/server/static-data";
+
+type item = {
+  type: string;
+  link: string;
+};
+interface Props {
+  data: item[];
+  classes?: string;
+  classesItem?: string;
+}
+const { data, classes, classesItem } = Astro.props;
+---
+
+<ul class={`social ${classes || ""}`}>
+  {
+    data?.map((s: item) => (
+      <li class={classesItem || ""}>
+        <a href={s?.link} target="_blank" rel="noopener noreferrer">
+          <i class={staticData.social.icons[s?.type || "default"]} />
+        </a>
+      </li>
+    ))
+  }
+</ul>

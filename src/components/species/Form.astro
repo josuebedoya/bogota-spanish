@@ -1,0 +1,62 @@
+---
+import Selectfield from "@/components/atoms/Selectfield.astro";
+import InputBasic from "@/components/atoms/InputBasic.astro";
+
+interface Props {
+  title: string;
+  fields: any;
+  classesCols?: string;
+  submitLabel?: string;
+}
+const { title, fields, classesCols, submitLabel = "Submit" } = Astro.props;
+---
+
+<form class="form">
+  <div class="part">
+    <h5 class="title">{title}</h5>
+    <div class="form-element">
+      <div class="row">
+        {
+          fields.map((field: any) => {
+            if (field.type === "select") {
+              return (
+                <Selectfield
+                  classes={
+                    classesCols && !field?.widthFull
+                      ? "col-md-6 py-3"
+                      : "col-12"
+                  }
+                  name={field.name}
+                  options={field.options}
+                  icon={field.icon}
+                  config={{ ...field }}
+                />
+              );
+            } else {
+              return (
+                <InputBasic
+                  classes={
+                    classesCols && !field?.widthFull
+                      ? "col-md-6 py-3"
+                      : "col-12"
+                  }
+                  type={field.type}
+                  icon={field.icon}
+                  inputConfig={{
+                    ...field,
+                  }}
+                />
+              );
+            }
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="form-submit text-right mt-5">
+    <button type="submit" class="btn-common btn-active"
+      >{submitLabel || "Submit"}
+    </button>
+  </div>
+</form>

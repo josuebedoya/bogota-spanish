@@ -1,0 +1,104 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import Form from "@/components/species/Form.astro";
+import directus from "@/server/directus";
+import { readItems } from "@directus/sdk";
+
+const dataForm = [
+  {
+    type: "text",
+    name: "fullName",
+    placeholder: "Full name",
+    required: true,
+    icon: "fa-solid fa-user",
+  },
+  {
+    type: "email",
+    name: "email",
+    placeholder: "Email address",
+    required: true,
+    icon: "fa-solid fa-envelope-open",
+  },
+  {
+    type: "tel",
+    name: "phone",
+    placeholder: "Phone number",
+    required: true,
+    icon: "fa-solid fa-phone",
+  },
+  {
+    type: "text",
+    name: "disponibility",
+    placeholder: "When can you take your classes?",
+    icon: "fa-solid fa-clock",
+  },
+  {
+    type: "text",
+    name: "nationality",
+    placeholder: "What is your nationality?",
+    required: false,
+    icon: "fa-solid fa-earth-africa",
+  },
+  {
+    type: "text",
+    name: "dateOfBirth",
+    placeholder: "Where do you currently live?",
+    required: false,
+    icon: "fa-solid fa-calendar-days",
+  },
+  {
+    type: "textarea",
+    name: "objectives",
+    widthFull: true,
+    placeholder:
+      "Why do you want to learn Spanish? Do you have a specific goal in mind? Or do you just want to learn for fun?",
+  },
+];
+
+const dataPage = await directus.request(readItems("Book_a_free_class"));
+---
+
+<LayoutPage
+  title={dataPage?.title_page}
+  description={dataPage?.summary_page?.slice(0, 145) + "..."}
+>
+  <div
+    class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
+  >
+    <div class="breadcrumb-wrap style-01">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="breadcrumb-content">
+              <h3 class="title">{dataPage?.title_page}</h3>
+            </div>
+            <p class="paragraph">
+              {dataPage?.summary_page}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="apply-form-area-wrapper">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="apply-form-inner">
+              <div class="row justify-content-between">
+                <div class="col-lg-12">
+                  <div class="contact-form">
+                    <Form
+                      title="Personal Information"
+                      fields={dataForm}
+                      classesCols="col-md-6 col-lg-4 py-3"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutPage>

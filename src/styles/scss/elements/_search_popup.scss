@@ -1,6 +1,7 @@
 /*----------------------------------------
   ## Search Popup
 ----------------------------------------*/
+@use "../global/variables" as *;
 
 .search-popup.active .search-form {
     visibility: visible;
@@ -39,7 +40,7 @@
     border-radius: 50%;
     border-color: var(--hover-color);
     background-color: var(--hover-color);
-    @include transition($transition);
+    transition: $transition;
     padding: 0;
     text-align: center;
 

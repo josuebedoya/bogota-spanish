@@ -1,5 +1,5 @@
 ---
-import ItemCourse from "../species/itemCourse.astro";
+import ItemCourse from "@/components/atoms/ItemCourse.astro";
 
 type item = {
   icon: string;
@@ -39,7 +39,11 @@ const { items, phrase, title } = Astro.props;
       {
         items?.map((item: any, i: number) => (
           <div class="col-lg-4 col-md-6">
-            <ItemCourse {...item} classes={`item-${(i % 3) + 1}`} />
+            <ItemCourse
+              {...item}
+              classes={`item-${(i % 3) + 1}`}
+              button={{ link: "/spanish-courses" }}
+            />
           </div>
         ))
       }

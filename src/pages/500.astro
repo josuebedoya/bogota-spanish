@@ -1,0 +1,48 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import { staticData } from "@/server/static-data";
+---
+
+<LayoutPage
+  title="404 Not Found"
+  description="The page you are looking for does not exist."
+>
+  <div class="error-wrapper" style="height: auto !important;">
+    <div class="container custom-container-01">
+      <div class="row">
+        <div class="col-lg-12 px-0">
+          <div class="error-inner margin-top-110 bg-transparent">
+            <div class="row align-items-center row-reverse">
+              <div class="offset-lg-1 col-lg-5">
+                <div class="content">
+                  <h1>
+                    <span
+                      style="font-weight:bold; color: var(--main-color-one)"
+                    >
+                      Ups!
+                    </span>
+                  </h1>
+                  <h5 class="title">500</h5>
+                  <span> Sorry, </span>
+                  <span class="text">{staticData.error_pages[500].title}</span>
+                </div>
+                {
+                  Astro.url.pathname !== "/" && (
+                    <div class="btn-wrap">
+                      <a href="/" class="btn-common add-to-cart btn-active">
+                        {staticData.not_found.btn}
+                      </a>
+                    </div>
+                  )
+                }
+              </div>
+              <div class="col-lg-6">
+                <img src="assets/img/500.png" alt="500 Internal Server Error" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</LayoutPage>

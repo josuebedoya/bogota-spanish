@@ -1,7 +1,7 @@
 /*-------------------------
     Check point elements
 -------------------------*/
-
+@use "../global/variables" as *;
 .check-point-list {
     &.style-01 {
         .single-check-point {

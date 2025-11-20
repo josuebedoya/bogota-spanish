@@ -1,0 +1,40 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import { staticData } from "@/server/static-data";
+---
+
+<LayoutPage
+  title="404 Not Found"
+  description="The page you are looking for does not exist."
+>
+  <div class="error-wrapper" style="height: auto !important;">
+    <div class="container custom-container-01">
+      <div class="row">
+        <div class="col-lg-12 px-0">
+          <div class="error-inner margin-top-110 bg-transparent">
+            <div class="row align-items-center row-reverse">
+              <div class="offset-lg-1 col-lg-5">
+                <div class="content">
+                  <h1><span style="font-weight:bold; color: var(--main-color-one)"> Loss? </span></h1>
+                  <h5 class="title">404</h5>
+                  <span> Loss? </span>
+                  <span class="text">{staticData.not_found.title}</span>
+                  <div class="btn-wrap">
+                    <a
+                      href="/"
+                      class="btn-common add-to-cart btn-active"
+                      >{staticData.not_found.btn}</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <img src="assets/img/404.png" alt="404 Not Found" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</LayoutPage>

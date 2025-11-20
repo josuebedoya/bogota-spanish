@@ -1,4 +1,6 @@
 // Destination Single items styling here
+@use "../global/variables" as *;
+
 .destination-single-item {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid $stock;

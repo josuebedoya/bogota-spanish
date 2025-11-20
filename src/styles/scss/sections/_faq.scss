@@ -1,6 +1,8 @@
 /*---------------------
     ## faq Area
 ----------------------*/
+@use "../global/variables" as *;
+
 .single-help-category-item {
     text-align: center;
     display: block;

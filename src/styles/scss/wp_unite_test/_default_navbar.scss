@@ -1,4 +1,7 @@
 /*navbar-default*/
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
 .logo-wrapper {
   .site-title {
     font-size: 30px;

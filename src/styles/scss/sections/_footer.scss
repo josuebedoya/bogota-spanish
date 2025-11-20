@@ -1,3 +1,5 @@
+@use "../global/variables" as *;
+
 /*-------------------------
     Footer Area
 -------------------------*/
@@ -106,6 +108,7 @@
         }
 
         .popup-message {
+            pointer-events: none;
             background-color: #efefef;
             padding: 40px;
             display: flex;

@@ -1,0 +1,21 @@
+---
+const { dataPage } = Astro.props;
+---
+
+<div
+  class="page-default single-page-section-top-space single-page-section-bottom-space margin-top-110"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="single-page-content">
+          <h1 class="title-section font-weight-bold">{dataPage?.title_page}</h1>
+          <div
+            class="content paragraph large-size mt-5"
+            set:html={dataPage?.description || ""}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

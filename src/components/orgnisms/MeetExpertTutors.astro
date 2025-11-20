@@ -1,5 +1,4 @@
 ---
-import { slide } from "astro:transitions";
 import ItemTutor from "../atoms/ItemTutor.astro";
 import Slider from "../species/Slider.astro";
 import ItemSlide from "../atoms/ItemSlide.astro";
@@ -7,7 +6,7 @@ type item = {
   image: string;
   name: string;
   chargue: string;
-  as: string;
+  id: string;
 };
 interface Props {
   phrase: string;
@@ -16,7 +15,6 @@ interface Props {
   items: item[];
 }
 const { items, phrase, title, summary } = Astro.props;
-
 const configSlider = {
   "data-infinite": "true",
   "data-arrows": "true",
@@ -40,7 +38,7 @@ const configSlider = {
   <div class="our-team-inner">
     <div class="container custom-container-01">
       <div class="row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
           <div class="section-title-wrapper text-center">
             <h5 class="subtitle">{phrase}</h5>
             <h4 class="section-title">{title}</h4>
@@ -60,6 +58,7 @@ const configSlider = {
                     image={item.image}
                     name={item.name}
                     chargue={item.chargue}
+                    id={item.id}
                   />
                 </ItemSlide>
               ))

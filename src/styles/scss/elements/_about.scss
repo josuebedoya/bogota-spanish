@@ -1,6 +1,8 @@
 /*-------------------------
     About elements
 -------------------------*/
+@use "../global/variables" as *;
+
 .about-content {
     .subtitle {
         font-size: 16px;

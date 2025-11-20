@@ -1,6 +1,8 @@
 /*----------------------------
     Blog Grid Item
 -----------------------------*/
+@use "../global/variables" as *;
+
 .blog-items-wrap {
   margin-left: -10px;
 }

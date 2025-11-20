@@ -1,13 +1,15 @@
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+@use "variables" as *;
+
 :root {
     --main-color-one: #E67478;
     --main-color-two: #22524E;
     --heading-color: #1E1926;
     --paragraph-color: #6B6B6B;
     --heading-font: 'Montserrat', sans-serif;
-    --body-font: 'Poppins', sans-serif;
+    --body-font: "Lato", sans-serif;
     --animate-delay: 0.3s;
 }
 
@@ -16,6 +18,7 @@ html {
     -ms-text-size-adjust: 100%;
     overflow-x: hidden;
     font-family: var(--body-font);
+    font-weight: 500;
 }
 
 * {
@@ -34,6 +37,7 @@ body {
     // overflow-x: hidden;
     font-family: var(--body-font);
     font-size: 14px;
+    font-weight: 500;
 }
 
 ::-webkit-scrollbar {
@@ -1297,132 +1301,6 @@ ul {
     color: var(--heading-color);
 }
 
-// .navbar-toggler {
-//     padding: revert;
-// }
-
-// .navbar.navbar-area.white.navbar-expand-lg.navigation-style-02.version-01 .navbar-toggler {
-//     background-color: #f2643400 !important;
-// }
-
-// .navbar-wrapper.version-01.relative .navbar.navbar-area.white.navbar-expand-lg.navigation-style-02.version-01 .navbar-toggler {
-//     background-color: var(--main-color-one) !important;
-// }
-
-// .title {
-//     font-family: var(--heading-font);
-//     font-weight: 700;
-//     color: var(--heading-color);
-//     transition: all linear 0.2s;
-//     position: relative;
-//     z-index: 1;
-//     margin-bottom: 0;
-
-//     a {
-//         transition: all linear 0.2s;
-//         display: inline;
-
-//         &:hover {
-//             color: var(--main-color-one);
-//         }
-//     }
-// }
-
-// section title 
-
-// .section-heading-content {
-//     display: flex;
-//     justify-content: space-between;
-// }
-
-// .section-title-wrapper {
-//     position: relative;
-//     z-index: 9;
-
-//     &.style-01 {
-//         text-align: center;
-//         margin-bottom: 50px;
-
-//         .section-title-main {
-//             font-family: var(--heading-font);
-//             color: var(--heading-color);
-//             font-size: 55px;
-//             line-height: 85px;
-//             font-weight: 700;
-//             text-transform: initial;
-
-//             &.color-white {
-//                 color: #fff !important;
-//             }
-//         }
-//     }
-
-//     &.style-02 {
-//         margin-bottom: 25px;
-
-//         .section-title-main {
-//             position: relative;
-//             display: inline-block;
-//             font-family: var(--heading-font);
-//             color: var(--main-color-one);
-//             font-size: 24px;
-//             line-height: 30px;
-//             font-weight: 700;
-//             text-transform: initial;
-//             padding: 25px 70px;
-//             z-index: 1;
-
-//             .shape-x {
-//                 background-image: url(../img/section-title/shape/01.png);
-//                 background-position: center;
-//                 background-repeat: no-repeat;
-//                 background-size: contain;
-//                 position: absolute;
-//                 top: 0;
-//                 left: 0;
-//                 width: 100%;
-//                 height: 100%;
-//                 z-index: -1;
-//             }
-
-//             &.color-white {
-//                 color: #fff !important;
-//             }
-//         }
-
-//         &.v-02 {
-//             .section-title-main {
-//                 padding: 0;
-
-//                 &.color-white {
-//                     color: #fff !important;
-//                 }
-//             }
-//         }
-
-//         &.v-03 {
-//             margin-bottom: 15px;
-
-//             .section-title-main {
-//                 padding: 0;
-//                 margin-bottom: 0;
-//             }
-//         }
-//     }
-
-//     .ex-flex {
-//         display: flex;
-//         align-items: center;
-
-//         .paragraph {
-//             margin-left: 138px;
-//             max-width: 410px;
-//             text-align: left;
-//         }
-//     } 
-
-// }
-
 .ul {
     padding-left: 0;
     margin-bottom: 0;
@@ -1491,4 +1369,98 @@ ul {
 
 .bg-color-x {
     background-color: #FAECFF;
+}
+
+.sc-1.pr-5 {
+    padding-left: 0 !important;
+    padding-right: 55px !important;
+}
+
+.list-courses {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    line-height: 2;
+    text-align: justify !important;
+
+    & ul {
+
+        margin-top: 20px;
+
+        & li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            font-weight: 500;
+
+            &:before {
+                content: "\f00c";
+                font-family: 'FontAwesome';
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: var(--main-color-one);
+            }
+        }
+    }
+
+    & .item-course {
+        padding-block: 100px;
+
+        .about-section-area-wrapper,
+        .about-section-area {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        &.last-item {
+            background-color: #f5f5f590;
+        }
+    }
+}
+
+.plans-courses {
+    .card-plan {
+        text-align: justify;
+        min-height: -webkit-fill-available;
+        min-height: -mox-fill-available;
+
+        .thumbnail {
+            padding: 20px 20px;
+            background-color: var(--main-color-one);
+
+            & i {
+                font-size: 30px;
+                color: #fff;
+            }
+        }
+
+        .title {
+            margin-bottom: 0 !important;
+        }
+
+        .designation {
+            margin-top: 0 !important;
+            font-weight: 300;
+        }
+
+        .paragraph,
+        .paragraph * {
+            text-align: left !important;
+
+            li {
+                text-align: left !important;
+            }
+        }
+    }
+}
+
+.page-default {
+
+    & img,
+    & video,
+    & iframe {
+        max-width: 100%;
+        height: auto;
+    }
 }

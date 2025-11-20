@@ -1,0 +1,18 @@
+---
+interface Props {
+  options?: string[];
+  name?: string;
+  icon?: string;
+  config?: any;
+  classes?: string;
+}
+const { name, options, icon, config, classes } = Astro.props;
+---
+
+<div class={classes}>
+  {icon && <i class={icon} />}
+  <select name={name} id={name} {...config}>
+    <option disabled selected hidden>{name}</option>
+    {options?.map((option: string) => <option value={option}>{option}</option>)}
+  </select>
+</div>

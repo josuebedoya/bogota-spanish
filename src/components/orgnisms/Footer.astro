@@ -5,6 +5,7 @@ import Copyright from "../species/Copyright.astro";
 import directus from "@/server/directus";
 import { readItems } from "@directus/sdk";
 import { staticData } from "@/server/static-data";
+import ContactList from "../species/ContactList.astro";
 
 const dataMenu = await directus?.request(
   readItems("Menu", {
@@ -34,6 +35,8 @@ const menuHelpCenter = formattedData(
 const menuHeader = formattedData(
   dataMenu?.filter((item) => item?.Position?.[0] === "0"),
 );
+
+const socialData = await directus?.request(readItems("info_contact"));
 ---
 
 <footer class="footer-area style-01">
@@ -42,7 +45,7 @@ const menuHeader = formattedData(
       <SuscribeOurNewsLetter />
       <div class="footer-middle">
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="footer-widget widget widget_nav_menu">
               <h4 class="widget-headline">
                 {staticData.footer.titles.menu1}
@@ -50,15 +53,7 @@ const menuHeader = formattedData(
               <Menu menuItems={menuImportantLinks} />
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline">
-                {staticData.footer.titles.menu2}
-              </h4>
-              <Menu menuItems={menuHelpCenter} />
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="footer-widget widget widget_nav_menu">
               <h4 class="widget-headline">
                 {staticData.footer.titles.menu3}
@@ -66,45 +61,12 @@ const menuHeader = formattedData(
               <Menu menuItems={menuHeader} />
             </div>
           </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="footer-widget widget widget_nav_menu">
               <h4 class="widget-headline">
                 {staticData.footer.titles.contact}
               </h4>
-              <ul class="contact_info_list">
-                <li class="single-info-item">
-                  <a href="tel:+573158044370">
-                    <div class="icon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <div class="details">
-                      8502 Preston Rd. Inglewood, Maine Bangladesh
-                    </div>
-                  </a>
-                </li>
-                <li class="single-info-item">
-                  <a href="mailto:administrativo@thebogotaspanish.com">
-                    <div class="icon">
-                      <i class="fa fa-envelope"></i>
-                    </div>
-                    <div class="details">
-                      administrativo@thebogotaspanish.com
-                    </div>
-                  </a>
-                </li>
-                <li class="single-info-item">
-                  <a
-                    href="https://maps.app.goo.gl/2nnFTpCDuHAUuyD8A"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div class="icon">
-                      <i class="fa fa-map-marker-alt"></i>
-                    </div>
-                    <div class="details">Calle 131 a #53-31 Ap. 1005</div>
-                  </a>
-                </li>
-              </ul>
+              <ContactList data={socialData} />
             </div>
           </div>
         </div>

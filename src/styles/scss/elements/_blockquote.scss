@@ -1,4 +1,5 @@
 /*Wp  BlockQuote */
+@use "../global/variables" as *;
 blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-style-large):not(.is-style-large) {
   background-color: rgba(82, 95, 225, 0.1);
   border-radius: 8px;

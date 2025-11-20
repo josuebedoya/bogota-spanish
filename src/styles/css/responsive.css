@@ -326,7 +326,8 @@
         .thumbnail {
             text-align: center !important;
 
-            .right-frame {
+            .right-frame,
+            .left-frame {
                 max-width: 80%;
             }
 
@@ -334,6 +335,16 @@
                 padding-left: 0 !important;
                 max-width: 100% !important;
             }
+        }
+
+        .sc-1.pr-5 {
+            .thumbnail {
+                padding: 0 !important;
+            }
+        }
+
+        &.image-left {
+            order: 0 !important;
         }
     }
 
@@ -631,7 +642,7 @@
     }
 
     .features-section .shape {
-       max-width: 100%;
+        max-width: 100%;
     }
 
     .theme-section-title .title {

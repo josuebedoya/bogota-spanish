@@ -1,0 +1,15 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import directus from "@/server/directus";
+import { readItems } from "@directus/sdk";
+import DefaultPage from "@/components/orgnisms/DefaultPage.astro";
+
+const dataPage = await directus.request(readItems("tersms_and_conditions"));
+---
+
+<LayoutPage
+  title={dataPage?.title_page || "Terms and Conditions"}
+  description={dataPage?.description || ""}
+>
+<DefaultPage dataPage={dataPage} />
+</LayoutPage>

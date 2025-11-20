@@ -1,24 +1,60 @@
 ---
-import BookingTasterSession from "@/components/orgnisms/BookingTasterSession.astro";
+import BannerTypeTwo from "@/components/species/BannerTypeTwo.astro";
+import BannerTypeOne from "@/components/species/BannerTypeOne.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
+import directus, { directusMedia } from "@/server/directus";
+import { readItems } from "@directus/sdk";
+
+const data = await directus.request(
+  readItems("Spanish_courses", { filter: { status: { _eq: "published" } } }),
+);
+
+const fileMainBanner = await directusMedia(data?.image_main_banner);
 
 const dataBookingTasterSession = {
-  title: "Booking a free taster session",
-  summary: `<p><strong>Experience how fun and personal learning Spanish can be.</strong><br> Join us for a free taster session and discover our one-to-one, tailor-made classes designed entirely around you — your goals, your pace, and your interests.</p>
-
-<p>Our expert tutors will guide you through a personalized introduction to our method, so you can feel the difference from the very first class.</p>
-<p> Start your Spanish journey today — <strong>your first lesson is on us!</strong></p>`,
+  title: data?.title_main_banner,
+  summary: data?.sumamry_main_banner,
   button: {
-    label: "Book a free class",
+    label: data?.button_main_banner,
     link: "/book-a-free-class",
   },
-  image: "/assets/img/home/booking-a-tester.png",
+  image: fileMainBanner?.src_path,
 };
+
+const dataCourses = await directus.request(
+  readItems("Courses", { filter: { status: { _eq: 1 } } }),
+);
+console.log(dataCourses);
 ---
 
 <LayoutPage
-  title="Spanish Courses"
-  description="Whether you’re a complete beginner or already advanced, our lessons are designed entirely around your goals—be it for business, travel, or personal growth. "
+  title={data?.title_main_banner}
+  description={data?.summary_main_banner?.slice(0, 150) + "..."}
 >
-  <BookingTasterSession {...dataBookingTasterSession} />
+  <div class="about-page-area-wrapper single-page-section-top-space">
+    <BannerTypeTwo {...dataBookingTasterSession} />
+    <div class="list-courses">
+      {
+        dataCourses?.map(async (course: any, i: number) => {
+          const fileItem = await directusMedia(course?.image);
+          const item = {
+            image: fileItem?.src_path || "",
+            title: course?.shurt_title || "",
+            summary: course?.description || "",
+          };
+          const isEven = i % 2 === 0;
+          const isLast = i === dataCourses.length - 1;
+          return isEven ? (
+            <div class={`item-course ${isLast ? "last-item" : ""}`}>
+              <BannerTypeOne {...item} imageLeft={true} />
+            </div>
+          ) : (
+            <div class={`item-course ${isLast ? "last-item" : ""}`}>
+              <BannerTypeTwo {...item} withGradient={false} />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
 </LayoutPage>

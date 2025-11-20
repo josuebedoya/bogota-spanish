@@ -1,6 +1,8 @@
 /*----------------------------
     Counterup Item
 ----------------------------*/
+@use "../global/variables" as *;
+
 .counter-section-area {
     position: relative;
     z-index: 0;

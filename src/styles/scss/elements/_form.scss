@@ -1,3 +1,4 @@
+@use "../global/variables" as *;
 /*---------------------
     ## Form Area
 ----------------------*/
@@ -193,7 +194,9 @@
                 i {
                     position: absolute;
                     left: 48px;
-                    top: 29px;
+                    top: 50%;
+                    transform: translateY(-50%);
+
                     color: #CDCDCD;
                     z-index: 5;
                 }

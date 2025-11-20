@@ -1,6 +1,8 @@
 /*-------------------------
     Contact Info Item
 -------------------------*/
+@use "../global/variables" as *;
+
 .contact-inner {
     .title {
         font-size: 20px;
@@ -90,7 +92,8 @@
                         i {
                             position: absolute;
                             left: 48px;
-                            top: 29px;
+                            top: 50%;
+                            transform: translateY(-50%);
                             color: #CDCDCD;
                         }
                     }

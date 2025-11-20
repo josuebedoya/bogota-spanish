@@ -1,0 +1,34 @@
+---
+import { staticData } from "@/server/static-data";
+
+interface Props {
+  title: string;
+  subTitle?: string;
+  description?: string;
+  icon: string;
+}
+const { title, subTitle, description, icon }: Props = Astro.props;
+---
+
+<div class="single-team-item style-03 card-plan">
+  <div class="thumbnail">
+    <i class={icon}></i>
+  </div>
+
+  <div class="content">
+    <h4 class="title">
+      <a href="#" tabindex="-1">{title}</a>
+    </h4>
+    <p class="designation">{subTitle}</p>
+
+    <div class="paragraph" set:html={description} />
+  </div>
+
+  <div class="hover-content">
+    <div class="btn-wrap">
+      <div class="btn-common btn-active">
+        {staticData.plans_and_pricing.btn_plan}
+      </div>
+    </div>
+  </div>
+</div>

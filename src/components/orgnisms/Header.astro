@@ -1,13 +1,13 @@
 ---
-import directus from "@/server/directus";
-import { readItems } from "@directus/sdk";
+import directus, { directusMedia } from "@/server/directus";
+import { readItems, readSettings } from "@directus/sdk";
 import Menu from "@/components/species/Menu.astro";
 import BtnsHeader from "../species/BtnsHeader.astro";
 
 const data = await directus?.request(
   readItems("Menu", {
     status: { _eq: "published" },
-  })
+  }),
 );
 
 const menuItems = data
@@ -17,6 +17,10 @@ const menuItems = data
     label: item["Title_Item"],
     slug: item["Link_Item"] || "",
   }));
+
+const siteSettings = await directus.request(readSettings());
+const logo = await directusMedia(siteSettings?.project_logo);
+const favicon = await directusMedia(siteSettings?.public_favicon);
 ---
 
 <header>
@@ -33,12 +37,12 @@ const menuItems = data
               class="logo"
             >
               <img
-                src="assets/img/logos/logo.png"
+                src={logo?.src_path || "assets/img/logos/logo.png"}
                 alt="The Bogotá Spanish School"
                 class="logo-desktop"
               />
               <img
-                src="assets/img/logos/logo-mobile.png"
+                src={favicon?.src_path || "assets/img/logos/logo-mobile.png"}
                 alt="The Bogotá Spanish School"
                 class="logo-mobile"
               />

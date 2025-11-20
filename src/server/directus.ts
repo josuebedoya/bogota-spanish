@@ -1,7 +1,11 @@
 import { createDirectus, rest, readFile } from '@directus/sdk';
 import getEnv from '@/utils/getEnv';
 
-const URL = await getEnv('DIRECTUS_URL', 'http://localhost:8055');
+const URL = await getEnv('DIRECTUS_URL');
+
+if (!URL) {
+  throw new Error('DIRECTUS_URL is not defined in environment variables');
+}
 
 const directus = createDirectus(URL).with(rest());
 

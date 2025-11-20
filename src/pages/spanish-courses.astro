@@ -24,7 +24,6 @@ const mainBanner = {
 const dataCourses = await directus.request(
   readItems("Courses", { filter: { status: { _eq: 1 } } }),
 );
-console.log(dataCourses);
 ---
 
 <LayoutPage

@@ -1,10 +1,18 @@
 ---
+import { directusMedia, directus } from "@/server/directus";
+import { readSettings } from "@directus/sdk";
 const { title, description } = Astro.props;
+const siteSettings = await directus.request(readSettings());
+const favicon = await directusMedia(siteSettings?.public_favicon);
 ---
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="assets/img/logos/logo-mobile.png" />
+  <meta charset="UTF-8" />
+  <link
+    rel="icon"
+    type="image/png"
+    href={favicon?.src_path || "assets/img/logos/logo-mobile.png"}
+  />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
   <meta name="description" content={description} />

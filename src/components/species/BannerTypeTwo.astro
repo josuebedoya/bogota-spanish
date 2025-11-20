@@ -10,9 +10,17 @@ interface Props {
   };
   image: string;
   withGradient?: boolean;
+  mainTitle?: boolean;
 }
 
-const { title, summary, button, image, withGradient = true } = Astro.props;
+const {
+  title,
+  summary,
+  button,
+  image,
+  withGradient = true,
+  mainTitle = false,
+} = Astro.props;
 ---
 
 <section
@@ -22,7 +30,13 @@ const { title, summary, button, image, withGradient = true } = Astro.props;
     <div class="row align-items-center justify-content-between">
       <div class="col-lg-6 col-md-12">
         <div class="about-content">
-          <h3 class="content-title">{title}</h3>
+          {
+            mainTitle ? (
+              <h1 class="content-title">{title}</h1>
+            ) : (
+              <h3 class="content-title">{title}</h3>
+            )
+          }
           <div set:html={summary} />
           {
             button?.label && (

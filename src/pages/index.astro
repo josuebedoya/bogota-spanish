@@ -13,6 +13,10 @@ const data = await directus?.request(readItems("Home"));
 const fileBanner = await directusMedia(data?.Image_Main_Banner || "");
 const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "");
 
+if (!data || !fileBanner || !fileBanner2) {
+  return Astro.redirect("/500");
+}
+
 const dataMainBanner = {
   phrase: data?.Phrase_Main_Banner,
   title: data?.Title_Main_Banner,

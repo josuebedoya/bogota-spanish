@@ -14,8 +14,9 @@ interface Props {
     };
     image: string;
     imageLeft?: boolean;
+    mainTitle?: boolean;
 }
-const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= false }: Props = Astro.props;
+const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= false, mainTitle = false }: Props = Astro.props;
 ---
 
 <section class="about-section-area section-bottom-space">
@@ -24,7 +25,10 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                 <div class="col-lg-6 col-md-12 order-lg-1 order-2">
                     <div class="about-content">
                         {phrase && <p class="subtitle">{phrase}</p>}
-                        <h3 class="content-title">{title}</h3>
+                        {mainTitle
+                        ?<h1 class="content-title">{title}</h1>
+                        :<h3 class="content-title">{title}</h3>
+                        }
 
                         <p class="paragraph" set:html={summary}></p>
 

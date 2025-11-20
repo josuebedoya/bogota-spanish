@@ -11,7 +11,7 @@ const data = await directus.request(
 
 const fileMainBanner = await directusMedia(data?.image_main_banner);
 
-const dataBookingTasterSession = {
+const mainBanner = {
   title: data?.title_main_banner,
   summary: data?.sumamry_main_banner,
   button: {
@@ -32,7 +32,7 @@ console.log(dataCourses);
   description={data?.summary_main_banner?.slice(0, 150) + "..."}
 >
   <div class="about-page-area-wrapper single-page-section-top-space">
-    <BannerTypeTwo {...dataBookingTasterSession} />
+    <BannerTypeTwo {...mainBanner} mainTitle={true} />
     <div class="list-courses">
       {
         dataCourses?.map(async (course: any, i: number) => {

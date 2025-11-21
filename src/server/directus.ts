@@ -1,7 +1,7 @@
 import { createDirectus, rest, readFile } from '@directus/sdk';
-import getEnv from '@/utils/getEnv';
+import { DIRECTUS_URL } from 'astro:env/server';
 
-const URL = await getEnv('DIRECTUS_URL');
+const URL = DIRECTUS_URL;
 
 if (!URL) {
   throw new Error('DIRECTUS_URL is not defined in environment variables');

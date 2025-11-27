@@ -17,7 +17,7 @@ export const routes = {
   },
   "plans-and-pricing": {
     "en-US": 'plans-and-pricing',
-    "es-ES": 'planes-y-precios'
+    "es-ES": 'precios-y-planes'
   },
   "spanish-courses": {
     "en-US": 'spanish-courses',

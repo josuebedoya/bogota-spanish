@@ -2,7 +2,9 @@
 import { staticData } from "@/server/static-data";
 import Home from "@/templates/home.astro";
 import { getHomeData } from "@/server/services/getHomeData";
-import { defaultLang } from "@/i18n/ui";
+import { getLang } from "@/i18n/utils";
+
+const lang = getLang(Astro.url);
 
 const {
   dataMainBanner,
@@ -12,7 +14,7 @@ const {
   dataBookingTasterSession,
   dataFaq,
   error,
-} = await getHomeData(defaultLang);
+} = await getHomeData(lang);
 
 if (error) {
   return Astro.redirect("/500");

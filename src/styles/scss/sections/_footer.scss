@@ -120,11 +120,11 @@
             max-width: 310px;
             border-radius: 20px;
             box-shadow: 2px 3px 8px #fff9;
-            position: absolute;
+            position: fixed;
             z-index: 9999999999999;
             left: 50%;
             transform: translateX(-50%) translateY(200px);
-            bottom: -20px;
+            top: 40%;
             opacity: 0;
             transition: none;
 
@@ -136,6 +136,7 @@
                 padding: 20px;
                 border-radius: 9999px;
                 background-color: #02ce3586;
+                margin-bottom: 30px;
 
                 i {
                     color: #fff;

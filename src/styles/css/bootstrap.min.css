@@ -20,8 +20,8 @@
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
-    --bs-primary: #0d6efd;
-    --bs-secondary: #6c757d;
+    --bs-primary: #E67478;
+    --bs-secondary: #22524E;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
     --bs-warning: #ffc107;
@@ -8214,11 +8214,11 @@ fieldset:disabled .btn {
 }
 
 .text-primary {
-    color: #0d6efd !important
+    color: #E67478 !important
 }
 
 .text-secondary {
-    color: #6c757d !important
+    color: #22524E !important
 }
 
 .text-success {
@@ -8249,6 +8249,10 @@ fieldset:disabled .btn {
     color: #fff !important
 }
 
+.text-white-hover:hover {
+    color: #fff !important
+}
+
 .text-body {
     color: #212529 !important
 }
@@ -8270,11 +8274,11 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-    background-color: #0d6efd !important
+    background-color: #E67478 !important
 }
 
 .bg-secondary {
-    background-color: #6c757d !important
+    background-color: #22524E !important
 }
 
 .bg-success {

@@ -3,8 +3,19 @@
 .bg-colors-gradient {
     position: relative;
     z-index: 0;
-    background-image: url(/assets/img/bg-main.jpg);
-    background-position: top center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: var(--main-color-one);
+
+    & *:not(.btn-common) {
+        color: #fff !important;
+    }
+
+    & .btn-common:hover {
+        box-shadow: 2px 2px 8px #fff8;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bg-colors-gradient.py-15 {
+        padding-block: 100px !important;
+    }
 }

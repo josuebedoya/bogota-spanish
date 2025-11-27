@@ -1,22 +1,13 @@
 ---
 import directus, { directusMedia } from "@/server/directus";
-import { readItems, readSettings } from "@directus/sdk";
+import { readSettings } from "@directus/sdk";
 import Menu from "@/components/species/Menu.astro";
 import BtnsHeader from "../species/BtnsHeader.astro";
+import { getMenuData } from "@/server/services/getMenuData";
+import { getLang } from "@/i18n/utils";
 
-const data = await directus?.request(
-  readItems("Menu", {
-    status: { _eq: "published" },
-  }),
-);
-
-const menuItems = data
-  ?.filter((item: any) => item?.Position?.[0] === "0")
-  .map((item: any, i: number) => ({
-    id: item.id || i + 1,
-    label: item["Title_Item"],
-    slug: item["Link_Item"] || "",
-  }));
+const lang = getLang(Astro.url);
+const dataMenuHeader = await getMenuData("0", lang);
 
 const siteSettings = await directus.request(readSettings());
 const logo = await directusMedia(siteSettings?.project_logo);
@@ -32,8 +23,9 @@ const favicon = await directusMedia(siteSettings?.public_favicon);
         <div class="responsive-menu">
           <div class="logo-wrapper">
             <a
-              href={menuItems?.find((e) => e.slug === "/" || e.slug === "/home")
-                ?.slug || "/"}
+              href={dataMenuHeader?.find(
+                (e: any) => e.slug === "/" || e.slug === "/home",
+              )?.slug || "/"}
               class="logo"
             >
               <img
@@ -61,7 +53,11 @@ const favicon = await directusMedia(siteSettings?.public_favicon);
           </button>
         </div>
         <div class="collapse navbar-collapse" id="themeim_main_menu">
-          <Menu menuItems={menuItems} withSubItems className="navbar-nav" />
+          <Menu
+            menuItems={dataMenuHeader}
+            withSubItems
+            className="navbar-nav"
+          />
         </div>
         <BtnsHeader class="btns-desktop" />
       </div>

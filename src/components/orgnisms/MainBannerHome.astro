@@ -19,13 +19,13 @@ const firstPart = title.split(" ").slice(0, 3).join(" ");
 const restOfTitle = title.split(" ").slice(4).join(" ");
 ---
 
-<section class="banner-area home-01">
+<section class="banner-area home-01 b-home-main">
     <div class="container custom-container-01">
-        <div class="banner-wrapper">
+        <div class="banner-wrapper overflow-visible max-w-100">
             <div class="row">
                 <div class="col-xl-7 col-lg-10 content-section">
                     <div class="banner-inner">
-                        <p class="subtitle">{phrase}</p>
+                        <p class="subtitle text-uppercase">{phrase}</p>
                         <h1 class="title">
                             {firstPart}
                             <span>{wordResalted}</span>
@@ -45,7 +45,7 @@ const restOfTitle = title.split(" ").slice(4).join(" ");
                             <div class="btn-wrap margin-left-20">
                                 <a
                                     href={button2.link}
-                                    class="btn-common fill-btn"
+                                    class="btn-common fill-btn text-secondary text-white-hover"
                                     >{button2.text}</a
                                 >
                             </div>

@@ -6,35 +6,14 @@ import directus from "@/server/directus";
 import { readItems } from "@directus/sdk";
 import { staticData } from "@/server/static-data";
 import ContactList from "../species/ContactList.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+import { getMenuData } from "@/server/services/getMenuData";
 
-const dataMenu = await directus?.request(
-  readItems("Menu", {
-    status: { _eq: "published" },
-  }),
-);
+const lang = getLang(Astro.url);
+const dataMenu2 = await getMenuData("0", lang);
+const dataMenu1 = await getMenuData("1", lang);
 
-// Data formatting function
-const formattedData = (data: any[]) => {
-  return data?.map((item, i) => ({
-    id: item.id || i + 1,
-    label: item.Title_Item,
-    slug: item.Link_Item,
-    subItems: [],
-  }));
-};
-
-// Formatted menus data
-const menuImportantLinks = formattedData(
-  dataMenu?.filter((item) => item?.Position?.[0] === "1"),
-);
-
-const menuHelpCenter = formattedData(
-  dataMenu?.filter((item) => item?.Position?.[0] === "2"),
-);
-
-const menuHeader = formattedData(
-  dataMenu?.filter((item) => item?.Position?.[0] === "0"),
-);
+const t = useTranslations(lang);
 
 const socialData = await directus?.request(readItems("info_contact"));
 ---
@@ -47,24 +26,24 @@ const socialData = await directus?.request(readItems("info_contact"));
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline">
-                {staticData.footer.titles.menu1}
+              <h4 class="widget-headline text-white">
+                {t("footer.titles.menu1")}
               </h4>
-              <Menu menuItems={menuImportantLinks} />
+              <Menu menuItems={dataMenu1} />
             </div>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline">
-                {staticData.footer.titles.menu3}
+              <h4 class="widget-headline text-white">
+                {t("footer.titles.menu3")}
               </h4>
-              <Menu menuItems={menuHeader} />
+              <Menu menuItems={dataMenu2} />
             </div>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline">
-                {staticData.footer.titles.contact}
+              <h4 class="widget-headline text-white">
+                {t("footer.titles.contact")}
               </h4>
               <ContactList data={socialData} />
             </div>

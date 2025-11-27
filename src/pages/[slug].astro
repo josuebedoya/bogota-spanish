@@ -1,0 +1,22 @@
+---
+import { getLang, validateRoute } from "@/i18n/utils";
+const { lang, slug } = Astro.params;
+
+const { route } = await validateRoute(lang, slug);
+
+let Page;
+
+console.log("LANGGGGGGG", getLang(Astro.url));
+
+if (route === "home") {
+  Page = await import(`../pages/index.astro`);
+} else {
+  Page = await import(`../templates/${route}.astro`);
+}
+
+if (!Page) {
+  return Astro.redirect("/404");
+}
+---
+
+<Page.default />

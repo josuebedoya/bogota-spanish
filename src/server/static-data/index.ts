@@ -56,5 +56,6 @@ export const staticData = {
 		500: {
 			title: '500 - Internal Server Error',
 		}
-	}
+	},
+	langs: [ 'en-US', 'es-ES' ]
 };

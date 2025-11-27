@@ -3,9 +3,12 @@ const { title, description } = Astro.props;
 import Header from "@/components/orgnisms/Header.astro";
 import Head from "@/layouts/Head.astro";
 import Footer from "@/components/orgnisms/Footer.astro";
+
+// Lang site
+const lang = Astro.params.lang || "en-US";
 ---
 
-<html lang="en">
+<html lang={lang}>
 	<Head title={title} description={description} />
 	<body>
 		<div id="imGrapper">

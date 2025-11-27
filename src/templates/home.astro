@@ -1,0 +1,40 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import MainBannerHome from "@/components/orgnisms/MainBannerHome.astro";
+import BannerHome2 from "@/components/orgnisms/BannerHome2.astro";
+import SpanishCoursesHome from "@/components/orgnisms/SpanishCoursesHome.astro";
+import Faq from "@/components/orgnisms/Faq.astro";
+import WhatSayOurStudents from "@/components/orgnisms/WhatSayOurStudents.astro";
+import BannerTypeTwo from "@/components/species/BannerTypeTwo.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  dataMainBanner: any;
+  dataBanner2: any;
+  dataSpanishCourses: any;
+  dataSayOurStudents: any;
+  dataBookingTasterSession: any;
+  dataFaq: any;
+}
+
+const {
+  title,
+  description,
+  dataMainBanner,
+  dataBanner2,
+  dataSpanishCourses,
+  dataSayOurStudents,
+  dataBookingTasterSession,
+  dataFaq,
+} = Astro.props;
+---
+
+<LayoutPage title={title} description={description}>
+  <MainBannerHome {...dataMainBanner} />
+  <BannerHome2 {...dataBanner2} />
+  <SpanishCoursesHome {...dataSpanishCourses} />
+  <WhatSayOurStudents {...dataSayOurStudents} />
+  <BannerTypeTwo {...dataBookingTasterSession} />
+  <Faq {...dataFaq} />
+</LayoutPage>

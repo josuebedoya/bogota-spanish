@@ -13,7 +13,7 @@ const {
   dataFaq,
   error,
 } = await getHomeData(defaultLang);
-
+console.log(error, 'errorrrr-home');
 if (error) {
   return Astro.redirect("/500");
 }

@@ -1,9 +1,14 @@
 ---
 import BtnWrap from "@/components/atoms/BtnWrap.astro";
 import { staticData } from "@/server/static-data";
+import Lang from "../atoms/Lang.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
 interface Props {
   class?: string;
 }
+
+const lang = getLang(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div id="btnsHeader" class=`nav-right-content ${Astro.props.class || ''}`>
@@ -16,10 +21,12 @@ interface Props {
       </li>
     </ul>
   </div>
+
   <BtnWrap
-    label={staticData.header.btn}
-    class="btn-common nav-btn"
+    label={t("spanish-courses.btnlabel")}
+    class="btn-common nav-btn text-secondary text-white-hover"
     type="link"
-    link="/book-a-free-class"
+    link={t("spanish-courses.btnlink")}
   />
+    <Lang langs={staticData.langs} />
 </div>

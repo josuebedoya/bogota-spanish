@@ -11,7 +11,7 @@ const { title, body, index, parent } = Astro.props;
 
 <div class="card">
   <div class="card-header" id={`heading${index}`}>
-    <h5 class="mb-0">
+    <p class="mb-0 ">
       <a
         class="collapsed"
         role="button"
@@ -22,7 +22,7 @@ const { title, body, index, parent } = Astro.props;
       >
         {title}
       </a>
-    </h5>
+    </p>
   </div>
   <div id={`collapse${index}`} class="collapse" data-bs-parent={`#${parent}`}>
     <div class="card-body" set:html={body}>

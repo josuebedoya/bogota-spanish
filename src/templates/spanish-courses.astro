@@ -22,8 +22,12 @@ const mainBanner = {
 };
 
 const dataCourses = await directus.request(
-  readItems("Courses", { filter: { status: { _eq: 1 } } }),
+  readItems("Courses", { filter: { status: { _eq: 1 } }, fields: ["*","lang.*"] }),
 );
+
+/* const lang = "en-US";
+
+ console.log( dataCourses[0].lang?.find((l: any) => l.languages_code === lang) ); */
 ---
 
 <LayoutPage
@@ -31,10 +35,10 @@ const dataCourses = await directus.request(
   description={data?.summary_main_banner?.slice(0, 150) + "..."}
 >
   <div class="about-page-area-wrapper single-page-section-top-space">
-    <BannerTypeTwo {...mainBanner} mainTitle={true} />
+    <BannerTypeTwo {...mainBanner} mainTitle={true} withGradient={false} />
     <div class="list-courses">
       {
-        dataCourses?.map(async (course: any, i: number) => {
+        dataCourses?.reverse()?.map(async (course: any, i: number) => {
           const fileItem = await directusMedia(course?.image);
           const item = {
             image: fileItem?.src_path || "",

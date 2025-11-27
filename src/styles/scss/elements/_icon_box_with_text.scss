@@ -85,24 +85,6 @@
     }
   }
 
-  &.item-1 {
-    .icon i {
-      color: rgb(255, 213, 0) !important;
-    }
-  }
-
-  &.item-2 {
-    .icon i {
-      color: blue !important;
-    }
-  }
-
-  &.item-3 {
-    .icon i {
-      color: red !important;
-    }
-  }
-
   .more-btn {
     font-size: 16px;
     font-weight: 500;
@@ -114,7 +96,7 @@
     }
   }
 
-  &:hover{
+  &:hover {
     transform: scale(1.03);
   }
 }

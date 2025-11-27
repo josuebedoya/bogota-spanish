@@ -7,7 +7,7 @@ interface Props {
     title: string;
     summary: string;
     titleList?: string;
-    listLevels?: { Icon: string; Summary_Text: string }[];
+    listLevels?: { icon: string; summary: string }[];
     button?: {
         label: string;
         link: string;
@@ -27,10 +27,10 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                         {phrase && <p class="subtitle">{phrase}</p>}
                         {mainTitle
                         ?<h1 class="content-title">{title}</h1>
-                        :<h3 class="content-title">{title}</h3>
+                        :<h3 class="content-title text-left">{title}</h3>
                         }
 
-                        <p class="paragraph" set:html={summary}></p>
+                        <div class="paragraph" set:html={summary}></div>
 
                         {titleList && <p class="paragraph"><strong>{titleList}</strong></p>}
 
@@ -43,11 +43,11 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                                             <div
                                                 class={`icon-wrap color-0${(i % 5) + 1}`}
                                             >
-                                                <i class={item.Icon} />
+                                                <i class={item.icon} />
                                             </div>
                                             <div class="content">
                                                 <p class="text">
-                                                    {item.Summary_Text}
+                                                    {item.summary}
                                                 </p>
                                             </div>
                                         </li>

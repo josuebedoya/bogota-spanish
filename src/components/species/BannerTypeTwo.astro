@@ -34,10 +34,10 @@ const {
             mainTitle ? (
               <h1 class="content-title">{title}</h1>
             ) : (
-              <h3 class="content-title">{title}</h3>
+              <h3 class="content-title text-left">{title}</h3>
             )
           }
-          <div set:html={summary} />
+          <div class="paragraph" set:html={summary} />
           {
             button?.label && (
               <BtnWrap

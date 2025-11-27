@@ -1,5 +1,9 @@
 ---
 import NewsLetter from "@/components/species/NewsLetter.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="row">
@@ -8,13 +12,15 @@ import NewsLetter from "@/components/species/NewsLetter.astro";
       <div class="subscibe-wrapper">
         <div class="content-wrap">
           <div class="icon">
-            <img src="assets/img/messaje-icon.png" alt="" />
+            <img
+              src="assets/img/messaje-icon.png"
+              alt={t("footer.newsletter.title")}
+            />
           </div>
           <div class="content">
-            <h4 class="title">Subscribe our newsletter</h4>
-            <p>
-              Enter your mail address to get our updates, offer and study abroad
-              related all updates
+            <h4 class="title text-white">{t("footer.newsletter.title")}</h4>
+            <p class="text-white">
+              {t("footer.newsletter.subtitle")}
             </p>
           </div>
         </div>

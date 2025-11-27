@@ -13,12 +13,11 @@ interface Props {
 }
 
 const { icon, title, summary, button, classes } = Astro.props;
-console.log(title);
 ---
 
 <div class={`icon-box-item ${classes ?? ""}`}>
   <div class="icon">
-    <i class={`fa-solid fa-${icon}`}></i>
+    <i class={`fa-solid fa-${icon} text-primary icon-primary`}></i>
   </div>
   <div class="content">
     <h4 class="title">{title}</h4>

@@ -13,5 +13,27 @@ export default defineConfig({
         schema: {
             DIRECTUS_URL: envField.string({ context: "server", access: "secret" })
         }
+    },
+    i18n: {
+        defaultLocale: 'en-US',
+        locales: [ 'en-US', 'es-ES' ],
+        routing: {
+            prefixDefaultLocale: false,
+            fallbackType: "rewrite",
+            redirectToDefaultLocale: true
+        },
+        fallback: {
+            'es-ES': "en-US"
+        },
+        routes: {
+            "about-us": {
+                "en-US": '/about-us',
+                "es-ES": '/sobre-nosotros'
+            },
+            "spanish-courses": {
+                "en-US": '/spanish-courses',
+                "es-ES": '/cursos-de-espanol'
+            },
+        }
     }
 });

@@ -45,7 +45,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(118, 74, 241, 0.8) 83.41%, #764AF1 100%);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--main-color-one) 83.41%, var(--main-color-one) 100%);
       border-radius: 20px;
       transition: .3s all ease;
       opacity: 0;

@@ -70,13 +70,19 @@ h4 {
 }
 
 h1,
+h1 *,
 h2,
+h2 *,
 h3,
+h3 *,
 h4,
+h4 *,
 h5,
-h6 {
-    color: var(--heading-color);
-    font-family: var(--heading-font);
+h5 *,
+h6,
+h6 * {
+    color: var(--main-color-two) !important;
+    font-family: var(--heading-font) !important;
 }
 
 p {
@@ -86,6 +92,10 @@ p {
     -ms-hyphens: auto;
     hyphens: auto;
     margin-bottom: 10px;
+}
+
+.max-w-100 {
+    max-width: 100% !important;
 }
 
 a {
@@ -1463,4 +1473,13 @@ ul {
         max-width: 100%;
         height: auto;
     }
+}
+
+i.icon-primary,
+i.icon-primary:hover {
+    color: var(--main-color-one) !important;
+}
+
+.b-home-main.banner-area.home-01 {
+    padding-bottom: 120px;
 }

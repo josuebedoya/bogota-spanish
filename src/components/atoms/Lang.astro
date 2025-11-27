@@ -1,0 +1,18 @@
+---
+import {} from "astro:i18n";
+
+interface Props {
+  langs: string[];
+}
+const { langs } = Astro.props;
+---
+
+<div class="lang">
+  {
+    langs?.map((lang: string) => (
+      <a href={`/${lang}`} class="lang-item px-2">
+        {lang.toUpperCase()}
+      </a>
+    ))
+  }
+</div>

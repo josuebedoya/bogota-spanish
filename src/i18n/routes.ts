@@ -9,7 +9,7 @@ export const routes = {
   },
   "book-a-free-class": {
     "en-US": 'book-a-free-class',
-    "es-ES": 'reservarclase-gratis'
+    "es-ES": 'reservar-clase-gratis'
   },
   "contact-us": {
     "en-US": 'contact-us',
@@ -29,6 +29,6 @@ export const routes = {
   },
   "privacy-policy": {
     "en-US": 'privacy-policy',
-    "es-ES": 'politica-de-privacidad'
+    "es-ES": 'politicas-de-privacidad'
   }
 }

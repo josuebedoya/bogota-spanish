@@ -3,66 +3,28 @@ import MeetExpertTutors from "@/components/orgnisms/MeetExpertTutors.astro";
 import MainBannerAbout from "@/components/orgnisms/MainBannerAbout.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
 import OurPhilosophy from "@/components/orgnisms/OurPhilosophy.astro";
-import directus, { directusMedia } from "@/server/directus";
-import { readItems } from "@directus/sdk";
 import { staticData } from "@/server/static-data";
-const data = await directus.request(readItems("About_us"));
-const fileMainBanner = await directusMedia(data?.image_main_banner || "");
-const filePhilosophy = await directusMedia(data?.image_philosophy || "");
+import { getAboutUsData } from "@/server/services/getAboutUsData";
+import { getLang } from "@/i18n/utils";
+
+const lang = getLang(Astro.url);
+const { dataMainBanner, dataMeetTutors, dataOurPhilosophy } =
+  (await getAboutUsData(lang)) as any;
 
 interface Props {
   lang?: string;
 }
 
-const dataMainBanner = {
-  title: data?.title_main_banner,
-  summary: data?.summary_main_banner,
-  image: fileMainBanner?.src_path,
-};
-const dataTutors = await directus.request(
-  readItems("About_us", {
-    filter: { id: { _eq: 1 } },
-    fields: ["id", "tutors.Tutors_id.*"],
-  }),
-);
-
-const itemsTutors = await Promise.all(
-  dataTutors?.tutors?.map(async (t: any) => {
-    const file = await directusMedia(t?.Tutors_id?.photo_tutor || "");
-    return {
-      id: t?.Tutors_id?.id || "",
-      image: file?.src_path || "",
-      name: t?.Tutors_id?.name_tutor || "",
-      chargue: t?.Tutors_id?.position_tutor || "",
-    };
-  }) || [],
-);
-
-const dataMeetTutors = {
-  phrase: data?.phrase_meet_experts,
-  title: data?.title_meet_experts,
-  summary: data?.subtitle_meet_experts,
-  items: itemsTutors,
-};
-
-const dataOurPhilosophy = {
-  title: data?.title_philosophy,
-  summary: data?.summary_philososphy,
-  description: data?.description_philosophy,
-  image: filePhilosophy?.src_path || "",
-};
-
-const description =
-  data?.summary_main_banner || staticData.about_us.description;
+const description = dataMainBanner?.summary || staticData.about_us.description;
 const descriptionPage = description.slice(0, 150) + "...";
-
-const props = Astro.props as Props;
 ---
 
-<LayoutPage title="About us" description={descriptionPage}>
+<LayoutPage
+  title={dataMainBanner?.title || "About us"}
+  description={descriptionPage}
+>
   <div class="about-page-area-wrapper single-page-section-top-space">
     <MainBannerAbout {...dataMainBanner} />
-    <p>lang {props.lang}</p>
     <MeetExpertTutors {...dataMeetTutors} />
     <OurPhilosophy {...dataOurPhilosophy} />
   </div>

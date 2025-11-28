@@ -312,6 +312,14 @@
             }
         }
     }
+
+    &.item-tutor {
+
+        .title:hover,
+        a:hover {
+            color: var(--main-color-one) !important;
+        }
+    }
 }
 
 .single-instructor-details-wrap {

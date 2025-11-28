@@ -1,13 +1,18 @@
 ---
 import { staticData } from "@/server/static-data";
+import { useTranslations } from "@/i18n/utils";
+import type { languages } from "@/i18n/ui";
 
 interface Props {
   title: string;
   subTitle?: string;
   description?: string;
   icon: string;
+  lang: keyof typeof languages;
 }
-const { title, subTitle, description, icon }: Props = Astro.props;
+const { title, subTitle, description, icon, lang }: Props = Astro.props;
+
+const t = useTranslations(lang);
 ---
 
 <div class="single-team-item style-03 card-plan">
@@ -27,8 +32,11 @@ const { title, subTitle, description, icon }: Props = Astro.props;
   <div class="hover-content">
     <div class="btn-wrap">
       <div class="btn-common btn-active">
-        <a href="/contact-us" target="_self">
-           {staticData.plans_and_pricing.btn_plan}
+        <a
+          href={t("plans-and-pricing.item.btn.link", [{key: "LANG", value: lang}])}
+          target="_self"
+        >
+          {t("plans-and-pricing.item.btn")}
         </a>
       </div>
     </div>

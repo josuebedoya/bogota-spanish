@@ -16,6 +16,10 @@ const dataMenu1 = await getMenuData("1", lang);
 const t = useTranslations(lang);
 
 const socialData = await directus?.request(readItems("info_contact"));
+
+if (dataMenu1?.error || dataMenu2?.error) {
+  return Astro.redirect("/500");
+}
 ---
 
 <footer class="footer-area style-01">

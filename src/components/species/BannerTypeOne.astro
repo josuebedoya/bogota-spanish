@@ -1,5 +1,6 @@
 ---
-import { toCodes } from "astro:i18n";
+import { to } from "@/i18n/utils";
+import { getLang } from "@/i18n/utils";
 import BtnWrap from "../atoms/BtnWrap.astro";
 
 interface Props {
@@ -57,7 +58,7 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                         </div>}
                          {button && <BtnWrap
                             label={button?.label}
-                            link={button?.link}
+                            link={to(button?.link, getLang(Astro.url) || defaultLang)}
                             type="link"
                             class="btn-common btn-new"
                         /> }

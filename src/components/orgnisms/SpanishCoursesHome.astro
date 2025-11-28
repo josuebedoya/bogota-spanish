@@ -1,5 +1,9 @@
 ---
 import ItemCourse from "@/components/atoms/ItemCourse.astro";
+import { routes } from "@/i18n/routes";
+import type { languages } from "@/i18n/ui";
+type L = keyof typeof languages;
+import { to } from "@/i18n/utils";
 
 type item = {
   icon: string;
@@ -15,9 +19,10 @@ interface Props {
   phrase?: string;
   title?: string;
   items: item[];
+  lang: L;
 }
 
-const { items, phrase, title } = Astro.props;
+const { items, phrase, title, lang } = Astro.props;
 ---
 
 <section class="features-section margin-top-100 courses-spanish">
@@ -37,7 +42,7 @@ const { items, phrase, title } = Astro.props;
             <ItemCourse
               {...item}
               classes={`item-${(i % 3) + 1}`}
-              button={{ link: "/spanish-courses" }}
+              button={{ link: to(routes["spanish-courses"][lang as L], lang) }}
             />
           </div>
         ))

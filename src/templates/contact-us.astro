@@ -5,43 +5,56 @@ import { readItems } from "@directus/sdk";
 import Social from "@/components/species/Social.astro";
 import ContactList2 from "@/components/species/ContactList2.astro";
 import Form from "@/components/species/Form.astro";
+import { getPageData } from "@/server/services/getPageData";
+import { getLang, useTranslations } from "@/i18n/utils";
 
-const dataPage = await directus.request(readItems("Contact_us"));
+const lang = getLang(Astro.url);
+const { dataLang: data, error } = (await getPageData(
+  "Contact_us",
+  lang,
+)) as any;
+
+const t = useTranslations(lang);
+
+if (error) {
+  return Astro.redirect("/500");
+}
+
 const dataSocial = await directus?.request(readItems("info_contact"));
 
 const dataForm = [
   {
     type: "text",
     name: "FullName",
-    placeholder: "Full Name",
+    placeholder: t("form.fields.fullname"),
     required: true,
     icon: "fa-solid fa-user",
   },
   {
     type: "email",
     name: "email",
-    placeholder: "Email Address",
+    placeholder: t("form.fields.email"),
     required: true,
     icon: "fa-solid fa-envelope-open",
   },
   {
     type: "tel",
     name: "phone",
-    placeholder: "Phone Number",
+    placeholder: t("form.fields.phone"),
     required: true,
     icon: "fa-solid fa-phone",
   },
   {
     type: "text",
     name: "city",
-    placeholder: "City",
+    placeholder: t("contact.form.fields.city"),
     required: true,
     icon: "fa-solid fa-location-dot",
   },
   {
     type: "textarea",
     name: "city",
-    placeholder: "Write description...",
+    placeholder: t("contact.form.fields.description"),
     required: false,
     widthFull: true,
   },
@@ -49,8 +62,8 @@ const dataForm = [
 ---
 
 <LayoutPage
-  title={dataPage?.title_page || "Contact us"}
-  description={dataPage?.summary_page || ""}
+  title={data?.title || "Contact us"}
+  description={data?.description || ""}
 >
   <div
     class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
@@ -60,8 +73,8 @@ const dataForm = [
         <div class="row">
           <div class="col-lg-12">
             <div class="breadcrumb-content">
-              <h1 class="title">{dataPage?.title_page}</h1>
-              <div class="details" set:html={dataPage?.summary_page} />
+              <h1 class="title">{data?.title}</h1>
+              <div class="details" set:html={data?.description} />
             </div>
           </div>
         </div>
@@ -75,7 +88,7 @@ const dataForm = [
               <div class="row justify-content-between">
                 <div class="col-lg-5">
                   <div class="contact-address">
-                    <h3 class="title">Get in touch</h3>
+                    <h3 class="title">{t("plans-and-pricing.item.btn")}</h3>
                     <ContactList2 data={dataSocial} />
                     <Social
                       data={dataSocial?.social || []}
@@ -87,10 +100,10 @@ const dataForm = [
                 <div class="col-lg-7">
                   <div class="contact-form">
                     <Form
-                      title="Personal Information"
+                      title={t("form.title")}
                       fields={dataForm}
                       classesCols="col-md-6 py-3"
-                      submitLabel="Submit Message"
+                      submitLabel={t("contact.form.btn.label")}
                     />
                   </div>
                 </div>

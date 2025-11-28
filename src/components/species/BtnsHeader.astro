@@ -26,7 +26,7 @@ const t = useTranslations(lang);
     label={t("spanish-courses.btnlabel")}
     class="btn-common nav-btn text-secondary text-white-hover"
     type="link"
-    link={t("spanish-courses.btnlink")}
+    link={t("spanish-courses.btnlink", [{ key: "LANG", value: lang }])}
   />
-    <Lang langs={staticData.langs} />
+  <Lang langs={staticData.langs} />
 </div>

@@ -1,0 +1,42 @@
+---
+import LayoutPage from "@/layouts/LayoutPage.astro";
+
+interface Props {
+  name: string;
+  photo: string;
+  description: string;
+}
+
+const { name, photo, description } = Astro.props;
+---
+
+<LayoutPage
+  title={name + " - Tutors"}
+  description={description?.slice(0, 150) + "..."}
+>
+  <div
+    class="team-details-wrapper single-page-section-top-space single-page-section-bottom-space"
+  >
+    <!-- about area start here  -->
+    <section
+      class="about-section-area-wrapper section-bottom-space single-page-section-top-space"
+    >
+      <div class="container custom-container-01 single-page-section-top-space">
+        <div class="row align-items-center row-reverse">
+          <div class="col-lg-6 col-md-12 mt-5 mt-lg-0">
+            <div class="about-content">
+              <h1 class="content-title">{name}</h1>
+
+              <div class="paragraph" set:html={description} />
+            </div>
+          </div>
+          <div class="offset-xl-1 col-lg-6 col-md-7 col-xl-4">
+            <div class="thumb">
+              <img src={photo} alt={name} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutPage>

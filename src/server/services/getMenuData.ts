@@ -1,9 +1,12 @@
 import { readItems } from "@directus/sdk";
-import directus, { directusMedia } from "@/server/directus";
+import directus from "@/server/directus";
 import { getLangData } from "@/i18n/getLangData";
 import { defaultLang } from "@/i18n/ui";
 
 export async function getMenuData(position: string | number, lang: string = defaultLang) {
+
+  let error = null;
+
   const data = await directus?.request(
     readItems("Menu", {
       status: { _eq: "published" },
@@ -11,6 +14,10 @@ export async function getMenuData(position: string | number, lang: string = defa
       fields: [ "*", "lang.*" ],
     }),
   );
+
+  if (!data) {
+    return error = "Data not found";
+  }
 
   // Filter items by position
   const itemsPosition = data?.filter((item: any) => item?.Position?.[ 0 ] === String(position)) as any;
@@ -22,7 +29,8 @@ export async function getMenuData(position: string | number, lang: string = defa
     return {
       id: itemLang.id || i + 1,
       label: itemLang.title,
-      slug: itemLang.link || ""
+      slug: lang === defaultLang ? itemLang.link || "" : `/${lang}${itemLang.link}`,
+      error
     }
-  });
+  }) || [];
 }

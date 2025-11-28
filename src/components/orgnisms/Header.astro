@@ -10,8 +10,12 @@ const lang = getLang(Astro.url);
 const dataMenuHeader = await getMenuData("0", lang);
 
 const siteSettings = await directus.request(readSettings());
-const logo = await directusMedia(siteSettings?.project_logo);
-const favicon = await directusMedia(siteSettings?.public_favicon);
+const logo = await directusMedia(siteSettings?.project_logo, 'Logo' );
+const favicon = await directusMedia(siteSettings?.public_favicon, 'Favicon' );
+
+if (dataMenuHeader?.error) {
+  return Astro.redirect("/500");
+}
 ---
 
 <header>

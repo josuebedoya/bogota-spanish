@@ -1,26 +1,21 @@
 ---
 import ItemPlan from "@/components/atoms/ItemPlan.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus from "@/server/directus";
-import { readItems } from "@directus/sdk";
+import { getCoursesData } from "@/server/services/getCoursesData";
+import { getPlansAndPricingData } from "@/server/services/getPlansAndPricingData";
 
-const data = await directus.request(
-  readItems("Courses", {
-    filter: {
-      status: {
-        _eq: 1,
-      },
-    },
-  }),
-);
-const dataPage = await directus.request(
-  readItems("plans_and_pricing", {
-    limit: 1,
-  }),
-);
+const lang = getLang(Astro.url);
+
+const { data: courses, error: errorCourses } = await getCoursesData(lang);
+const { data: dataPage, error: errorPage } = await getPlansAndPricingData(lang);
+
+if (errorCourses || errorPage) {
+  return Astro.redirect("/500");
+}
 ---
 
-<LayoutPage title={dataPage?.title_page} description={dataPage?.summary_page}>
+<LayoutPage title={dataPage?.title} description={dataPage?.description}>
   <div
     class="instructors-wrapper plans-courses single-page-section-top-space single-page-section-bottom-space margin-top-110"
   >
@@ -29,10 +24,8 @@ const dataPage = await directus.request(
         <div class="row">
           <div class="col-lg-12">
             <div class="breadcrumb-content">
-              <h1 class="title">{dataPage?.title_page}</h1>
-              <p class="details">
-                {dataPage?.summary_page}
-              </p>
+              <h1 class="title">{dataPage?.title}</h1>
+              <div class="details" set:html={dataPage?.description} />
             </div>
           </div>
         </div>
@@ -44,13 +37,14 @@ const dataPage = await directus.request(
         <div class="container custom-container-01">
           <div class="row column-gap-50">
             {
-              data?.map((p) => (
+              courses?.map((p) => (
                 <div class="col-md-6 col-lg-6 col-xl-4">
                   <ItemPlan
                     title={p.shurt_title}
                     subTitle={p.subtitle_plan}
                     description={p.features_plan}
                     icon={p.icon}
+                    lang={lang}
                   />
                 </div>
               ))

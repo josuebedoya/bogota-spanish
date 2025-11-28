@@ -3,6 +3,7 @@ import { readItems } from "@directus/sdk";
 import { routes } from "@/i18n/routes";
 import { defaultLang, languages } from "@/i18n/ui";
 import { getLangData } from "@/i18n/getLangData";
+import { getCoursesData } from "./getCoursesData";
 
 const nullDataResponse = {
   data: null,
@@ -18,8 +19,6 @@ const nullDataResponse = {
 const fieldsHome = [
   "*",
   "lang.*",
-  "Courses_List.Courses_id.*",
-  "Courses_List.Courses_id.lang.*",
   "Stories.Stories_id.*",
   "Stories.Stories_id.lang.*",
 ];
@@ -63,7 +62,6 @@ export const getHomeData = async (lang: string = defaultLang) => {
     image: fileBanner?.src_path || "",
   };
 
-
   // Banner 2 Section
   const dataBanner2 = {
     phrase: dataLang?.phrase_levels_starting,
@@ -78,27 +76,23 @@ export const getHomeData = async (lang: string = defaultLang) => {
     image: fileBanner2?.src_path || "",
   };
 
-
-  // Spanish Courses Section
-  const itemsCourses = await Promise.all(
-    data?.Courses_List?.map(async (course: any) => {
-
-      const dataCourseLang = getLangData(course?.Courses_id?.lang, lang);
-
-      return {
-        icon: course?.Courses_id?.icon || "",
-        title: dataCourseLang?.shurt_title || "",
-        summary: dataCourseLang?.summary || "",
-      };
-    }) || [],
+  // Courses Section
+  const { data: dataCourses } = await getCoursesData(lang);
+  if (!dataCourses) return nullDataResponse;
+  const courses = dataCourses?.map((item: any) => {
+    return {
+      title: item?.shurt_title || "",
+      summary: item?.summary || "",
+      icon: item?.icon || "",
+    }
+  }
   );
 
   const dataSpanishCourses = {
     title: dataLang?.title_spanish_courses,
     phrase: dataLang?.phrase_spanish_courses,
-    items: itemsCourses,
+    items: courses,
   };
-
 
   // Our Students Section
   const itemsStudents = await Promise.all(

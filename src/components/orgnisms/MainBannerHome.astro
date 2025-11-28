@@ -1,4 +1,7 @@
 ---
+import type { languages } from "@/i18n/ui";
+import { to } from "@/i18n/utils";
+
 type btn = {
     text: string;
     link: string;
@@ -10,9 +13,18 @@ interface Props {
     button1: btn;
     button2: btn;
     image?: string;
+    lang: keyof typeof languages;
 }
 
-const { phrase, title, summary, button1, button2, image = null } = Astro.props;
+const {
+    phrase,
+    title,
+    summary,
+    button1,
+    button2,
+    image = null,
+    lang,
+} = Astro.props;
 
 const wordResalted = title.split(" ")[3];
 const firstPart = title.split(" ").slice(0, 3).join(" ");
@@ -37,14 +49,14 @@ const restOfTitle = title.split(" ").slice(4).join(" ");
                         <div class="header-btn">
                             <div class="btn-wrap">
                                 <a
-                                    href={button1.link}
+                                    href={to(button1.link, lang)}
                                     class="btn-common flat-btn btn-active"
                                     >{button1.text}</a
                                 >
                             </div>
                             <div class="btn-wrap margin-left-20">
                                 <a
-                                    href={button2.link}
+                                    href={to(button2.link, lang)}
                                     class="btn-common fill-btn text-secondary text-white-hover"
                                     >{button2.text}</a
                                 >

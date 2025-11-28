@@ -1,15 +1,17 @@
 ---
-import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus from "@/server/directus";
-import { readItems } from "@directus/sdk";
 import DefaultPage from "@/components/orgnisms/DefaultPage.astro";
+import { getLang } from "@/i18n/utils";
+import { getPageData } from "@/server/services/getPageData";
 
-const dataPage = await directus.request(readItems("tersms_and_conditions"));
+const lang = getLang(Astro.url);
+const { dataLang: data, error } = (await getPageData(
+  "tersms_and_conditions",
+  lang,
+)) as any;
+
+if (error) {
+  return Astro.redirect("/500");
+}
 ---
 
-<LayoutPage
-  title={dataPage?.title_page || "Terms and Conditions"}
-  description={dataPage?.description || ""}
->
-<DefaultPage dataPage={dataPage} />
-</LayoutPage>
+<DefaultPage dataPage={data} />

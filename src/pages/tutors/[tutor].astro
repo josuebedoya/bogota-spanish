@@ -1,60 +1,22 @@
 ---
-import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus, { directusMedia } from "@/server/directus";
-import slugify from "@/utils/slug";
-import { readItems } from "@directus/sdk";
-
-// Translations
-const { lang } = Astro.params;
-
-const tutors = await directus.request(readItems("Tutors", { fields: ["*"] }));
+import TutorTemplate from "@/templates/tutor.astro";
+import { getTutorData } from "@/server/services/getTutorData";
+import { defaultLang } from "@/i18n/ui";
 
 const { tutor } = Astro.params;
-let tutorData: any = null;
+const { data, error } = await getTutorData(tutor || "", defaultLang);
 
-for (const t of tutors) {
-  const slug = slugify(`${t.name_tutor}-${t.id}`);
-  if (slug === tutor) {
-    const photo = await directusMedia(t.photo_tutor);
-    tutorData = { ...t, photo };
-    break;
-  }
+if (error) {
+  return Astro.redirect("/500");
 }
-if (!tutorData) {
+
+if (!data) {
   return Astro.redirect("/404");
 }
 ---
 
-<LayoutPage
-  title={tutorData?.name_tutor + " - Tutors"}
-  description={tutorData?.description_tutor?.slice(0, 150) + "..."}
->
-  <div
-    class="team-details-wrapper single-page-section-top-space single-page-section-bottom-space"
-  >
-    <!-- about area start here  -->
-    <section
-      class="about-section-area-wrapper section-bottom-space single-page-section-top-space"
-    >
-      <div class="container custom-container-01 single-page-section-top-space">
-        <div class="row align-items-center row-reverse">
-          <div class="col-lg-6 col-md-12 mt-5 mt-lg-0">
-            <div class="about-content">
-              <h1 class="content-title">{tutorData.name_tutor}</h1>
-
-              <div class="paragraph" set:html={tutorData?.description_tutor} />
-            </div>
-          </div>
-          <div class="offset-xl-1 col-lg-6 col-md-7 col-xl-4">
-            <div class="thumb">
-              <img
-                src={tutorData?.photo?.src_path}
-                alt={tutorData?.name_tutor}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</LayoutPage>
+<TutorTemplate
+  name={data.name_tutor}
+  photo={data.photo.src_path}
+  description={data.description}
+/>

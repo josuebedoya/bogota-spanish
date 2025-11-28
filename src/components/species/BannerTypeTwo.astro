@@ -1,10 +1,11 @@
 ---
+import { getLang, to } from "@/i18n/utils";
 import BtnWrap from "../atoms/BtnWrap.astro";
 
 interface Props {
   title: string;
   summary: string;
-  button: {
+  button?: {
     label: string;
     link: string;
   };
@@ -42,7 +43,7 @@ const {
             button?.label && (
               <BtnWrap
                 label={button?.label}
-                link={button?.link}
+                link={to(button?.link, getLang(Astro.url)) || ""}
                 type="link"
                 class="btn-common btn-new"
               />

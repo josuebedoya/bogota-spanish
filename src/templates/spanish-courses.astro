@@ -2,58 +2,35 @@
 import BannerTypeTwo from "@/components/species/BannerTypeTwo.astro";
 import BannerTypeOne from "@/components/species/BannerTypeOne.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus, { directusMedia } from "@/server/directus";
-import { readItems } from "@directus/sdk";
+import { getSpanishCoursesData } from "@/server/services/getSpanishCoursesData";
+import { getLang } from "@/i18n/utils";
 
-const data = await directus.request(
-  readItems("Spanish_courses", { filter: { status: { _eq: "published" } } }),
-);
+const lang = getLang(Astro.url);
+const { dataMainBanner, page, courses, error } = (await getSpanishCoursesData(
+  lang,
+)) as any;
 
-const fileMainBanner = await directusMedia(data?.image_main_banner);
-
-const mainBanner = {
-  title: data?.title_main_banner,
-  summary: data?.sumamry_main_banner,
-  button: {
-    label: data?.button_main_banner,
-    link: "/book-a-free-class",
-  },
-  image: fileMainBanner?.src_path,
-};
-
-const dataCourses = await directus.request(
-  readItems("Courses", { filter: { status: { _eq: 1 } }, fields: ["*","lang.*"] }),
-);
-
-/* const lang = "en-US";
-
- console.log( dataCourses[0].lang?.find((l: any) => l.languages_code === lang) ); */
+if (error) {
+  return Astro.redirect("/500");
+}
 ---
 
 <LayoutPage
-  title={data?.title_main_banner}
-  description={data?.summary_main_banner?.slice(0, 150) + "..."}
+  title={page?.title_main_banner}
+  description={page?.summary_main_banner?.slice(0, 150) + "..."}
 >
   <div class="about-page-area-wrapper single-page-section-top-space">
-    <BannerTypeTwo {...mainBanner} mainTitle={true} withGradient={false} />
+    <BannerTypeTwo {...dataMainBanner} mainTitle={true} withGradient={false} />
     <div class="list-courses">
       {
-        dataCourses?.reverse()?.map(async (course: any, i: number) => {
-          const fileItem = await directusMedia(course?.image);
-          const item = {
-            image: fileItem?.src_path || "",
-            title: course?.shurt_title || "",
-            summary: course?.description || "",
-          };
-          const isEven = i % 2 === 0;
-          const isLast = i === dataCourses.length - 1;
-          return isEven ? (
-            <div class={`item-course ${isLast ? "last-item" : ""}`}>
-              <BannerTypeOne {...item} imageLeft={true} />
+        courses?.reverse()?.map((c: any) => {
+          return c.isEven ? (
+            <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+              <BannerTypeOne {...c} imageLeft={true} />
             </div>
           ) : (
-            <div class={`item-course ${isLast ? "last-item" : ""}`}>
-              <BannerTypeTwo {...item} withGradient={false} />
+            <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+              <BannerTypeTwo {...c} withGradient={false} />
             </div>
           );
         })

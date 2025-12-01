@@ -1,4 +1,5 @@
 ---
+import { getLang, useTranslations } from "@/i18n/utils";
 import { staticData } from "@/server/static-data";
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const { icon, title, summary, button, classes } = Astro.props;
+
+const t = useTranslations(getLang(Astro.url));
 ---
 
 <div class={`icon-box-item ${classes ?? ""}`}>
@@ -27,7 +30,7 @@ const { icon, title, summary, button, classes } = Astro.props;
   </div>
   <div class="btn-wrap">
     <a href={button?.link} class="more-btn"
-      >{button?.label || staticData.courses.btn}
+      >{button?.label || t("btn.viewmore")}
       <i class="fa-solid fa-angle-right icon-btn"></i>
     </a>
   </div>

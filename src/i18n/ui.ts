@@ -37,6 +37,8 @@ export const ui = {
     'applyonline.form.fields.live': 'Where do you currently live?',
     'applyonline.form.fields.description': 'Why do you want to learn Spanish? Do you have a specific goal in mind? Or do you just want to learn for fun?',
     'applyonline.form.btn.label': 'Submit',
+
+    'btn.viewmore': 'View More',
   },
   "es-ES": {
     'spanish-courses.btnlink': '/#LANG/reservar-clase-gratis',
@@ -69,5 +71,7 @@ export const ui = {
     'applyonline.form.fields.live': '¿Dónde vives actualmente?',
     'applyonline.form.fields.description': '¿Por qué quieres aprender español? ¿Tienes un objetivo específico en mente? ¿O simplemente quieres aprender por diversión?',
     'applyonline.form.btn.label': 'Enviar',
+
+    'btn.viewmore': 'Ver Más',
   }
 } as const;

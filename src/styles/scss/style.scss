@@ -23,7 +23,6 @@
 @use "elements/courses_single_items";
 @use "elements/category_single_items";
 @use "elements/testimonial_single_items";
-@use "elements/audio_player";
 @use "elements/open_cart";
 @use "elements/about";
 @use "elements/our_team_item";
@@ -32,8 +31,10 @@
 @use "elements/check_point";
 @use "elements/pagination";
 @use "elements/services";
+@use "elements/lang";
 @use "elements/form";
 @use "elements/course";
+
 
 // Sections Here 
 @use "sections/_breadcrumb";

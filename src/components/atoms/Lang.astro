@@ -1,18 +1,56 @@
 ---
-import {} from "astro:i18n";
+import { validateRoute } from "@/i18n/utils";
+import { getLang } from "@/i18n/utils";
+import { routes } from "@/i18n/routes";
+
+type item = {
+  flag: string;
+  value: string;
+};
 
 interface Props {
-  langs: string[];
+  langs: item[];
 }
+
 const { langs } = Astro.props;
+const { slug, lang: LangDinamic } = Astro.params;
+
+const lang = getLang(Astro.url);
+
+const { route } = await validateRoute(Astro.url, LangDinamic && slug);
+
+const activeItem = langs.find((l) => l.value === lang) || {
+  flag: "/assets/img/logos/" + lang + ".png",
+  value: lang,
+};
 ---
 
-<div class="lang">
-  {
-    langs?.map((lang: string) => (
-      <a href={`/${lang}`} class="lang-item px-2">
-        {lang.toUpperCase()}
-      </a>
-    ))
-  }
+<div id="langSelector" class="lang-selector">
+  <div class="active-lang">
+    <img
+      src={activeItem.flag}
+      alt={activeItem.value}
+      width="30"
+      height="20"
+      title={activeItem.value}
+    />
+  </div>
+  <div id="langsItems" class="list-langs">
+    {
+      langs?.map((lang: item) => (
+        <a href={`/${lang.value}/${routes[route || "home"][lang.value]}`}>
+          <div class="lang" aria-label={lang.value}>
+            <img
+              src={lang.flag}
+              alt={lang.value}
+              width="30"
+              height="20"
+              title={lang.value}
+            />
+            <span>{lang.value}</span>
+          </div>
+        </a>
+      ))
+    }
+  </div>
 </div>

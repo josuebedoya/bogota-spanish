@@ -64,10 +64,29 @@ function handlerBgHeader() {
     }
 }
 
+// Hadler pikcker lang
+
+function handlerPickerLang() {
+    const pickers = document.querySelectorAll('#langSelector');
+
+    if (!pickers) return false;
+
+    pickers.forEach(picker => {
+
+        const listItems = picker.querySelector('#langsItems');
+        if (!listItems) return false;
+
+        picker.addEventListener('click', () => {
+            listItems.classList.toggle('show');
+        })
+    });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     headerHanlderBtns();
     handlerNewsLetter();
     handlerBgHeader();
+    handlerPickerLang();
 });
 
 window.addEventListener("scroll", () => {

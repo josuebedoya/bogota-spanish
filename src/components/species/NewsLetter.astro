@@ -1,9 +1,5 @@
 ---
 import BtnWrap from "../atoms/BtnWrap.astro";
-import { getLang, useTranslations } from "@/i18n/utils";
-
-const lang = getLang(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <div class="subscribe-form">
@@ -12,14 +8,14 @@ const t = useTranslations(lang);
       type="email"
       value=""
       name="emailnewsletter"
-      placeholder={t("footer.newsletter.form.input")}
+      placeholder="Enter your Email..."
       class="form-control"
       required="true"
       aria-required="true"
     />
     <BtnWrap
-      class="subscribe-btn action-suscribe bg-primary text-white"
-      label={t("footer.newsletter.form.button")}
+      class="subscribe-btn action-suscribe"
+      label="Subscribe"
       icon="fa-regular fa-bell"
     />
   </div>
@@ -28,6 +24,6 @@ const t = useTranslations(lang);
     <div class="icon">
       <i class="fa-solid fa-check"></i>
     </div>
-    <div class="text">{t("footer.newsletter.subscribed")}</div>
+    <div class="text">Successfully Subscribed</div>
   </div>
 </div>

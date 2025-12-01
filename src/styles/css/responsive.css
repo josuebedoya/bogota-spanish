@@ -419,22 +419,6 @@
         margin-top: 50px;
     }
 
-    .audio-player .controls .volume-container {
-        cursor: pointer;
-        position: relative;
-        z-index: 2;
-        left: 0;
-    }
-
-    .audio-player .timeline {
-        background: white;
-        width: 66%;
-        height: 10px;
-        position: relative;
-        cursor: pointer;
-        left: 39px;
-    }
-
     .blog-grid-item-02 .content .post-categories li {
         margin-right: 15px;
         margin-left: 0 !important;
@@ -973,14 +957,6 @@
         align-items: center;
     }
 
-    .audio-player .timeline {
-        background: white;
-        width: 44%;
-        height: 10px;
-        position: relative;
-        cursor: pointer;
-        left: 39px;
-    }
 
     .blog-classic .blog-grid-item-02.style-01 .thumbnail img {
         height: 250px;

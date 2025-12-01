@@ -19,7 +19,7 @@ export function useTranslations(lang: Ui) {
   }
 }
 
-function foundRoute(slug: string, lang: Ui): R | undefined {
+export function foundRoute(slug: string, lang: Ui): R | undefined {
   const route = Object.keys(routes).find((r) => routes[ r as R ][ lang ] === slug);
   return route as R | undefined;
 }

@@ -1,0 +1,28 @@
+---
+import TutorTemplate from "@/templates/tutor.astro";
+import { getTutorData } from "@/server/services/getTutorData";
+import { getLang, validateRoute } from "@/i18n/utils";
+import { routes } from "@/i18n/routes";
+
+const { tutor, tutors } = Astro.params;
+const lang = getLang(Astro.url);
+
+const { data, error } = await getTutorData(tutor || "", lang);
+const { route } = await validateRoute(Astro.url, tutors);
+
+const found = routes[route as keyof typeof routes][lang];
+
+if (!data || !route || !found) {
+  return Astro.redirect("/404");
+}
+
+if (error) {
+  return Astro.redirect("/500");
+}
+---
+
+<TutorTemplate
+  name={data.name_tutor}
+  photo={data.photo.src_path}
+  description={data.description}
+/>

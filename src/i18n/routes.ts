@@ -30,5 +30,9 @@ export const routes = {
   "privacy-policy": {
     "en-US": 'privacy-policy',
     "es-ES": 'politicas-de-privacidad'
+  },
+  "tutors": {
+    "en-US": 'tutors',
+    "es-ES": 'tutores'
   }
 }

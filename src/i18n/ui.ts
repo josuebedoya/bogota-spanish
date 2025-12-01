@@ -58,7 +58,7 @@ export const ui = {
     'plans-and-pricing.item.btn.link': '/#LANG/contactanos',
 
     'form.title': 'Información Personal',
-    '.form.fields.fullname': 'Nombre Completo',
+    'form.fields.fullname': 'Nombre Completo',
     'form.fields.email': 'Correo Electrónico',
     'form.fields.phone': 'Número de Teléfono',
 

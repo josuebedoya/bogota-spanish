@@ -31,7 +31,9 @@ export const getSpanishCoursesData = async (lang: string = defaultLang) => {
   }
 
 
-  const fileMainBanner = await directusMedia(data?.image_main_banner, dataLang?.title_main_banner);
+  const fileMainBanner = await directusMedia(data?.image_main_banner, dataLang?.title_main_banner, {
+    width: 685, height: 425,
+  });
 
   // Main banner data
   const dataMainBanner = {

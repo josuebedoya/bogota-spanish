@@ -37,9 +37,9 @@ export const getHomeData = async (lang: string = defaultLang) => {
 
   const dataLang = getLangData(data?.lang, lang);
 
-  const fileBanner = await directusMedia(data?.Image_Main_Banner || "", dataLang?.title_main_banner);
-  const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "", dataLang?.title_levels_starting);
-  const fileTesterSession = await directusMedia(data?.image_tester_session || "", dataLang?.title_tester_sesion);
+  const fileBanner = await directusMedia(data?.Image_Main_Banner || "", dataLang?.title_main_banner, { width: 530, height: 640 });
+  const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "", dataLang?.title_levels_starting, { width: 682, height: 695 });
+  const fileTesterSession = await directusMedia(data?.image_tester_session || "", dataLang?.title_tester_sesion, { width: 682, height: 423 });
 
   if (!dataLang || !fileBanner || !fileBanner2 || !fileTesterSession) {
     return nullDataResponse;
@@ -98,7 +98,8 @@ export const getHomeData = async (lang: string = defaultLang) => {
   const itemsStudents = await Promise.all(
     data?.Stories?.map(async (story: any) => {
       const fileImage = await directusMedia(
-        story?.Stories_id?.Video_Or_Image || "", story?.Stories_id?.name
+        story?.Stories_id?.Video_Or_Image || "", story?.Stories_id?.name,
+        { width: 330, height: 390 }
       );
 
       const dataStoryLang = getLangData(story?.Stories_id?.lang, lang);

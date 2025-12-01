@@ -591,7 +591,7 @@
     }
 
     .apply-form-inner {
-        padding: 30px 30px;
+        padding: 20px 10px !important;
     }
 
     .contact-form-area-wrapper .contact-form {
@@ -865,7 +865,11 @@
     }
 
     .single-team-item.style-03 {
-        padding: 29px 27px 30px;
+        padding: 20px 20px !important;
+    }
+
+    .single-team-item.style-03 .hover-content {
+        padding: 20px !important;
     }
 
     .filter-wrapper .btn-common {
@@ -907,6 +911,12 @@
     .pagination .pagination-list li .page-number.right-arrow {
         font-size: 12px;
     }
+
+    .navbar-area.navigation-style-02 .custom-container .nav-right-content {
+        justify-content: center !important;
+        padding-block: 10px;
+    }
+
 
     .footer-area.style-01 .subscribe-form .form-group {
         width: auto;

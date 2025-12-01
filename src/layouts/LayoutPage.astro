@@ -11,40 +11,40 @@ const lang = Astro.params.lang || "en-US";
 <html lang={lang}>
 	<Head title={title} description={description} />
 	<body>
-		<div id="imGrapper">
-			<div id="imContent">
-				<!-- preloader area start -->
-				<div class="preloader" id="preloader">
-					<div class="preloader-inner">
-						<div class="loader"></div>
-					</div>
-				</div>
-				<!-- preloader area end -->
-
-				<!--  search Popup start -->
-				<div class="body-overlay" id="body-overlay"></div>
-				<div class="search-popup" id="search-popup">
-					<form action="index.html" class="search-form d-flex">
-						<div class="form-group">
-							<input
-								type="text"
-								class="form-control"
-								placeholder="Search....."
-							/>
+			<div id="imGrapper">
+				<div id="imContent">
+					<!-- preloader area start -->
+					<div class="preloader" id="preloader">
+						<div class="preloader-inner">
+							<div class="loader"></div>
 						</div>
-						<button class="close-btn border-none"
-							><i class="fas fa-search"></i></button
-						>
-					</form>
-				</div>
-				<!-- Search Popup End -->
-				<main class="page-wrapper">
+					</div>
+					<!-- preloader area end -->
+
+					<!--  search Popup start -->
+					<div class="body-overlay" id="body-overlay"></div>
+					<div class="search-popup" id="search-popup">
+						<form action="index.html" class="search-form d-flex">
+							<div class="form-group">
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Search....."
+								/>
+							</div>
+							<button class="close-btn border-none"
+								><i class="fas fa-search"></i></button
+							>
+						</form>
+					</div>
+					<!-- Search Popup End -->
+					<main class="page-wrapper">
 					<Header />
-					<slot />
+							<slot />
 					<Footer />
-				</main>
+					</main>
+				</div>
 			</div>
-		</div>
 
 		<!-- Scripts Load -->
 

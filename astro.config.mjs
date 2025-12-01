@@ -35,5 +35,5 @@ export default defineConfig({
                 "es-ES": '/cursos-de-espanol'
             },
         }
-    }
+    },
 });

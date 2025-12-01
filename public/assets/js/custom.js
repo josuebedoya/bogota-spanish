@@ -82,11 +82,31 @@ function handlerPickerLang() {
     });
 }
 
+function handlerModalWhatsapp() {
+    const container = document.querySelector('#whatsappWrapper .modal-bg');
+    const content = document.querySelector('#whatsappWrapper .modal-content');
+    const btnClose = document.querySelector('#whatsappWrapper .modal-header .close');
+    const btnOpen = document.querySelector('#whatsappWrapper .btn-whatsapp-floating');
+
+    if (!container || !content || !btnClose || !btnOpen) return false;
+
+    btnOpen.addEventListener('click', () => {
+        container.classList.add('show');
+        content.classList.add('show');
+    });
+
+    btnClose.addEventListener('click', () => {
+        container.classList.remove('show');
+        content.classList.remove('show');
+    });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     headerHanlderBtns();
     handlerNewsLetter();
     handlerBgHeader();
     handlerPickerLang();
+    handlerModalWhatsapp();
 });
 
 window.addEventListener("scroll", () => {

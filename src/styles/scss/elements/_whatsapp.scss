@@ -1,0 +1,134 @@
+.whatsapp-container {
+  .btn-whatsapp-floating {
+    position: fixed;
+    bottom: 20%;
+    right: 22px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    z-index: 9999999997;
+  }
+
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    opacity: 0;
+    transition: opacity .4s;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .modal-bg.show {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9999999998;
+  }
+
+  .modal-content {
+    background: white;
+    border-radius: 20px;
+    min-width: 260px;
+    max-width: 300px;
+    min-height: 350px;
+    box-shadow: 5px 5px 8px #fff5;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999999999;
+    position: relative;
+
+    opacity: 0;
+    transform: translateY(200px);
+    animation: fadeModalExit 0.7s ease forwards;
+  }
+
+
+  .modal-content.show {
+    animation: fadeModal 0.7s ease forwards;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: var(--main-color-one);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .modal-header .modal-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #fff !important;
+  }
+
+  .modal-header .close {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #fff !important;
+  }
+
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .modal-body a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: .4s;
+  }
+
+  .modal-body a:hover {
+    text-decoration: underline var(--main-color-one) !important;
+  }
+
+  .modal-content.show .num-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    color: rgb(17, 15, 15);
+    text-align: left;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
+
+@keyframes fadeModal {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeModalExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+}

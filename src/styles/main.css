@@ -5,4 +5,5 @@
 @import './css/nice-select.css';
 @import './css/responsive.css';
 @import './css/slick.css';
-@import './css/style.css';
+/* @import './css/style.css'; */
+ @import './scss/style.scss';

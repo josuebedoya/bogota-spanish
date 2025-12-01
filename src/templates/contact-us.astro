@@ -6,6 +6,7 @@ import Social from "@/components/species/Social.astro";
 import ContactList2 from "@/components/species/ContactList2.astro";
 import Form from "@/components/species/Form.astro";
 import { getPageData } from "@/server/services/getPageData";
+import { getContactData } from "@/server/services/getContactData";
 import { getLang, useTranslations } from "@/i18n/utils";
 
 const lang = getLang(Astro.url);
@@ -14,14 +15,13 @@ const { dataLang: data, error } = (await getPageData(
   lang,
 )) as any;
 
+const { data: dataSocial, error: socialError } = await getContactData(lang);
+
 const t = useTranslations(lang);
 
-if (error) {
+if (error || socialError) {
   return Astro.redirect("/500");
 }
-
-const dataSocial = await directus?.request(readItems("info_contact"));
-
 const dataForm = [
   {
     type: "text",

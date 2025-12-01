@@ -8,16 +8,18 @@ import { staticData } from "@/server/static-data";
 import ContactList from "../species/ContactList.astro";
 import { getLang, useTranslations } from "@/i18n/utils";
 import { getMenuData } from "@/server/services/getMenuData";
+import { getContactData } from "@/server/services/getContactData";
+import WhatsApp from "@/components/atoms/WhatsApp.astro";
+
 
 const lang = getLang(Astro.url);
 const dataMenu2 = await getMenuData("0", lang);
 const dataMenu1 = await getMenuData("1", lang);
 
 const t = useTranslations(lang);
+const { data: socialData, error: socialError } = await getContactData(lang);
 
-const socialData = await directus?.request(readItems("info_contact"));
-
-if (dataMenu1?.error || dataMenu2?.error) {
+if (dataMenu1?.error || dataMenu2?.error || socialError) {
   return Astro.redirect("/500");
 }
 ---
@@ -58,3 +60,5 @@ if (dataMenu1?.error || dataMenu2?.error) {
     <Copyright />
   </div>
 </footer>
+
+<WhatsApp numbers={socialData?.whatsapp} />

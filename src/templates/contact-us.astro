@@ -24,8 +24,13 @@ if (error || socialError) {
 }
 const dataForm = [
   {
+    type: 'hidden',
+    name:'model',
+    value:'form_contact'
+  },
+  {
     type: "text",
-    name: "FullName",
+    name: "full_name",
     placeholder: t("form.fields.fullname"),
     required: true,
     icon: "fa-solid fa-user",
@@ -53,7 +58,7 @@ const dataForm = [
   },
   {
     type: "textarea",
-    name: "city",
+    name: "description",
     placeholder: t("contact.form.fields.description"),
     required: false,
     widthFull: true,
@@ -104,6 +109,11 @@ const dataForm = [
                       fields={dataForm}
                       classesCols="col-md-6 py-3"
                       submitLabel={t("contact.form.btn.label")}
+                      formSettings={{
+                        method: "POST",
+                        action: "/api/form/v1/submit",
+                        id: "contactForm"
+                      }}
                     />
                   </div>
                 </div>

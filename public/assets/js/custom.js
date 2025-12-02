@@ -1,3 +1,11 @@
+const handlerClasses = (els, classe, action) => {
+    if (!els || !classe) return false;
+
+    els.forEach((el) => {
+        el.classList[ action ](classe);
+    });
+}
+
 // Header handle btns
 function headerHanlderBtns() {
     const mbtns = document.querySelector("#btnsHeader.btns-mobile");
@@ -26,28 +34,16 @@ function headerHanlderBtns() {
 
 // Handler script to newsLetter
 function handlerNewsLetter() {
-    const btnSuscribe = document.querySelector(
-        ".form-group .action-suscribe",
-    );
     const pupupMessage = document.querySelector(
         ".subscribe-form .popup-message",
     );
-    const inputEmail = document.querySelector(".subscribe-form input");
 
-    if (!btnSuscribe || !inputEmail) return false;
+    if (!pupupMessage) return false;
+    pupupMessage.classList.add("show");
 
-    btnSuscribe.addEventListener("click", () => {
-        if (
-            inputEmail.value?.length <= 0 ||
-            !inputEmail.value?.includes("@")
-        )
-            return false;
-        pupupMessage.classList.add("show");
-
-        setTimeout(() => {
-            pupupMessage.classList.remove("show");
-        }, 3000);
-    });
+    setTimeout(() => {
+        pupupMessage.classList.remove("show");
+    }, 3000);
 }
 
 // Handler Bg Header
@@ -90,23 +86,69 @@ function handlerModalWhatsapp() {
 
     if (!container || !content || !btnClose || !btnOpen) return false;
 
-    btnOpen.addEventListener('click', () => {
-        container.classList.add('show');
-        content.classList.add('show');
-    });
+    btnOpen.addEventListener('click', () => handlerClasses([ container, content ], "show", "add"));
+    btnClose.addEventListener('click', () => handlerClasses([ container, content ], "show", "remove"));
+}
 
-    btnClose.addEventListener('click', () => {
-        container.classList.remove('show');
-        content.classList.remove('show');
+function submitForm(id, callback) {
+    const form = document.getElementById(id);
+    const messageContainer = document?.querySelector(`#${id}Container #message`);
+    const message = document?.querySelector(`#${id}Container #message .message`);
+    const loading = document?.querySelector(`#${id}Container .loading`);
+    const loader = document?.querySelector(`#${id}Container .loader`);
+    if (!form || !message) return false;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        message.textContent = "Enviando...";
+        handlerClasses([ messageContainer, loading, loader ], "show", "add");
+
+        const formData = new FormData(form);
+
+        try {
+            const res = await fetch("/api/form/v1/submit", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                message.textContent = "Error: " + (data?.message || "No se pudo enviar.");
+                messageContainer.classList.add("show");
+                handlerClasses([ loader, loading ], "show", "remove");
+                return;
+            }
+
+            message.textContent = data.message || "Enviado correctamente.";
+            messageContainer.classList.add("show");
+            form.style.display = "none";
+
+            if (typeof callback === "function") {
+                callback();
+            }
+
+            handlerClasses([ loader, loading ], "show", "remove");
+
+            form.reset();
+
+        } catch (error) {
+            message.textContent = "Error de servidor, intenta de nuevo.";
+            messageContainer.classList.add("show");
+            handlerClasses([ loader, loading ], "show", "remove");
+        }
     });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
     headerHanlderBtns();
-    handlerNewsLetter();
     handlerBgHeader();
     handlerPickerLang();
     handlerModalWhatsapp();
+    submitForm('contactForm');
+    submitForm('newsletterForm', handlerNewsLetter);
+    submitForm('bookFreeClassForm');
 });
 
 window.addEventListener("scroll", () => {

@@ -27,6 +27,9 @@ export const ui = {
     'form.fields.fullname': 'Full Name',
     'form.fields.email': 'Email Address',
     'form.fields.phone': 'Phone Number',
+    'form.response.success': 'Your form has been submitted successfully!',
+    'form.response.error': 'There was an error submitting the form.',
+    'form.response.existemail': 'The email already exists.',
 
     'contact.form.fields.city': 'City',
     'contact.form.fields.description': 'Write a description...',
@@ -61,6 +64,9 @@ export const ui = {
     'form.fields.fullname': 'Nombre Completo',
     'form.fields.email': 'Correo Electrónico',
     'form.fields.phone': 'Número de Teléfono',
+    'form.response.success': '¡Tu formulario ha sido enviado con éxito!',
+     'form.response.error': 'Hubo un error al enviar el formulario.',
+     'form.response.existemail': 'El correo electrónico ya existe.',
 
     'contact.form.fields.city': 'Ciudad',
     'contact.form.fields.description': 'Escribe una descripción...',

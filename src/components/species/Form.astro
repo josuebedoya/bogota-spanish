@@ -7,56 +7,78 @@ interface Props {
   fields: any;
   classesCols?: string;
   submitLabel?: string;
+  formSettings?: any;
+  withButton?: boolean;
+  withChildren?: boolean;
 }
-const { title, fields, classesCols, submitLabel = "Submit" } = Astro.props;
+const { title, fields, classesCols, submitLabel = "Submit", formSettings, withButton = true, withChildren = false } = Astro.props;
 ---
 
-<form class="form">
-  <div class="part">
-    <h5 class="title">{title}</h5>
-    <div class="form-element">
-      <div class="row">
-        {
-          fields.map((field: any) => {
-            if (field.type === "select") {
-              return (
-                <Selectfield
-                  classes={
-                    classesCols && !field?.widthFull
-                      ? "col-md-6 py-3"
-                      : "col-12"
-                  }
-                  name={field.name}
-                  options={field.options}
-                  icon={field.icon}
-                  config={{ ...field }}
-                />
-              );
-            } else {
-              return (
-                <InputBasic
-                  classes={
-                    classesCols && !field?.widthFull
-                      ? "col-md-6 py-3"
-                      : "col-12"
-                  }
-                  type={field.type}
-                  icon={field.icon}
-                  inputConfig={{
-                    ...field,
-                  }}
-                />
-              );
-            }
-          })
-        }
-      </div>
-    </div>
-  </div>
+  <div class="form" id={`${formSettings?.id + 'Container'}`}>
+    <form class="form" {...formSettings}>
+      {!withChildren && <>
+        <div class="part">
+          <h5 class="title">{title}</h5>
+          <div class="form-element">
+            <div class="row">
+              {
+                fields.map((field: any) => {
 
-  <div class="form-submit text-right mt-5">
-    <button type="submit" class="btn-common btn-active"
-      >{submitLabel || "Submit"}
-    </button>
+                  if (field.type === "select") {
+                    return (
+                      <Selectfield
+                        classes={
+                          classesCols && !field?.widthFull
+                            ? "col-md-6 py-3"
+                            : "col-12"
+                        }
+                        name={field.name}
+                        options={field.options}
+                        icon={field.icon}
+                        config={{ ...field }}
+                      />
+                    );
+                  } else {
+                    return (
+                      <InputBasic
+                        classes={
+                          classesCols && !field?.widthFull && field.type !== "hidden"
+                            ? "col-md-6 py-3"
+                            : "col-12"
+                        }
+                        type={field.type}
+                        icon={field.icon}
+                        inputConfig={{
+                          ...field,
+                        }}
+                      />
+                    );
+                  }
+                })
+              }
+            </div>
+          </div>
+        </div>
+        {withButton &&
+          <div class="form-submit text-right mt-5">
+            <button type="submit" class="btn-common btn-active"
+            >{submitLabel || "Submit"}
+            </button>
+          </div>
+        }
+      </>}
+      {withChildren && <slot></slot>}
+    </form>
+
+    <div id="message">
+
+      <p class="message">
+
+      </p>
+    </div>
+
+    <div class="loading">
+      <div class="loader"></div>
+    </div>
+
   </div>
-</form>

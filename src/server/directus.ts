@@ -1,15 +1,15 @@
 import slugify from '@/utils/slug';
-import { createDirectus, rest } from '@directus/sdk';
-import { DIRECTUS_URL } from 'astro:env/server';
+import { createDirectus, rest, staticToken } from "@directus/sdk";
+import { DIRECTUS_URL as URL, SECRET_DIRECTUS_TOKEN as TOKEN } from 'astro:env/server';
 import { buildQuery } from '@/utils/buildQuery';
 
-const URL = DIRECTUS_URL;
-
-if (!URL) {
-  throw new Error('DIRECTUS_URL is not defined in environment variables');
+if (!URL || !TOKEN) {
+  throw new Error('DIRECTUS_URL or SECRET_DIRECTUS_TOKEN is not defined in environment variables');
 }
 
-const directus = createDirectus(URL).with(rest());
+const directus = createDirectus(URL)
+  .with(rest())
+  .with(staticToken(TOKEN || ''));
 
 const directusMedia = async (id: string, name: string, params?: Record<string, any>) => {
   try {
@@ -27,7 +27,6 @@ const directusMedia = async (id: string, name: string, params?: Record<string, a
     return null;
   }
 };
-
 
 export default directus;
 export { directusMedia, directus };

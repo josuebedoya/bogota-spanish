@@ -1,27 +1,44 @@
 ---
 import BtnWrap from "../atoms/BtnWrap.astro";
 import { getLang, useTranslations } from "@/i18n/utils";
+import Form from "@/components/species/Form.astro";
 
 const lang = getLang(Astro.url);
 const t = useTranslations(lang);
+
+const input = [
+{
+type: "hidden",
+name: 'model',
+value: 'form_newsletter'
+},
+{
+type: "email",
+name: "email",
+placeholder: t("footer.newsletter.form.input"),
+class: "form-control",
+required: true,
+"aria-required": "true",
+}
+]
 ---
 
 <div class="subscribe-form">
   <div class="form-group">
-    <input
-      type="email"
-      value=""
-      name="emailnewsletter"
-      placeholder={t("footer.newsletter.form.input")}
-      class="form-control"
-      required="true"
-      aria-required="true"
-    />
-    <BtnWrap
-      class="subscribe-btn action-suscribe bg-primary text-white"
-      label={t("footer.newsletter.form.button")}
-      icon="fa-regular fa-bell"
-    />
+    <Form formSettings={{ method: "POST" , action: "/api/form/v1/submit" , id: "newsletterForm" }} withButton={false} fields={input}
+      withChildren>
+      <div class="form-group">
+        <input type="hidden" value="form_newsletter" name="model" />
+        <input type="email" value="" name="email" placeholder={t("footer.newsletter.form.input")} class="form-control"
+          required="true" aria-required="true" />
+        <div class="btn-send">
+          <button class="subscribe-btn action-suscribe bg-primary text-white" type="submit">
+            <i class="fa-regular fa-bell"></i>
+            {t("footer.newsletter.form.button")}
+          </button>
+        </div>
+      </div>
+    </Form>
   </div>
 
   <div class="popup-message">
@@ -29,5 +46,6 @@ const t = useTranslations(lang);
       <i class="fa-solid fa-check"></i>
     </div>
     <div class="text">{t("footer.newsletter.subscribed")}</div>
+    <br/>
   </div>
 </div>

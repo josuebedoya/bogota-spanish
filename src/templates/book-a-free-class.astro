@@ -14,8 +14,13 @@ const { dataLang: data, error } = (await getPageData(
 
 const dataForm = [
   {
+    type: 'hidden',
+    name:'model',
+    value:'form_book_a_free_class'
+  },
+  {
     type: "text",
-    name: "fullName",
+    name: "full_name",
     placeholder: t("form.fields.fullname"),
     required: true,
     icon: "fa-solid fa-user",
@@ -36,7 +41,7 @@ const dataForm = [
   },
   {
     type: "text",
-    name: "disponibility",
+    name: "shedule_class",
     placeholder: t("applyonline.form.fields.classes"),
     icon: "fa-solid fa-clock",
   },
@@ -49,14 +54,14 @@ const dataForm = [
   },
   {
     type: "text",
-    name: "dateOfBirth",
+    name: "live_in",
     placeholder: t("applyonline.form.fields.live"),
     required: false,
     icon: "fa-solid fa-calendar-days",
   },
   {
     type: "textarea",
-    name: "objectives",
+    name: "description",
     widthFull: true,
     placeholder: t("applyonline.form.fields.description"),
   },
@@ -99,6 +104,11 @@ if (error) {
                       fields={dataForm}
                       classesCols="col-md-6 col-lg-4 py-3"
                       submitLabel={t("applyonline.form.btn.label")}
+                      formSettings={{
+                        method: "POST",
+                        action: "/api/form/v1/submit",
+                        id: "bookFreeClassForm"
+                      }}
                     />
                   </div>
                 </div>

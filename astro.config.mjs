@@ -11,7 +11,8 @@ export default defineConfig({
     }),
     env: {
         schema: {
-            DIRECTUS_URL: envField.string({ context: "server", access: "secret" })
+            DIRECTUS_URL: envField.string({ context: "server", access: "secret" }),
+            SECRET_DIRECTUS_TOKEN: envField.string({ context: "server", access: "secret" })
         }
     },
     i18n: {
@@ -24,16 +25,6 @@ export default defineConfig({
         },
         fallback: {
             'es-ES': "en-US"
-        },
-        routes: {
-            "about-us": {
-                "en-US": '/about-us',
-                "es-ES": '/sobre-nosotros'
-            },
-            "spanish-courses": {
-                "en-US": '/spanish-courses',
-                "es-ES": '/cursos-de-espanol'
-            },
         }
     },
 });

@@ -67,7 +67,7 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                 <div class={`col-lg-6 col-md-12 ${!imageLeft ?'order-lg-2 order-1': 'order-0 pr-5'} sc-1`}>
                     <div class="thumbnail">
                         <div class={`${imageLeft ? "left-frame" : "right-frame"}`}>
-                            <img src={image} alt={title} />
+                            <img src={image} alt={title} loading="lazy"/>
                         </div>
                     </div>
                 </div>

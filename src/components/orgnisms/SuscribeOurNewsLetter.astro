@@ -6,26 +6,27 @@ const lang = getLang(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class="row">
-  <div class="col-lg-12 col-md-12 col-sm-12">
-    <div class="footer-widget widget widget_subscribe">
-      <div class="subscibe-wrapper">
-        <div class="content-wrap">
-          <div class="icon">
-            <img
-              src="/assets/img/messaje-icon.png"
-              alt={t("footer.newsletter.title")}
-            />
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="footer-widget widget widget_subscribe">
+        <div class="subscibe-wrapper">
+          <div class="content-wrap">
+            <div class="icon">
+              <img
+                src="/assets/img/messaje-icon.png"
+                alt={t("footer.newsletter.title")}
+                loading="lazy"
+              />
+            </div>
+            <div class="content">
+              <h4 class="title text-white">{t("footer.newsletter.title")}</h4>
+              <p class="text-white">
+                {t("footer.newsletter.subtitle")}
+              </p>
+            </div>
           </div>
-          <div class="content">
-            <h4 class="title text-white">{t("footer.newsletter.title")}</h4>
-            <p class="text-white">
-              {t("footer.newsletter.subtitle")}
-            </p>
-          </div>
+          <NewsLetter />
         </div>
-        <NewsLetter />
       </div>
     </div>
   </div>
-</div>

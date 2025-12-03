@@ -14,8 +14,8 @@ interface Props {
 const { title, fields, classesCols, submitLabel = "Submit", formSettings, withButton = true, withChildren = false } = Astro.props;
 ---
 
-  <div class="form" id={`${formSettings?.id + 'Container'}`}>
-    <form class="form" {...formSettings}>
+<div class="form" id={`${formSettings?.id + 'Container'}`}>
+    <form class={`form ${formSettings?.class}`} {...formSettings}>
       {!withChildren && <>
         <div class="part">
           <h5 class="title">{title}</h5>
@@ -80,5 +80,4 @@ const { title, fields, classesCols, submitLabel = "Submit", formSettings, withBu
     <div class="loading">
       <div class="loader"></div>
     </div>
-
-  </div>
+</div>

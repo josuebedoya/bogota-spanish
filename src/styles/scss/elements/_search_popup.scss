@@ -3,37 +3,88 @@
 ----------------------------------------*/
 @use "../global/variables" as *;
 
-.search-popup.active .search-form {
-    visibility: visible;
-    opacity: 1;
+.search-popup {
+    position: fixed;
+    padding-block: 7vw;
+    width: 100%;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    max-width: 1200px;
+    max-height: max-content;
+    margin-inline: auto;
 }
 
-.search-popup .search-form {
-    /* position: absolute; */
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search-popup.active {
+    z-index: 99999999;
+    pointer-events: all;
+}
+
+.search-popup.active .search-form,
+.search-popup.active .modal-result.active {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.search-popup .search-form,
+.search-popup .modal-result {
+    position: relative;
     width: 100%;
     -webkit-transition: 0.5s ease;
     -moz-transition: 0.5s ease;
     -o-transition: 0.5s ease;
     transition: 0.5s ease;
+    max-width: 1200px;
+    z-index: 0999;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-inline: auto;
     visibility: hidden;
     opacity: 0;
-    z-index: 999;
-    max-width: 1200px;
-    margin-inline: auto;
     padding-inline: 15px;
+
 }
+
+.search-popup .modal-result {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.search-popup .modal-result .no-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    margin-inline: auto;
+}
+
+.search-popup .modal-result .no-items p {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+.search-popup .modal-result .no-items i {
+    color: var(--main-color-one);
+    font-size: 30px;
+    margin-bottom: 15px;
+    animation: orbitation 2s linear infinite;
+    font-weight: 800;
+}
+
 
 .search-popup .search-form .form-group {
     flex: 0 0 90%;
     max-width: 90%;
 }
 
-.search-popup .search-form .close-btn {
+.search-popup .search-form .btn-send {
     flex: 1 1 10%;
     max-width: 100%;
     height: 100px;
@@ -70,13 +121,69 @@
     }
 }
 
+.search-popup .modal-result {
+    margin-top: 10px;
+    width: 100%;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: $white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.search-popup .modal-result .result-item {
+    padding: 20px 15px;
+    border-bottom: 1px solid #eee;
+    transition: $transition;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 18px;
+
+    &:hover {
+        background: #f9f9f9;
+    }
+
+    p {
+        margin: 5px 0 0 0;
+        color: var(--text-secondary-color);
+        font-size: 14px;
+    }
+
+    &::after {
+        content: "\f061";
+        display: block;
+        position: relative;
+        clear: both;
+        font-family: "Font Awesome 6 Pro";
+        font-weight: 900;
+        float: right;
+        color: var(--main-color-one);
+        font-size: 20px;
+        right: 25%;
+        background: #f9f9f9;
+        padding: 5px;
+        transform: translateX(-20px);
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 .body-overlay {
     position: fixed;
     width: 100%;
     height: 100%;
     display: block;
     background-color: rgba(13, 20, 34, 0.95);
-    ;
     z-index: 9;
     content: "";
     left: 0;
@@ -117,11 +224,21 @@
         padding: 0 80px 0 20px;
     }
 
-    .search-popup .search-form .close-btn {
+    .search-popup .search-form .btn-send {
         flex: 1 1 20%;
         max-width: 20%;
         height: 60px;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
+    }
+}
+
+@keyframes orbitation {
+    0% {
+        transform: rotate(0deg) translateX(1rem) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(1rem) rotate(-360deg);
     }
 }

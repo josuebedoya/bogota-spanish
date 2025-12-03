@@ -1,5 +1,4 @@
 ---
-import BtnWrap from "../atoms/BtnWrap.astro";
 import { getLang, useTranslations } from "@/i18n/utils";
 import Form from "@/components/species/Form.astro";
 
@@ -25,7 +24,7 @@ required: true,
 
 <div class="subscribe-form">
   <div class="form-group">
-    <Form formSettings={{ method: "POST" , action: "/api/form/v1/submit" , id: "newsletterForm" }} withButton={false} fields={input}
+    <Form formSettings={{ method: "POST" , action: "/api/form/v1/submit" , id: "newsletterForm" }} withButton={false}
       withChildren>
       <div class="form-group">
         <input type="hidden" value="form_newsletter" name="model" />

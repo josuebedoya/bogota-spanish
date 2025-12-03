@@ -18,53 +18,53 @@ if (dataMenuHeader?.error) {
 }
 ---
 
-<header>
-  <div class="nav-area-wrapper-relative">
-    <nav class="navbar navbar-area navbar-expand-lg navigation-style-02">
-      <div
-        class="container custom-container custom-container-01 c-header-content"
-      >
-        <div class="responsive-menu">
-          <div class="logo-wrapper">
-            <a
-              href={dataMenuHeader?.find(
-                (e: any) => e.slug === "/" || e.slug === "/home",
-              )?.slug || "/"}
-              class="logo"
+  <header>
+    <div class="nav-area-wrapper-relative">
+      <nav class="navbar navbar-area navbar-expand-lg navigation-style-02">
+        <div
+          class="container custom-container custom-container-01 c-header-content"
+        >
+          <div class="responsive-menu">
+            <div class="logo-wrapper">
+              <a
+                href={dataMenuHeader?.find(
+                  (e: any) => e.slug === "/" || e.slug === "/home",
+                )?.slug || "/"}
+                class="logo"
+              >
+                <img
+                  src={logo?.src_path || "/assets/img/logos/logo.png"}
+                  alt="The Bogotá Spanish School"
+                  class="logo-desktop"
+                />
+                <img
+                  src={favicon?.src_path || "/assets/img/logos/logo-mobile.png"}
+                  alt="The Bogotá Spanish School"
+                  class="logo-mobile"
+                />
+              </a>
+            </div>
+            <BtnsHeader class="btns-mobile" />
+            <button
+              class="navbar-toggler navbar-bs-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#themeim_main_menu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
             >
-              <img
-                src={logo?.src_path || "/assets/img/logos/logo.png"}
-                alt="The Bogotá Spanish School"
-                class="logo-desktop"
-              />
-              <img
-                src={favicon?.src_path || "/assets/img/logos/logo-mobile.png"}
-                alt="The Bogotá Spanish School"
-                class="logo-mobile"
-              />
-            </a>
+              <span class="navbar-toggler-icon"></span>
+            </button>
           </div>
-          <BtnsHeader class="btns-mobile" client:load />
-          <button
-            class="navbar-toggler navbar-bs-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#themeim_main_menu"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <div class="collapse navbar-collapse" id="themeim_main_menu">
+            <Menu
+              menuItems={dataMenuHeader}
+              withSubItems
+              className="navbar-nav"
+            />
+          </div>
+          <BtnsHeader class="btns-desktop" />
         </div>
-        <div class="collapse navbar-collapse" id="themeim_main_menu">
-          <Menu
-            menuItems={dataMenuHeader}
-            withSubItems
-            className="navbar-nav"
-          />
-        </div>
-        <BtnsHeader class="btns-desktop" client:load />
-      </div>
-    </nav>
-  </div>
-</header>
+      </nav>
+    </div>
+  </header>

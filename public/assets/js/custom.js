@@ -9,7 +9,6 @@ const defaultLang = 'en-US';
 function getLang(url) {
   if (!url) return defaultLang;
   const urlObj = new URL(url);
-
   const [ , lang ] = urlObj.pathname.split('/').slice(0, 2);
   if (lang in ui) return lang;
   return defaultLang;
@@ -167,6 +166,7 @@ function getItemsFormSearch() {
     e.preventDefault();
     const formData = new FormData(form);
     const valueInput = formData.get('q');
+    const lang = getLang(window.location.href);
 
 
     const message = (text) => {
@@ -174,20 +174,17 @@ function getItemsFormSearch() {
     }
 
     try {
-      const res = await fetch(`/api/search/v1/search?q=${encodeURIComponent(valueInput)}`);
+      const res = await fetch(`/api/search/v1/search?q=${encodeURIComponent(valueInput)}&lang=${lang}`);
       const data = await res.json();
 
       modalResult.innerHTML = "";
       modalResult.classList.add('active');
-
       if (!data || data?.length <= 0) {
         modalResult.innerHTML = message("No found items");
         return;
       }
 
       // Mapping data response
-      const lang = getLang(window.location.href);
-
       data?.forEach(item => {
         item?.languages_code === lang && (
           modalResult.innerHTML += `

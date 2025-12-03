@@ -13,7 +13,7 @@ const { title, summary, image, videoUrl } = Astro.props as Props;
 
 <div class="image-box-item item-video-student">
   <div class="thumbnail">
-    <img src={image} alt={title} loading="lazy" />
+    <img src={image} alt={title} loading="lazy" style={{height: '100% !important'}}/>
     <a class="video-play-btn mfp-iframe" href={videoUrl}>
       <ShipeSvg2 />
     </a>

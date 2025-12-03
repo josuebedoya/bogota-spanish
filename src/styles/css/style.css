@@ -1373,6 +1373,9 @@ ul {
 .list-courses .item-course.last-item {
   background-color: rgba(245, 245, 245, 0.5647058824);
 }
+.list-courses .thumbnail .left-frame::after{
+  content: none !important;
+}
 
 .plans-courses .card-plan {
   text-align: justify;
@@ -8801,7 +8804,7 @@ header.top {
 }
 
 .courses-spanish {
-  margin-bottom: 11pc;
+  margin-bottom: 6pc;
   margin-top: 0 !important;
 }
 .courses-spanish .title-section * {
@@ -8822,7 +8825,7 @@ header.top {
     max-width: 200px !important;
   }
   .courses-spanish {
-    margin-bottom: 7pc;
+    margin-bottom: 2pc;
   }
 }
 .testimonial-section {
@@ -8882,7 +8885,7 @@ header.top {
   position: relative;
 }
 .chose-area-inner.bg-color-01 {
-  background-color: #FAECFF;
+  background-color: #fdf5f5;
 }
 .chose-area-inner .img-box {
   position: relative;

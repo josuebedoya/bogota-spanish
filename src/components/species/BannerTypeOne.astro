@@ -31,7 +31,7 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                         :<h3 class="content-title text-left">{title}</h3>
                         }
 
-                        <div class="paragraph" set:html={summary}></div>
+                        <div class="paragraph large-size" set:html={summary}></div>
 
                         {titleList && <p class="paragraph"><strong>{titleList}</strong></p>}
 
@@ -47,7 +47,7 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                                                 <i class={item.icon} />
                                             </div>
                                             <div class="content">
-                                                <p class="text">
+                                                <p class="paragraph large-size">
                                                     {item.summary}
                                                 </p>
                                             </div>
@@ -60,7 +60,7 @@ const { phrase, title, summary, titleList, listLevels, button,image, imageLeft= 
                             label={button?.label}
                             link={to(button?.link, getLang(Astro.url) || defaultLang)}
                             type="link"
-                            class="btn-common btn-new"
+                            class="btn-common btn-new text-secondary text-white-hover"
                         /> }
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 ---
 import BannerTypeTwo from "@/components/species/BannerTypeTwo.astro";
 import BannerTypeOne from "@/components/species/BannerTypeOne.astro";
+import BannerSpanishCourses from "@/components/atoms/BannerSpanishCourses.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
 import { getSpanishCoursesData } from "@/server/services/getSpanishCoursesData";
 import { getLang } from "@/i18n/utils";
@@ -15,26 +16,27 @@ if (error) {
 }
 ---
 
-<LayoutPage
-  title={page?.title_main_banner}
-  description={page?.summary_main_banner?.slice(0, 150) + "..."}
->
-  <div class="about-page-area-wrapper single-page-section-top-space">
-    <BannerTypeTwo {...dataMainBanner} mainTitle={true} withGradient={false} />
-    <div class="list-courses">
-      {
-        courses?.reverse()?.map((c: any) => {
-          return c.isEven ? (
-            <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
-              <BannerTypeOne {...c} imageLeft={true} />
-            </div>
-          ) : (
-            <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
-              <BannerTypeTwo {...c} withGradient={false} />
-            </div>
-          );
-        })
-      }
+  <LayoutPage
+    title={page?.title_main_banner}
+    description={page?.summary_main_banner?.slice(0, 150) + "..."}
+  >
+    <div class="about-page-area-wrapper single-page-section-top-space">
+      <BannerTypeTwo {...dataMainBanner} mainTitle={true} withGradient={false} />
+      <div class="list-courses">
+        {
+          courses?.reverse()?.map((c: any) => {
+            return c.isEven ? (
+              <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+                <BannerTypeOne {...c} imageLeft={true} />
+              </div>
+            ) : (
+              <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+                <BannerTypeTwo {...c} withGradient={false} />
+              </div>
+            );
+          })
+        }
+      </div>
+      <BannerSpanishCourses />
     </div>
-  </div>
-</LayoutPage>
+  </LayoutPage>

@@ -1229,6 +1229,10 @@
         padding: 15px 26px;
         font-size: 15px;
     }
+    
+.search-popup .modal-result {
+max-width: 92% !important;
+}
 }
 
 /* mobile tablet layout 375px */

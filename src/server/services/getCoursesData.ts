@@ -32,7 +32,7 @@ export const getCoursesData = async (lang: string = defaultLang) => {
     return {
       id: item.id || i + 1,
       icon: item?.icon || "",
-      image: await directusMedia(item?.image, itemLang?.shurt_title, { width: 660, height: 725 }).then(i => i?.src_path || ""),
+      image: await directusMedia(item?.image, itemLang?.shurt_title, { width: 670, height: 750 }).then(i => i?.src_path || ""),
       isEven,
       isLast,
       ...itemLang

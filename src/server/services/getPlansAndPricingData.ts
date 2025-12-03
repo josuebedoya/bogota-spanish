@@ -22,7 +22,7 @@ export const getPlansAndPricingData = async (lang: string = defaultLang) => {
   if (!data) {
     return nullDataResponse;
   }
-console.log(data);
+
   const dataLang = getLangData(data?.lang, lang);
 
   if (!dataLang) {

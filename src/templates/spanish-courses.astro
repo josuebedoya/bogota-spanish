@@ -7,7 +7,7 @@ import { getSpanishCoursesData } from "@/server/services/getSpanishCoursesData";
 import { getLang } from "@/i18n/utils";
 
 const lang = getLang(Astro.url);
-const { dataMainBanner, page, courses, error } = (await getSpanishCoursesData(
+const { dataMainBanner, dataBannerSpanishCourses, page, courses, error } = (await getSpanishCoursesData(
   lang,
 )) as any;
 
@@ -37,6 +37,6 @@ if (error) {
           })
         }
       </div>
-      <BannerSpanishCourses />
+      <BannerSpanishCourses {...dataBannerSpanishCourses} />
     </div>
   </LayoutPage>

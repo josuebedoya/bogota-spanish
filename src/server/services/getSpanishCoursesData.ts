@@ -59,9 +59,18 @@ export const getSpanishCoursesData = async (lang: string = defaultLang) => {
     }
   });
 
+  // Banner Spanish courses data
+  const dataBannerSpanishCourses = {
+    title: dataLang?.title_taster_session ?? "",
+    summary: dataLang?.summary_taster_session ?? "",
+    button: dataLang?.button_taster_session ?? ""
+  };
+  console.log({ dataBannerSpanishCourses });
+
   return {
     page: dataLang,
     dataMainBanner,
+    dataBannerSpanishCourses,
     courses,
     error
   }

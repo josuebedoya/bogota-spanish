@@ -1,15 +1,25 @@
 ---
 import { to, getLang } from "@/i18n/utils";
+import { routes } from "@/i18n/routes";
+
+interface Props {
+  title: string;
+  summary?: string;
+  button: string;
+};
+
+const { title, summary, button }: Props = Astro.props;
+
 const lang = getLang(Astro.url);
 ---
 
   <div class="taster-session-spanish-courses-wrapper">
     <div class="container">
-      <h2 class="title">Booking a free taster session</h2>
-      <p class="summary">Book a free taster session today and let’s discuss how we can help you achieve your Spanish language goals!</p>
+      <h2 class="title">{title}</h2>
+      <div class="summary" set:html={summary}></div>
       <div class="btn">
-        <a href={to('/book-a-free-class', lang)}>
-          Book a Free Class
+        <a href={to(routes[ "spanish-courses" ][ lang ], lang)}>
+          {button}
         </a>
       </div>
     </div>

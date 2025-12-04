@@ -1,6 +1,7 @@
 import { getLang, useTranslations } from "@/i18n/utils";
+import { directus } from '@/server/directus';
+import { createItems } from "@directus/sdk";
 import type { APIRoute } from "astro";
-import { DIRECTUS_URL as URL, SECRET_DIRECTUS_TOKEN as TOKEN } from 'astro:env/server';
 
 const resFetch = (content = {}, message = '', status = 200) => {
   return new Response(JSON.stringify({ ...content, message }), { status });
@@ -27,28 +28,20 @@ export const POST: APIRoute = async ({ request, url }) => {
       }
     });
 
-    const response = await fetch(`${URL}/items/${model}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(payload),
-    });
+    const res = await directus.request(createItems(model as string, payload as any[]));
 
-    if (!response.ok) {
-      const err = await response.json();
-
-      if (err?.errors?.[ 0 ]?.extensions?.code === 'RECORD_NOT_UNIQUE') {
-        return resFetch({ error: err }, t('form.response.existemail'), 400);
-      }
-
-      return resFetch({ error: err }, t('form.response.error'), 500);
+    if (!res || !Object.keys(res).length) {
+      return resFetch({ error: res }, t('form.response.error'), 500);
     }
 
     return resFetch({ success: true }, t('form.response.success'), 200);
 
-  } catch (error) {
-    return resFetch({ error: "Server error.", errors: error }, t('form.response.error'), 500);
+  } catch (err) {
+    console.log("Error", err);
+    if (err?.errors?.[ 0 ]?.extensions?.code === 'RECORD_NOT_UNIQUE') {
+      return resFetch({ error: err }, t('form.response.existemail'), 400);
+    }
+
+    return resFetch({ error: "Server error.", errors: err }, t('form.response.error'), 500);
   }
 };

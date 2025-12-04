@@ -1,5 +1,6 @@
 ---
 import directus, { directusMedia } from "@/server/directus";
+import {routes} from "@/i18n/routes";
 import { readSettings } from "@directus/sdk";
 import Menu from "@/components/species/Menu.astro";
 import BtnsHeader from "../species/BtnsHeader.astro";
@@ -27,9 +28,7 @@ if (dataMenuHeader?.error) {
           <div class="responsive-menu">
             <div class="logo-wrapper">
               <a
-                href={dataMenuHeader?.find(
-                  (e: any) => e.slug === "/" || e.slug === "/home",
-                )?.slug || "/"}
+                href={routes["home"][lang]}
                 class="logo"
               >
                 <img

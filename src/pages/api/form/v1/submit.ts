@@ -2,6 +2,7 @@ import { getLang, useTranslations } from "@/i18n/utils";
 import { directus } from '@/server/directus';
 import { createItems } from "@directus/sdk";
 import type { APIRoute } from "astro";
+import { createAssessment } from "@/server/recaptcha";
 
 const resFetch = (content = {}, message = '', status = 200) => {
   return new Response(JSON.stringify({ ...content, message }), { status });
@@ -16,9 +17,24 @@ export const POST: APIRoute = async ({ request, url }) => {
     const formData = await request.formData();
 
     const model = formData.get("model");
+    const token = formData.get("recaptchaToken") as string;
+
+    if (!token) {
+      return resFetch({ error: "Missing reCAPTCHA token" }, t('form.response.error'), 400);
+    }
+
     if (!model) {
       return resFetch({ error: "Missing model. Is Required" }, t('form.response.error'), 400);
     }
+
+    const recaptchaScore = await createAssessment({ token, recaptchaAction: "FORM_SUBMIT" });
+console.log("RECAPTCHA Score:", recaptchaScore);
+    /* 
+        const recaptcha = await validateRecaptcha(token);
+        console.log("RECAPTCHA Result:", recaptcha); */
+    /*     if (!recaptcha.ok) {
+          return resFetch({ error: recaptcha.error }, t('form.response.error'), 403);
+        } */
 
     const payload: Record<string, any> = {};
 

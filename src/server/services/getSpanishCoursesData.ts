@@ -65,7 +65,6 @@ export const getSpanishCoursesData = async (lang: string = defaultLang) => {
     summary: dataLang?.summary_taster_session ?? "",
     button: dataLang?.button_taster_session ?? ""
   };
-  console.log({ dataBannerSpanishCourses });
 
   return {
     page: dataLang,

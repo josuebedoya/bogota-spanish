@@ -120,9 +120,15 @@ function submitForm(id, callback) {
     message.textContent = "Enviando...";
     handlerClasses([ messageContainer, loading, loader ], "show", "add");
 
+    // Create token reCAPTCHA
+    const token = await grecaptcha.enterprise.execute('6LcgKiAsAAAAAF5PuTYXvpPELo5Y9DSCz1PLsNyW', { action: 'LOGIN' });
+    console.log("TOKEN reCAPTCHA:", token);
+
     const formData = new FormData(form);
+    formData.append("recaptchaToken", token); // append token to form data
 
     try {
+
       const res = await fetch("/api/form/v1/submit", {
         method: "POST",
         body: formData,

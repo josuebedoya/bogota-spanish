@@ -38,7 +38,7 @@ export const getHomeData = async (lang: string = defaultLang) => {
   const dataLang = getLangData(data?.lang, lang);
 
   const fileBanner = await directusMedia(data?.Image_Main_Banner || "", dataLang?.title_main_banner, { width: 530, height: 640 });
-  const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "", dataLang?.title_levels_starting, { width: 682, height: 695 });
+  const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "", dataLang?.title_levels_starting, { width: 682, height: 790 });
   const fileTesterSession = await directusMedia(data?.image_tester_session || "", dataLang?.title_tester_sesion, { width: 682, height: 423 });
 
   if (!dataLang || !fileBanner || !fileBanner2 || !fileTesterSession) {

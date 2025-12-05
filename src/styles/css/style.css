@@ -1456,7 +1456,7 @@ i.icon-primary:hover {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: #000;
+  color: var(--main-color-two);
   content: "\f067";
   font-family: "fontawesome";
   font-weight: 900;

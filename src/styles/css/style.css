@@ -1450,10 +1450,11 @@ i.icon-primary:hover {
   padding: 20px 20px 20px 20px;
   cursor: pointer;
   position: relative;
+  max-width: 98%;
 }
 .accordion-wrapper .card .card-header a:after {
   position: absolute;
-  right: 20px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   color: var(--main-color-two);
@@ -10986,11 +10987,20 @@ ul.blocks-gallery-grid li {
   list-style: none;
 }
 
+li.single-icon-box-with-text{
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+li.single-icon-box-with-text .paragraph{
+  margin-bottom: 0;
+}
+
 /*# sourceMappingURL=style.css.map */
 
 
 .taster-session-spanish-courses-wrapper{
-  background: #7B7B7B;
+  background: var(--main-color-one);
   padding-block: 180px 90px;
 }
 
@@ -11026,16 +11036,22 @@ padding-inline: 15px;
   line-height: 0;
   text-transform: capitalize;
   padding: 25px 30px;
-  border-radius: 0 !important;
-  border: 2px solid #ddd;
+  border-radius: 15px !important;
+  border: 1px solid #FFFFFF !important;
   text-decoration: none !important;
   line-height: normal !important;
   font-weight: 700;
+  transition: all 0.3s ease-in-out;
+}
+
+.taster-session-spanish-courses-wrapper .btn a:hover{
+  background: transparent;
+  color: #FFFFFF !important;
+  box-shadow: 2px 2px 5px #FFF8;
 }
 
 @media (max-width: 992px) {
   .taster-session-spanish-courses-wrapper{
-  background: #7B7B7B;
   padding-block: 100px 70px;
 }
 
@@ -11064,7 +11080,6 @@ padding-block: 20px 50px;
 
 @media (max-width: 640px) {
   .taster-session-spanish-courses-wrapper{
-  background: #7B7B7B;
   padding-block: 60px 40px;
 }
 

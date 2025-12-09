@@ -20,7 +20,7 @@ const lang = getLang(Astro.url);
 const { route } = await validateRoute(Astro.url, LangDinamic && slug);
 
 const activeItem = langs.find((l) => l.value === lang) || {
-  flag: "/assets/img/logos/" + lang + ".png",
+  flag: "/assets/img/logos/" + lang + ".webp",
   value: lang,
 };
 ---

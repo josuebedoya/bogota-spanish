@@ -14,7 +14,7 @@ const lang = getLang(Astro.url);
 const t = useTranslations(lang);
 
 const langs = Object.keys(languages)?.map((key) => ({
-  flag: "/assets/img/logos/" + key + ".png",
+  flag: "/assets/img/logos/" + key.toLowerCase() + ".png",
   value: key,
 }));
 ---

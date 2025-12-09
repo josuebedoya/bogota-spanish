@@ -51,23 +51,25 @@ export async function GET(context: APIContext) {
   const site = context.site?.toString() || SITE_URL;
 
   // Generate URLs for all content
-  const urls: Array<{ loc: string; changefreq?: string; priority?: number }> = [];
+  const urls: Array<{ loc: string; changefreq?: string; priority?: number, lastMod?: string }> = [];
 
   // Static pages
-  urls.push({ loc: `${site}`, changefreq: 'daily', priority: 1.0 });
+  urls.push({ loc: `${site}`, changefreq: 'daily', priority: 1.0, lastMod: '2025/12/12 13:12:12' });
 
 
   links.forEach((item) => {
-    urls.push({ loc: `${site}${item.link}/`, changefreq: 'daily', priority: 0.9 })
+    urls.push({ loc: `${site}${item.link}/`, changefreq: 'daily', priority: 0.9, lastMod: '2025/12/12 13:12:12' })
   })
 
   // Generate sitemap XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>${JSON.stringify(formatItems, )}</url>
 ${urls.map(url => `<url>
     <loc>${url.loc}</loc>${url.changefreq ? `
     <changefreq>${url.changefreq}</changefreq>` : ''}${url.priority !== undefined ? `
     <priority>${url.priority}</priority>` : ''}
+    <lastMod>${url.lastMod || new Date().toISOString()}</lastMod>
   </url>`).join('\n')}
 </urlset>`;
 

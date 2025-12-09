@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://dev_bspanish.imaginadevs.com/sitemap.xml

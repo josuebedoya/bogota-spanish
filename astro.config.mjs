@@ -14,7 +14,8 @@ export default defineConfig({
             DIRECTUS_URL: envField.string({ context: "server", access: "secret" }),
             SECRET_DIRECTUS_TOKEN: envField.string({ context: "server", access: "secret" }),
             SECRET_RECAPTCHA_KEY: envField.string({ context: "server", access: "secret" }),
-            SECRET_RECAPTCHA_PROJECT_ID: envField.string({ context: "server", access: "secret" })
+            SECRET_RECAPTCHA_PROJECT_ID: envField.string({ context: "server", access: "secret" }),
+            SITE_URL: envField.string({ context: "client", access: "public" })
         }
     },
     i18n: {

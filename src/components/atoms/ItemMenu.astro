@@ -8,13 +8,15 @@ interface Props {
 }
 
 const { label, slug, hasItems = false, isActive = false, id } = Astro.props;
+
+const pathItem = (slug.startsWith('/') || slug.startsWith('http')) ? slug : `/${slug}`;
 ---
 
 <li
   class={`link ${hasItems ? "menu-item-has-children" : ""} ${isActive ? "current-menu-item" : ""}`}
   aria-label={id?.toString() || label}
 >
-  <a href={slug} target="_self">{label}</a>
+  <a href={pathItem} target="_self">{label}</a>
 
   {
     hasItems && (

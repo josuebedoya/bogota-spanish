@@ -120,12 +120,17 @@ function submitForm(id, callback) {
     message.textContent = "Enviando...";
     handlerClasses([ messageContainer, loading, loader ], "show", "add");
 
-    // Create token reCAPTCHA
-    const token = await grecaptcha.enterprise.execute('6LcgKiAsAAAAAF5PuTYXvpPELo5Y9DSCz1PLsNyW', { action: 'LOGIN' });
-    console.log("TOKEN reCAPTCHA:", token);
-
     const formData = new FormData(form);
-    formData.append("recaptchaToken", token); // append token to form data
+
+    try {
+      // Create token reCAPTCHA
+      const token = await grecaptcha.execute('6LcgKiAsAAAAAF5PuTYXvpPELo5Y9DSCz1PLsNyW', { action: 'LOGIN' });
+
+      formData.append("recaptchaToken", token); // append token to form data
+
+    } catch (err) {
+      console.error("Error generating reCAPTCHA token:", err);
+    }
 
     try {
 

@@ -24,33 +24,20 @@ const activeItem = langs.find((l) => l.value === lang) || {
   value: lang,
 };
 ---
-
-<div id="langSelector" class="lang-selector">
-  <div class="active-lang">
-    <img
-      src={activeItem.flag}
-      alt={activeItem.value}
-      width="30"
-      height="20"
-      title={activeItem.value}
-    />
+  <div id="langSelector" class="lang-selector">
+    <div class="active-lang">
+      <img src={activeItem.flag} alt={activeItem.value} width="30" height="20" title={activeItem.value} />
+    </div>
+    <div id="langsItems" class="list-langs">
+      {
+        langs?.map((lang: item) => (
+          <a href={`/${lang.value}/${routes[ route || "home" ][ lang.value ]}`}>
+            <div class="lang" aria-label={lang.value}>
+              <img src={lang.flag} alt={lang.value} width="30" height="20" title={lang.value} />
+              <span>{lang.value}</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
   </div>
-  <div id="langsItems" class="list-langs">
-    {
-      langs?.map((lang: item) => (
-        <a href={`/${lang.value}/${routes[route || "home"][lang.value]}`}>
-          <div class="lang" aria-label={lang.value}>
-            <img
-              src={lang.flag}
-              alt={lang.value}
-              width="30"
-              height="20"
-              title={lang.value}
-            />
-            <span>{lang.value}</span>
-          </div>
-        </a>
-      ))
-    }
-  </div>
-</div>

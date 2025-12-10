@@ -1,6 +1,4 @@
 ---
-import { SECRET_RECAPTCHA_KEY as KEY } from 'astro:env/server'
-
 const { title, description } = Astro.props;
 import Header from "@/components/orgnisms/Header.astro";
 import Head from "@/layouts/Head.astro";
@@ -61,8 +59,6 @@ const lang = Astro.params.lang || "en-US";
 				integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ=="
 				crossorigin="anonymous"
 				referrerpolicy="no-referrer"></script>
-			<!-- ReCAPTCHA -->
-			<script is:inline defer src={`https://www.google.com/recaptcha/enterprise.js?render=${KEY}`}></script>
 
 			<!-- custom scripts -->
 			<script is:inline src="/assets/js/jquery-3.6.0.min.js"></script>

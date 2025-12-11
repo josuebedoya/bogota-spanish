@@ -3,10 +3,9 @@ import { directusMedia, directus } from "@/server/directus";
 import { readSettings } from "@directus/sdk";
 const { title, description } = Astro.props;
 const siteSettings = await directus.request(readSettings());
-const favicon = await directusMedia(siteSettings?.public_favicon,title);
-import '@/styles/main.css';
-import { PUBLIC_RECAPTCHA_SITE_KEY as KEY } from 'astro:env/client'
-
+const favicon = await directusMedia(siteSettings?.public_favicon, title);
+import "@/styles/main.css";
+import { PUBLIC_RECAPTCHA_SITE_KEY as KEY } from "astro:env/client";
 ---
 
 <head>
@@ -21,6 +20,19 @@ import { PUBLIC_RECAPTCHA_SITE_KEY as KEY } from 'astro:env/client'
   <meta name="description" content={description} />
   <link rel="canonical" href={Astro.request.url} />
   <title>{title}</title>
-  			<!-- ReCAPTCHA -->
-			<script defer src={`https://www.google.com/recaptcha/api.js?render=${KEY}`}></script>
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={Astro.request.url} />
+  <meta property="og:site_name" content={siteSettings?.public_project_name} />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- ReCAPTCHA -->
+  <script defer src={`https://www.google.com/recaptcha/api.js?render=${KEY}`}
+  ></script>
 </head>

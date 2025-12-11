@@ -18,7 +18,13 @@ const { data, classes, classesItem } = Astro.props;
     data?.map((s: item) => (
       <li class={classesItem || ""}>
         <a href={s?.link} target="_blank" rel="noopener noreferrer">
-          <i class={staticData.social.icons[s?.type || "default"]} />
+          <i
+            class={
+              staticData.social.icons[
+                s?.type as keyof typeof staticData.social.icons
+              ] || "default"
+            }
+          />
         </a>
       </li>
     ))

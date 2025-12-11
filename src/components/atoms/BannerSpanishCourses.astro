@@ -6,21 +6,21 @@ interface Props {
   title: string;
   summary?: string;
   button: string;
-};
+}
 
 const { title, summary, button }: Props = Astro.props;
 
 const lang = getLang(Astro.url);
 ---
 
-  <div class="taster-session-spanish-courses-wrapper">
-    <div class="container">
-      <h2 class="title">{title}</h2>
-      <div class="summary" set:html={summary}></div>
-      <div class="btn">
-        <a href={to(routes[ "spanish-courses" ][ lang ], lang)}>
-          {button}
-        </a>
-      </div>
+<div class="taster-session-spanish-courses-wrapper">
+  <div class="container">
+    <h2 class="title">{title}</h2>
+    <div class="summary" set:html={summary} />
+    <div class="btn">
+      <a href={to(routes["spanish-courses"][lang], lang)}>
+        {button}
+      </a>
     </div>
   </div>
+</div>

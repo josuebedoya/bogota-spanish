@@ -1,7 +1,5 @@
 ---
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import directus from "@/server/directus";
-import { readFields, readCollections } from "@directus/sdk";
 import Social from "@/components/species/Social.astro";
 import ContactList2 from "@/components/species/ContactList2.astro";
 import Form from "@/components/species/Form.astro";
@@ -24,9 +22,9 @@ if (error || socialError) {
 }
 const dataForm = [
   {
-    type: 'hidden',
-    name: 'model',
-    value: 'form_contact'
+    type: "hidden",
+    name: "model",
+    value: "form_contact",
   },
   {
     type: "text",
@@ -64,70 +62,64 @@ const dataForm = [
     widthFull: true,
   },
 ];
-
-const socials = await directus.request(readFields('info_contact'))
 ---
 
-  <LayoutPage
-    title={data?.title || "Contact us"}
-    description={data?.description || ""}
+<LayoutPage
+  title={data?.title || "Contact us"}
+  description={data?.description || ""}
+>
+  <div
+    class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
   >
-    <div
-      class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
-    >
-      <div class="breadcrumb-wrap style-01">
-        <div class="container custom-container-01">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="breadcrumb-content">
-                <h1 class="title">{data?.title}</h1>
-                <div class="details" set:html={data?.description} />
-              </div>
+    <div class="breadcrumb-wrap style-01">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="breadcrumb-content">
+              <h1 class="title">{data?.title}</h1>
+              <div class="details" set:html={data?.description} />
             </div>
           </div>
         </div>
       </div>
-      <section class="contact-form-area-wrapper section-bottom-space">
-        <div class="container custom-container-01">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="apply-form-inner">
-                <div class="row justify-content-between">
-                  <div class="col-lg-5">
-                    <div class="contact-address">
-                      <h3 class="title">{t("plans-and-pricing.item.btn")}</h3>
-                      <ContactList2 data={dataSocial} />
-                      <Social
-                        data={dataSocial?.social || []}
-                        classes="ul social-media-list style-01 color-02"
-                        classesItem="single-social-item"
-                      />
-                    </div>
+    </div>
+    <section class="contact-form-area-wrapper section-bottom-space">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="apply-form-inner">
+              <div class="row justify-content-between">
+                <div class="col-lg-5">
+                  <div class="contact-address">
+                    <h3 class="title">{t("plans-and-pricing.item.btn")}</h3>
+                    <ContactList2 data={dataSocial} />
+                    <Social
+                      data={dataSocial?.social || []}
+                      classes="ul social-media-list style-01 color-02"
+                      classesItem="single-social-item"
+                    />
                   </div>
-                  <div class="col-lg-7">
-                    <div class="contact-form">
-                      <Form
-                        title={t("form.title")}
-                        fields={dataForm}
-                        classesCols="col-md-6 py-3"
-                        submitLabel={t("contact.form.btn.label")}
-                        formSettings={{
-                          method: "POST",
-                          action: "/api/form/v1/submit",
-                          id: "contactForm"
-                        }}
-                      />
-                    </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="contact-form">
+                    <Form
+                      title={t("form.title")}
+                      fields={dataForm}
+                      classesCols="col-md-6 py-3"
+                      submitLabel={t("contact.form.btn.label")}
+                      formSettings={{
+                        method: "POST",
+                        action: "/api/form/v1/submit",
+                        id: "contactForm",
+                      }}
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
-    <p style={{ wordBreak: 'break-word', maxWidth: '1700px' }}>
-      {JSON.stringify(Object.keys(socials?.filter(i => i.collection === 'info_contact')))}</p>
-    <p style={{ wordBreak: 'break-word', maxWidth: '1700px' }}>
-      {JSON.stringify(socials?.filter(i => i.collection === 'info_contact'))}</p>
-  </LayoutPage>
+      </div>
+    </section>
+  </div>
+</LayoutPage>

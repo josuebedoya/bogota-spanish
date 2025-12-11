@@ -5,8 +5,8 @@ import { submitForm } from "@/utils/submitForm.js";
 import { PUBLIC_RECAPTCHA_SITE_KEY } from "astro:env/client";
 
 interface Props {
-  title: string;
-  fields: any;
+  title?: string;
+  fields?: any;
   classesCols?: string;
   submitLabel?: string;
   formSettings?: any;
@@ -30,10 +30,10 @@ const {
       !withChildren && (
         <>
           <div class="part">
-            <h5 class="title">{title}</h5>
+            {title && <h5 class="title">{title}</h5>}
             <div class="form-element">
               <div class="row">
-                {fields.map((field: any) => {
+                {fields?.map((field: any) => {
                   if (field.type === "select") {
                     return (
                       <Selectfield

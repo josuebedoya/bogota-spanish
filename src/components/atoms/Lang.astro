@@ -25,28 +25,43 @@ const activeItem = langs.find((l) => l.value === lang) || {
   value: lang,
 };
 ---
-  <div id="langSelector" class="lang-selector">
-    <div class="active-lang">
-      <img src={activeItem.flag} alt={activeItem.value} width="30" height="20" title={activeItem.value} />
-    </div>
-    <div id="langsItems" class="list-langs">
-      {
-        langs?.map((lang: item) => {
 
-          const isHOme = (route === "home");
-          const path = isHOme ? routes[ "home" ][ lang.value ] :
-            lang.value === defaultLang
-              ? routes[ route || "home" ][ lang.value ]
-              : `${lang.value}/${routes[ route || "home" ][ lang.value ]}`;
-          return (
-            <a href={isHOme ? path : `/${path}`}>
-              <div class="lang" aria-label={lang.value}>
-                <img src={lang.flag} alt={lang.value} width="30" height="20" title={lang.value} />
-                <span>{lang.value}</span>
-              </div>
-            </a>
-          )
-        })
-      }
-    </div>
+<div id="langSelector" class="lang-selector">
+  <div class="active-lang">
+    <img
+      src={activeItem.flag}
+      alt={activeItem.value}
+      width="30"
+      height="20"
+      title={activeItem.value}
+    />
   </div>
+  <div id="langsItems" class="list-langs">
+    {
+      langs?.map((lang: item) => {
+        const isHOme = route === "home";
+        const path = isHOme
+          ? routes["home"][lang.value as keyof (typeof routes)["home"]]
+          : lang.value === defaultLang
+            ? routes[(route as keyof typeof routes) || "home"][
+                lang.value as keyof (typeof routes)["home"]
+              ]
+            : `${lang.value}/${routes[(route as keyof typeof routes) || "home"][lang.value as keyof (typeof routes)["home"]]}`;
+        return (
+          <a href={isHOme ? path : `/${path}`}>
+            <div class="lang" aria-label={lang.value}>
+              <img
+                src={lang.flag}
+                alt={lang.value}
+                width="30"
+                height="20"
+                title={lang.value}
+              />
+              <span>{lang.value}</span>
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
+</div>

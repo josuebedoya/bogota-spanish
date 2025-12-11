@@ -15,43 +15,43 @@ if (errorCourses || errorPage) {
 }
 ---
 
-  <LayoutPage title={dataPage?.title} description={dataPage?.description}>
-    <div
-      class="instructors-wrapper plans-courses single-page-section-top-space single-page-section-bottom-space margin-top-110"
-    >
-      <div class="breadcrumb-wrap style-01">
-        <div class="container custom-container-01">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="breadcrumb-content">
-                <h1 class="title">{dataPage?.title}</h1>
-                <div class="details" set:html={dataPage?.description} />
-              </div>
+<LayoutPage title={dataPage?.title} description={dataPage?.description}>
+  <div
+    class="instructors-wrapper plans-courses single-page-section-top-space single-page-section-bottom-space margin-top-110"
+  >
+    <div class="breadcrumb-wrap style-01">
+      <div class="container custom-container-01">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="breadcrumb-content">
+              <h1 class="title">{dataPage?.title}</h1>
+              <div class="details" set:html={dataPage?.description} />
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <section class="our-team-area-wrapper">
-        <div class="our-team-inner">
-          <div class="container custom-container-01">
-            <div class="row column-gap-50">
-              {
-                courses?.reverse()?.map((p) => (
-                  <div class="col-md-6 col-lg-6 col-xl-4">
-                    <ItemPlan
-                      title={p.shurt_title}
-                      subTitle={p.subtitle_plan}
-                      description={p.features_plan}
-                      icon={p.icon}
-                      lang={lang}
-                    />
-                  </div>
-                ))
-              }
-            </div>
+    <section class="our-team-area-wrapper">
+      <div class="our-team-inner">
+        <div class="container custom-container-01">
+          <div class="row column-gap-50">
+            {
+              courses?.reverse()?.map((p) => (
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                  <ItemPlan
+                    title={p.shurt_title}
+                    subTitle={p.subtitle_plan}
+                    description={p.features_plan}
+                    icon={p.icon}
+                    lang={lang}
+                  />
+                </div>
+              ))
+            }
           </div>
         </div>
-      </section>
-    </div>
-  </LayoutPage>
+      </div>
+    </section>
+  </div>
+</LayoutPage>

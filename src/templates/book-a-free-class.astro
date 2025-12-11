@@ -14,9 +14,9 @@ const { dataLang: data, error } = (await getPageData(
 
 const dataForm = [
   {
-    type: 'hidden',
-    name:'model',
-    value:'form_book_a_free_class'
+    type: "hidden",
+    name: "model",
+    value: "form_book_a_free_class",
   },
   {
     type: "text",
@@ -107,7 +107,7 @@ if (error) {
                       formSettings={{
                         method: "POST",
                         action: "/api/form/v1/submit",
-                        id: "bookFreeClassForm"
+                        id: "bookFreeClassForm",
                       }}
                     />
                   </div>

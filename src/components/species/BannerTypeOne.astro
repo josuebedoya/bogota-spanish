@@ -58,7 +58,7 @@ const { phrase, title, summary, titleList, listLevels, button, image, imageLeft 
             </div>}
             {button && <BtnWrap
               label={button?.label}
-              link={to(button?.link, getLang(Astro.url) || defaultLang)}
+              link={to(button?.link, getLang(Astro.url) || defaultLang) || ''}
               type="link"
               class="btn-common btn-new text-secondary text-white-hover"
             />}

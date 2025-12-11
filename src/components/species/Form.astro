@@ -1,6 +1,8 @@
 ---
 import Selectfield from "@/components/atoms/Selectfield.astro";
 import InputBasic from "@/components/atoms/InputBasic.astro";
+import { submitForm } from "@/utils/submitForm.js";
+import { PUBLIC_RECAPTCHA_SITE_KEY } from "astro:env/client";
 
 interface Props {
   title: string;
@@ -11,19 +13,27 @@ interface Props {
   withButton?: boolean;
   withChildren?: boolean;
 }
-const { title, fields, classesCols, submitLabel = "Submit", formSettings, withButton = true, withChildren = false } = Astro.props;
+const {
+  title,
+  fields,
+  classesCols,
+  submitLabel = "Submit",
+  formSettings,
+  withButton = true,
+  withChildren = false,
+} = Astro.props;
 ---
 
-<div class="form" id={`${formSettings?.id + 'Container'}`}>
-    <form class={`form ${formSettings?.class}`} {...formSettings}>
-      {!withChildren && <>
-        <div class="part">
-          <h5 class="title">{title}</h5>
-          <div class="form-element">
-            <div class="row">
-              {
-                fields.map((field: any) => {
-
+<div class="form" id={`${formSettings?.id + "Container"}`}>
+  <form class={`form ${formSettings?.class}`} {...formSettings}>
+    {
+      !withChildren && (
+        <>
+          <div class="part">
+            <h5 class="title">{title}</h5>
+            <div class="form-element">
+              <div class="row">
+                {fields.map((field: any) => {
                   if (field.type === "select") {
                     return (
                       <Selectfield
@@ -42,7 +52,9 @@ const { title, fields, classesCols, submitLabel = "Submit", formSettings, withBu
                     return (
                       <InputBasic
                         classes={
-                          classesCols && !field?.widthFull && field.type !== "hidden"
+                          classesCols &&
+                          !field?.widthFull &&
+                          field.type !== "hidden"
                             ? "col-md-6 py-3"
                             : "col-12"
                         }
@@ -54,30 +66,42 @@ const { title, fields, classesCols, submitLabel = "Submit", formSettings, withBu
                       />
                     );
                   }
-                })
-              }
+                })}
+              </div>
             </div>
           </div>
-        </div>
-        {withButton &&
-          <div class="form-submit text-right mt-5">
-            <button type="submit" class="btn-common btn-active"
-            >{submitLabel || "Submit"}
-            </button>
-          </div>
-        }
-      </>}
-      {withChildren && <slot></slot>}
-    </form>
+          {withButton && (
+            <div class="form-submit text-right mt-5">
+              <button type="submit" class="btn-common btn-active">
+                {submitLabel || "Submit"}
+              </button>
+            </div>
+          )}
+        </>
+      )
+    }
+    {withChildren && <slot />}
+  </form>
 
-    <div id="message">
+  <div id="message">
+    <p class="message"></p>
+  </div>
 
-      <p class="message">
-
-      </p>
-    </div>
-
-    <div class="loading">
-      <div class="loader"></div>
-    </div>
+  <div class="loading">
+    <div class="loader"></div>
+  </div>
 </div>
+
+<script
+  set:html={`
+  ${formSettings?.callback && formSettings?.callback}
+
+  ${submitForm}
+
+    window.addEventListener("DOMContentLoaded", () =>
+    submitForm("${formSettings?.id}", "${PUBLIC_RECAPTCHA_SITE_KEY}", "${
+      formSettings?.callbackName || ""
+    }"),
+  );
+  `}
+/>

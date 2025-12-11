@@ -1,7 +1,7 @@
 export const routes = {
   "home": {
     "en-US": '/',
-    "es-ES": '/es-ES'
+    "es-ES": 'es-ES'
   },
   "about-us": {
     "en-US": 'about-us',

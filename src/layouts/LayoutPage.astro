@@ -52,6 +52,7 @@ const lang = Astro.params.lang || "en-US";
 				integrity="sha512-pd9YFLsGdZIRG1ChLLdpxgGT+xR7rVjsHqm6RP0toUadPB4XZZ7LlqzX3IhnpMd2Cb8b2s8yVFwY21epgr84qw=="
 				crossorigin="anonymous"
 				referrerpolicy="no-referrer"></script>
+			<!-- End Font Awesome -->
 
 			<!-- Bootstrap.min.js -->
 			<script
@@ -59,6 +60,15 @@ const lang = Astro.params.lang || "en-US";
 				integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ=="
 				crossorigin="anonymous"
 				referrerpolicy="no-referrer"></script>
+			<!-- End Bootstrap.min.js -->
+
+			<!-- Google Tag Manager -->
+			<script is:inline defer>(function(w,d,s,l,i){w[ l ] = w[ l ] || [];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KBVR27K2');</script>
+			<!-- End Google Tag Manager -->
 
 			<!-- custom scripts -->
 			<script is:inline src="/assets/js/jquery-3.6.0.min.js"></script>
@@ -77,7 +87,6 @@ const lang = Astro.params.lang || "en-US";
 			<script is:inline src="/assets/js/viewport.jquery.js"></script>
 			<script is:inline src="/assets/js/wow.min.js"></script>
 			<script is:inline src="/assets/js/custom.js"></script>
-
 			<!-- End Scripts Load -->
 		</body>
 	</html>

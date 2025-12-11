@@ -36,8 +36,9 @@ export async function validateRoute(url: URL, slug?: string) {
   const pathParts = url.pathname.split('/').filter(Boolean);
 
   if (pathParts.length <= 1) {
+    console.log(pathParts);
     // Validate if the path is only the language code (e.g., /en-US or /es-ES)
-    if (pathParts[ 0 ] in languages) return homeResponse;
+    if (pathParts[ 0 ] in languages || !pathParts[0]) return homeResponse;
 
     const t = foundRoute(pathParts[ 0 ], langPage);
     return t ? { route: t as R, lang: langPage as Ui } : nullResponse;

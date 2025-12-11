@@ -1,38 +1,39 @@
 ---
 import { getLang, useTranslations } from "@/i18n/utils";
 import Form from "@/components/species/Form.astro";
+import { popupNewsletter } from "@/utils/popupNewsletter.js";
 
 const lang = getLang(Astro.url);
 const t = useTranslations(lang);
-
-const input = [
-{
-type: "hidden",
-name: 'model',
-value: 'form_newsletter'
-},
-{
-type: "email",
-name: "email",
-placeholder: t("footer.newsletter.form.input"),
-class: "form-control",
-required: true,
-"aria-required": "true",
-}
-]
 ---
 
 <div class="subscribe-form">
   <div class="form-group">
-    <Form formSettings={{ method: "POST" , action: "/api/form/v1/submit" , id: "newsletterForm" }} withButton={false}
-      withChildren>
+    <Form
+      formSettings={{
+        method: "POST",
+        action: "/api/form/v1/submit",
+        id: "newsletterForm",
+        callback: popupNewsletter,
+        callbackName: "popupNewsletter",
+      }}
+      withButton={false}
+      withChildren
+    >
       <div class="form-group">
         <input type="hidden" value="form_newsletter" name="model" />
-        <input  value="" name="email" placeholder={t("footer.newsletter.form.input")} class="form-control"
-           />
+        <input
+          value=""
+          name="email"
+          placeholder={t("footer.newsletter.form.input")}
+          class="form-control"
+        />
         <div class="btn-send">
-          <button class="subscribe-btn action-suscribe bg-primary text-white" type="submit">
-            <i class="fa-regular fa-bell" style={{marginRight: '10px'}}></i>
+          <button
+            class="subscribe-btn action-suscribe bg-primary text-white"
+            type="submit"
+          >
+            <i class="fa-regular fa-bell" style={{ marginRight: "10px" }}></i>
             {t("footer.newsletter.form.button")}
           </button>
         </div>
@@ -45,6 +46,6 @@ required: true,
       <i class="fa-solid fa-check"></i>
     </div>
     <div class="text">{t("footer.newsletter.subscribed")}</div>
-    <br/>
+    <br />
   </div>
 </div>

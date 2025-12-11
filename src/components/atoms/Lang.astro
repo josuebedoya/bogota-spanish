@@ -2,6 +2,7 @@
 import { validateRoute } from "@/i18n/utils";
 import { getLang } from "@/i18n/utils";
 import { routes } from "@/i18n/routes";
+import { defaultLang } from "@/i18n/ui";
 
 type item = {
   flag: string;
@@ -30,14 +31,22 @@ const activeItem = langs.find((l) => l.value === lang) || {
     </div>
     <div id="langsItems" class="list-langs">
       {
-        langs?.map((lang: item) => (
-          <a href={`/${lang.value}/${routes[ route || "home" ][ lang.value ]}`}>
-            <div class="lang" aria-label={lang.value}>
-              <img src={lang.flag} alt={lang.value} width="30" height="20" title={lang.value} />
-              <span>{lang.value}</span>
-            </div>
-          </a>
-        ))
+        langs?.map((lang: item) => {
+
+          const isHOme = (route === "home");
+          const path = isHOme ? routes[ "home" ][ lang.value ] :
+            lang.value === defaultLang
+              ? routes[ route || "home" ][ lang.value ]
+              : `${lang.value}/${routes[ route || "home" ][ lang.value ]}`;
+          return (
+            <a href={isHOme ? path : `/${path}`}>
+              <div class="lang" aria-label={lang.value}>
+                <img src={lang.flag} alt={lang.value} width="30" height="20" title={lang.value} />
+                <span>{lang.value}</span>
+              </div>
+            </a>
+          )
+        })
       }
     </div>
   </div>

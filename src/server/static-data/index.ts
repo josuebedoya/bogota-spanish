@@ -42,7 +42,7 @@ export const staticData = {
 		icons: {
 			'0': 'fa-brands fa-facebook-f',
 			'1': 'fa-brands fa-instagram',
-			'2': 'fa-brands fa-twitter',
+			'2': 'fa-brands fa-x-twitter',
 			'3': 'fa-brands fa-tiktok',
 			'4': 'fa-brands fa-youtube',
 			'5': 'fa-brands fa-linkedin-in',

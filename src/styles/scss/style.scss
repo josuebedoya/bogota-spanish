@@ -33,7 +33,6 @@
 
 // Sections Here 
 @use "sections/_breadcrumb";
-@use "sections/_comments";
 @use "sections/_widgets";
 @use "sections/_navbar";
 @use "sections/_top_bar";
@@ -56,7 +55,6 @@
 @use "wp_unite_test/_default_navbar";
 @use "wp_unite_test/_wp_block";
 @use "wp_unite_test/_wp_caption";
-@use "wp_unite_test/_post_navigation";
-@use "wp_unite_test/_wp_block_color";
+
 @use "wp_unite_test/_wp_table";
 @use "wp_unite_test/_wp_list";

@@ -224,45 +224,6 @@ code {
     }
 }
 
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
-    clear: both;
-}
-
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-    float: left;
-    width: 50%;
-}
-
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-    float: right;
-    text-align: right;
-    width: 50%;
-}
-
-.comment-navigation .nav-previous>a,
-.posts-navigation .nav-previous>a,
-.post-navigation .nav-previous>a,
-.comment-navigation .nav-next>a,
-.posts-navigation .nav-next>a,
-.post-navigation .nav-next>a {
-    transition: .3s ease-in;
-}
-
-.comment-navigation .nav-previous:hover>a,
-.posts-navigation .nav-previous:hover>a,
-.post-navigation .nav-previous:hover>a,
-.comment-navigation .nav-next:hover>a,
-.posts-navigation .nav-next:hover>a,
-.post-navigation .nav-next:hover>a {
-    color: var(--main-color-one);
-}
-
 /*--------------------------------------------------------------
     Swiper Slider Notification
 --------------------------------------------------------------*/
@@ -928,8 +889,6 @@ code {
 .clear:after,
 .entry-content:before,
 .entry-content:after,
-.comment-content:before,
-.comment-content:after,
 .site-header:before,
 .site-header:after,
 .site-content:before,
@@ -943,17 +902,12 @@ code {
 
 .clear:after,
 .entry-content:after,
-.comment-content:after,
 .site-header:after,
 .site-content:after,
 .site-footer:after {
     clear: both;
 }
 
-
-/*--------------------------------------------------------------
-## Posts and pages
---------------------------------------------------------------*/
 
 .sticky {
     display: block;
@@ -969,8 +923,7 @@ code {
 --------------------------------------------------------------*/
 
 .page-content .wp-smiley,
-.entry-content .wp-smiley,
-.comment-content .wp-smiley {
+.entry-content .wp-smiley{
     border: none;
     margin-bottom: 0;
     margin-top: 0;
@@ -1029,36 +982,6 @@ dl,
 ol,
 ul {
     padding-left: 15px;
-}
-
-.post-password-form input {
-    display: block;
-    border: 1px solid #e2e2e2;
-    height: 50px;
-    border-radius: 3px;
-    padding: 0 20px;
-}
-
-.post-password-form label {
-    font-weight: 600;
-    color: #333;
-}
-
-.post-password-form input[type=submit] {
-    width: 100px;
-    height: 50px;
-    background-color: var(--main-color-one);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    transition: .3s ease-in;
-}
-
-.post-password-form input[type=submit]:hover {
-    background-color: #121A2F;
 }
 
 .footer-widget .table td,

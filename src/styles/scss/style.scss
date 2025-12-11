@@ -5,14 +5,10 @@
 
 // Elements Here 
 @use "elements/accordion";
-@use "elements//back_top";
 @use "elements/blockquote";
-@use "elements/blog_grid_item";
-@use "elements/blog";
 @use "elements/button";
 @use "elements/_icon_box_with_text";
 @use "elements/image_box_item";
-@use "elements/preloader";
 @use "elements/section_title";
 @use "elements/search_popup";
 @use "elements/social_link";
@@ -28,8 +24,6 @@
 @use "elements/our_team_item";
 @use "elements/slider_controller";
 @use "elements/institutes";
-@use "elements/check_point";
-@use "elements/pagination";
 @use "elements/services";
 @use "elements/lang";
 @use "elements/form";
@@ -54,7 +48,6 @@
 @use "sections/courses_section";
 @use "sections/features_section";
 @use "sections/testimonial_section";
-@use "sections/blog_sections";
 @use "sections/_chose_us";
 @use "sections/_faq";
 @use "sections/_course_details_wrapper";
@@ -65,7 +58,5 @@
 @use "wp_unite_test/_wp_caption";
 @use "wp_unite_test/_post_navigation";
 @use "wp_unite_test/_wp_block_color";
-@use "wp_unite_test/_wp_gallery";
 @use "wp_unite_test/_wp_table";
 @use "wp_unite_test/_wp_list";
-@use "wp_unite_test/_wp_pagination";

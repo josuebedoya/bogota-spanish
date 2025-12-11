@@ -21,10 +21,11 @@ const t = useTranslations(lang);
       withChildren
     >
       <div class="form-group">
-        <input type="hidden" value="form_newsletter" name="model" />
+        <input type="hidden" value="form_newsletter" name="model"/>
         <input
           value=""
           name="email"
+          type="email" required
           placeholder={t("footer.newsletter.form.input")}
           class="form-control"
         />

@@ -113,87 +113,22 @@
             }
         });
 
-        //Odometer
-        if ($(".single-counterup").length) {
-            $(".single-counterup").each(function () {
-                $(this).isInViewport(function (status) {
-                    if (status === "entered") {
-                        for (var i = 0; i < document.querySelectorAll(".odometer").length; i++) {
-                            var el = document.querySelectorAll('.odometer')[i];
-                            el.innerHTML = el.getAttribute("data-odometer-final");
-                        }
-                    }
-                });
-            });
-        }
-
         // Title Shape Scroll animation
         $(window).on('scroll', function () {
             let shape = document.querySelectorAll('.title-shape');
 
             for (let i = 0; i < shape.length; i++) {
                 var windowHeight = window.innerHeight;
-                var elementTop = shape[i].getBoundingClientRect().top;
+                var elementTop = shape[ i ].getBoundingClientRect().top;
                 var elementVisible = 150;
 
                 if (elementTop < windowHeight - elementVisible) {
-                    shape[i].classList.add("active");
+                    shape[ i ].classList.add("active");
                 } else {
-                    shape[i].classList.remove("active");
+                    shape[ i ].classList.remove("active");
                 }
             }
         });
-        // Plane Shape Scroll animation
-        $(window).on('scroll', function () {
-            let shape = document.querySelectorAll('.plane-wrap');
-
-            for (let i = 0; i < shape.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = shape[i].getBoundingClientRect().top;
-                var elementVisible = 200;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    shape[i].classList.add("active");
-                } else {
-                    shape[i].classList.remove("active");
-                }
-            }
-        });
-
-        /*--------------------
-           Remove cart item
-        ---------------------*/
-        $('.remove-cart').on('click', function (e) {
-            e.preventDefault();
-            $(this).parent().parent().hide(300);
-        });
-
-        /*-------------------------
-            product + - start here
-        -------------------------*/
-
-        $(function () {
-            $(".qtybutton").on("click", function () {
-                var $button = $(this);
-                var oldValue = $button.parent().find("input").val();
-                if ($button.text() === "+") {
-                    var newVal = parseFloat(oldValue) + 1;
-                } else {
-                    // Don't allow decrementing below zero
-                    if (oldValue > 1) {
-                        var newVal = parseFloat(oldValue) - 1;
-                    } else {
-                        newVal = 1;
-                    }
-                }
-                $button.parent().find("input").val(newVal);
-            });
-        });
-
-        /*--------------------
-            wow js init
-        ---------------------*/
-        new WOW().init();
 
         /*-------------------------
             magnific popup activation
@@ -205,47 +140,6 @@
             removalDelay: 160,
             preloader: false,
             fixedContentPos: false,
-        });
-
-        $('.image-popup').magnificPopup({
-            type: 'image',
-            removalDelay: 260,
-            mainClass: 'mfp-zoom-in',
-        });
-
-        /*------------------
-            back to top
-        ------------------*/
-        $(document).on('click', '.back-to-top', function () {
-            $("html,body").animate({
-                scrollTop: 0
-            }, 2000);
-        });
-
-        /*-------------------------------
-           Nice Select initialize
-        ------------------------------*/
-        $("select").niceSelect();
-
-        /*----------------------
-            Cart Sidebar
-        -----------------------*/
-        $('.open-cart').on('click', function () {
-            $('.cart-menu-wrap').addClass('cart-open');
-            $('.cart-menu-overlay').addClass('cart-overlay-open');
-        });
-
-        $('.cart-menu-overlay').on('click', function () {
-            $('.cart-menu-wrap').removeClass('cart-open');
-            $('.cart-menu-overlay').removeClass('cart-overlay-open');
-        });
-
-        /*----------------------
-            Sidebar
-        -----------------------*/
-        $('.open-sidebar').on('click', function () {
-            $('.sidebar-menu-wrap').addClass('sidebar-open');
-            $('.side-menu-overlay').addClass('overlay-open');
         });
 
         $('.side-menu-overlay,.close-btn-02').on('click', function () {
@@ -277,28 +171,6 @@
 
     });
 
-
-
-    //define variable for store last scrolltop
-    var lastScrollTop = '';
-
-    $(window).on('scroll', function () {
-
-        //back to top show/hide
-        var ScrollTop = $('.back-to-top');
-        if ($(window).scrollTop() > 1000) {
-            ScrollTop.fadeIn(1000);
-        } else {
-            ScrollTop.fadeOut(1000);
-        }
-
-        // Sticky-Memu
-        if ($(window).width() > 991) {
-            StickyMenu();
-        }
-    });
-
-
     $(window).on('resize', function () {
         /*-------------------------------
             Navbar Fix
@@ -317,33 +189,12 @@
         setInterval(function () {
             $("#preloader").fadeOut(300);
         }, 500);
-
-        /*-----------------
-            back to top
-        ------------------*/
-        var backtoTop = $('.back-to-top')
-        backtoTop.fadeOut();
-
     });
 
     function navbarFix() {
         $(document).on('click', '.navbar-area .navbar-nav li.menu-item-has-children>a, .navbar-area .navbar-nav li.appside-megamenu>a', function (e) {
             e.preventDefault();
         })
-    }
-
-    function StickyMenu() {
-        /*--------------------------
-        sticky menu activation
-        ---------------------------*/
-        var st = $(this).scrollTop();
-        var mainMenuTop = $('.navbar-area');
-        if ($(window).scrollTop() > 500) {
-            mainMenuTop.addClass('nav-fixed');
-        } else {
-            mainMenuTop.removeClass('nav-fixed');
-        }
-        lastScrollTop = st;
     }
 
     $(".recent").click(function () {

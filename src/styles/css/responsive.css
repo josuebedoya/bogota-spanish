@@ -61,11 +61,6 @@
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1366px) {
-    .blog-details-wrapper .blog-details .main-title {
-        font-size: 42px;
-        line-height: 60px;
-    }
-
     .chose-area-inner .bg-image {
         width: 50%;
         background-repeat: no-repeat;
@@ -132,10 +127,6 @@
         margin-left: 35px;
     }
 
-    .blog-grid-item-02 .content .title {
-        font-size: 20px;
-    }
-
     .theme-recent-post-wrap li.theme-recent-post-item {
         flex-direction: column;
         align-items: flex-start;
@@ -177,22 +168,8 @@
         margin-top: 50px;
     }
 
-    .blog-details-wrapper .blog-details .main-title {
-        font-size: 40px;
-        line-height: 60px;
-    }
-
     .navbar-area.navigation-style-02 .custom-container .navbar-collapse .navbar-nav {
         text-align: center;
-    }
-
-    .single-counterup .content-wrap .odo-area .odo-title {
-        font-size: 32px;
-        line-height: 24px;
-    }
-
-    .counter-section-inner.style-01 .single-counterup {
-        align-items: center;
     }
 
     .chose-area-inner .bg-image {
@@ -204,14 +181,6 @@
     .section-title-wrapper .section-title {
         font-size: 35px;
         line-height: 50px;
-    }
-
-    .counter-section-inner.style-01 .single-counterup .image-wrap img {
-        margin-top: 0;
-    }
-
-    .our-team-single-details-wrap .img-wrap .badge-wrap {
-        right: -20px;
     }
 
     .single-team-item.style-02 .content .email {
@@ -364,10 +333,6 @@
         margin-top: 60px;
     }
 
-    .blog-grid-item-02 .content .title {
-        font-size: 20px;
-    }
-
     .navbar-area.navigation-style-02 .custom-container .logo-wrapper {
         max-width: initial;
     }
@@ -423,19 +388,8 @@
         margin-top: 50px;
     }
 
-    .blog-grid-item-02 .content .post-categories li {
-        margin-right: 15px;
-        margin-left: 0 !important;
-        margin-bottom: 10px;
-    }
-
     .widget-area.style-01 {
         padding-left: 0px;
-    }
-
-    .blog-details-wrapper .blog-details .main-title {
-        font-size: 40px;
-        line-height: 60px;
     }
 
     .about-section-area .thumbnail {
@@ -450,48 +404,17 @@
         padding-left: 0;
     }
 
-    .single-counterup .content-wrap .odo-area .odo-title {
-        font-size: 32px;
-        line-height: 24px;
-    }
-
-    .counter-section-inner.style-01 .single-counterup {
-        align-items: center;
-    }
-
-    .counter-section-inner.style-01 .single-counterup .image-wrap img {
-        margin-top: 0;
-    }
 
     .chose-area-wrapper .bg-image.background-image {
         display: none;
     }
 
-    .counter-section-inner.style-01 .single-counterup .content-wrap {
-        text-align: center;
-    }
 
-    .counter-section-inner.style-01 .single-counterup {
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .counter-section-inner.style-01 .single-counterup .image-wrap img {
-        margin-top: 0;
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
 
     .section-title-wrapper .section-title {
         font-size: 35px;
         line-height: 45px;
     }
-
-    .our-team-single-details-wrap .content .quote {
-        margin-top: 50px;
-    }
-
     .our-team-wrapper .about-content {
         margin-top: 60px;
     }
@@ -746,14 +669,6 @@
 
 /* Tablet Layout wide: 768px. */
 @media only screen and (max-width: 767px) {
-    .blog-details-wrapper .blog-details .main-title {
-        font-size: 38px;
-        line-height: 58px;
-    }
-
-    .our-team-single-details-wrap .img-wrap .badge-wrap {
-        right: -48px;
-    }
 
     .institutes-content-wrap .single-institute-item {
         width: 28%;
@@ -940,9 +855,7 @@
 
 /* medium tablet layout 599px */
 @media only screen and (max-width: 599px) {
-    .our-team-single-details-wrap .img-wrap .badge-wrap {
-        right: -35px;
-    }
+
 
     .single-page-section-bottom-space {
         padding-bottom: 50px !important;
@@ -1088,11 +1001,6 @@
         align-items: center;
     }
 
-
-    .blog-classic .blog-grid-item-02.style-01 .thumbnail img {
-        height: 250px;
-    }
-
     .copyright-area-inner .footer-social-area {
         margin-right: 20px;
         margin-top: 10px;
@@ -1107,20 +1015,12 @@
         flex-wrap: wrap;
     }
 
-    .counter-section-inner.style-01 .single-counterup {
-        width: 50%;
-        margin-bottom: 20px;
-    }
-
     .footer-widget.widget.widget_subscribe .subscibe-wrapper .content-wrap {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
 
-    .our-team-single-details-wrap .img-wrap .badge-wrap {
-        right: 0px;
-    }
 
     .thumbnail .left-frame img {
         padding-top: 38px;
@@ -1215,11 +1115,6 @@
         font-size: 14px;
     }
 
-    .blog-details-wrapper .blog-details .main-title {
-        font-size: 35px;
-        line-height: 55px;
-    }
-
     .comments-area .comment-list .has-children {
         padding-left: 20px;
     }
@@ -1228,14 +1123,7 @@
         margin-bottom: 15px;
     }
 
-    .counter-section-inner.style-01 .single-counterup {
-        width: 100%;
-        margin-bottom: 30px;
-    }
 
-    .counter-section-inner.style-01 .single-counterup:last-child {
-        margin-bottom: 0px;
-    }
 
     .thumbnail .right-frame img {
         padding-top: 22px;
@@ -1381,10 +1269,6 @@
 
 /* mobile tablet layout 360px */
 @media only screen and (max-width: 360px) {
-    .blog-grid-item-02.style-02.blog-details .thumbnail.main img {
-        height: 190px;
-    }
-
     .course-as-product-wrap>.content .btn-wrap .add-to-cart {
         width: 100%;
         padding: 36px 17px 35px;
@@ -1402,18 +1286,4 @@
         margin-top: 10px;
         margin-left: 0;
     }
-}
-
-/* mobile tablet layout 340px */
-@media only screen and (max-width: 340px) {}
-
-
-/* mobile tablet layout 330px */
-@media only screen and (max-width: 330px) {
-    .blog-details-wrapper .blog-details .main-title {
-        font-size: 27px;
-        line-height: 42px;
-    }
-
-
 }

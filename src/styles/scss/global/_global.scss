@@ -963,52 +963,6 @@ code {
     display: none;
 }
 
-.blog-pagination ul li {
-    display: inline-block;
-}
-
-.blog-pagination ul li+li {
-    margin: 0 5px;
-}
-
-.blog-pagination ul li {
-    display: inline-block;
-}
-
-.blog-pagination ul li+li {
-    margin: 0 5px;
-}
-
-.blog-pagination {
-    display: block;
-    width: 100%;
-}
-
-.blog-pagination ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.blog-pagination ul li a,
-.blog-pagination ul li span {
-    display: block;
-    padding: 3px 25px;
-    border: 1px solid #e2e2e2;
-    line-height: 40px;
-    text-align: center;
-    font-weight: 600;
-    -webkit-transition: .3s ease-in;
-    -o-transition: .3s ease-in;
-    transition: .3s ease-in;
-}
-
-.blog-pagination ul li span.current,
-.blog-pagination ul li a:hover {
-    background-color: var(--secondary-color);
-    color: #fff;
-}
-
 
 /*--------------------------------------------------------------
 # Media
@@ -1038,84 +992,6 @@ object {
 .custom-logo-link {
     display: inline-block;
 }
-
-
-/*--------------------------------------------------------------
-## Captions
---------------------------------------------------------------*/
-
-.wp-caption {
-    margin-bottom: 1.5em;
-    max-width: 100%;
-    clear: both;
-}
-
-.wp-caption img[class*="wp-image-"] {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.wp-caption .wp-caption-text {
-    margin: 0.8075em 0;
-}
-
-.wp-caption-text {
-    text-align: center;
-}
-
-
-/*--------------------------------------------------------------
-## Galleries
---------------------------------------------------------------*/
-
-.gallery {
-    margin-bottom: 1.5em;
-}
-
-.gallery-item {
-    display: inline-block;
-    text-align: center;
-    vertical-align: top;
-    width: 100%;
-}
-
-.gallery-columns-2 .gallery-item {
-    max-width: 50%;
-}
-
-.gallery-columns-3 .gallery-item {
-    max-width: 33.33%;
-}
-
-.gallery-columns-4 .gallery-item {
-    max-width: 25%;
-}
-
-.gallery-columns-5 .gallery-item {
-    max-width: 20%;
-}
-
-.gallery-columns-6 .gallery-item {
-    max-width: 16.66%;
-}
-
-.gallery-columns-7 .gallery-item {
-    max-width: 14.28%;
-}
-
-.gallery-columns-8 .gallery-item {
-    max-width: 12.5%;
-}
-
-.gallery-columns-9 .gallery-item {
-    max-width: 11.11%;
-}
-
-.gallery-caption {
-    display: block;
-}
-
 
 /*----------------------------------------
     # Unit test

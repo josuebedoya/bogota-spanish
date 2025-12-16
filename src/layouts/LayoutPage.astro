@@ -3,9 +3,10 @@ const { title, description } = Astro.props;
 import Header from "@/components/orgnisms/Header.astro";
 import Head from "@/layouts/Head.astro";
 import Footer from "@/components/orgnisms/Footer.astro";
+import { defaultLang } from "@/i18n/ui";
 
 // Lang site
-const lang = Astro.params.lang || "en-US";
+const lang = Astro.params.lang || defaultLang;
 ---
 
 <html lang={lang}>

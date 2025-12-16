@@ -3,6 +3,7 @@ import { directus } from '@/server/directus';
 import { createItems } from "@directus/sdk";
 import type { APIRoute } from "astro";
 import { createAssessment } from "@/server/recaptcha";
+import { defaultLang } from "@/i18n/ui";
 
 const resFetch = (content = {}, message = '', status = 200) => {
   return new Response(JSON.stringify({ ...content, message }), { status });
@@ -11,7 +12,7 @@ const resFetch = (content = {}, message = '', status = 200) => {
 export const POST: APIRoute = async ({ request, url }) => {
 
   const lang = getLang(url);
-  const t = useTranslations(lang || "en-US");
+  const t = useTranslations(lang || defaultLang);
 
   try {
     const formData = await request.formData();

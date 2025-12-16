@@ -5927,9 +5927,12 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   display: inline-block;
   font-size: 16px;
   font-family: var(--heading-font);
-  text-transform: capitalize;
+  text-transform: lowercase;
   font-weight: 500;
   line-height: 70px;
+}
+.navbar-area .custom-container .navbar-collapse .navbar-nav li::first-letter{
+  text-transform: uppercase !important;
 }
 .navbar-area .custom-container .navbar-collapse .navbar-nav li + li {
   margin-left: 40px;

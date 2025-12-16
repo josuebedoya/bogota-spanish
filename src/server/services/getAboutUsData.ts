@@ -30,7 +30,7 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
 
   const dataLang = getLangData(data?.lang, lang);
 
-  const fileMainBanner = await directusMedia(data?.image_main_banner || "", dataLang?.title_main_banner,{
+  const fileMainBanner = await directusMedia(data?.image_main_banner || "", dataLang?.title_main_banner, {
     width: 610, height: 700,
   });
   const filePhilosophy = await directusMedia(data?.image_philosophy || "", dataLang?.title_philosophy, {
@@ -44,7 +44,7 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
   };
 
   const itemsTutors = await Promise.all(
-    data?.tutors?.map(async (t: any) => {
+    data?.tutors?.filter((tu: any) => tu?.Tutors_id?.status == 1)?.map(async (t: any) => {
       const file = await directusMedia(t?.Tutors_id?.photo_tutor || "", t?.Tutors_id?.name_tutor, {
         width: 210, height: 210,
       });
@@ -54,7 +54,7 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
         id: t?.Tutors_id?.id || "",
         image: file?.src_path || "",
         name: t?.Tutors_id?.name_tutor || "",
-        chargue: dataTutorLang?.position || "",
+        chargue: dataTutorLang?.position || ""
       };
     }) || [],
   );

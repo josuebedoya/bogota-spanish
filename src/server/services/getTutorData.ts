@@ -20,7 +20,9 @@ export const getTutorData = async (tutorSlug: string, lang: string = defaultLang
 
   const data = await directus?.request(
     readItems("Tutors", {
-      active: { _eq: "1" },
+      filter: {
+        status: { _eq: 1 }
+      },
       fields: fieldsTutor,
     }
     )) as any;

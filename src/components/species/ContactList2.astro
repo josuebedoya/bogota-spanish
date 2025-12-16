@@ -6,38 +6,50 @@ const { data } = Astro.props;
 ---
 
 <ul class="ul contact-address-list">
-  <li class="single-address-item">
-    <span class="icon-wrap color-02">
-      <i class="fa-solid fa-phone icon"></i>
-    </span>
-    {data?.phones?.map((p: any) => <span class="text">{p?.number}</span>)}
-  </li>
-  <li class="single-address-item">
-    <span class="icon-wrap color-01">
-      <i class="fa-sharp fa-solid fa-location-dot icon"></i>
-    </span>
-    {
-      data?.address?.map((a: any) => (
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a?.address)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="text">{a?.address}</span>
-        </a>
-      ))
-    }
-  </li>
-  <li class="single-address-item">
-    <span class="icon-wrap color-03">
-      <i class="fa-solid fa-envelope-open icon"></i>
-    </span>
-    {
-      data?.emails?.map((e: any) => (
-        <a href={`mailto:${e?.email}`}>
-          <span class="text">{e?.email}</span>
-        </a>
-      ))
-    }
-  </li>
+  {
+    data?.phones?.length && (
+      <li class="single-address-item">
+        <span class="icon-wrap color-02">
+          <i class="fa-solid fa-phone icon" />
+        </span>
+        {data?.phones?.map((p: any) => (
+          <span class="text">
+            ({p?.code_phone})&nbsp;&nbsp;{p?.number}
+          </span>
+        ))}
+      </li>
+    )
+  }
+  {
+    data?.address?.length && (
+      <li class="single-address-item">
+        <span class="icon-wrap color-01">
+          <i class="fa-sharp fa-solid fa-location-dot icon" />
+        </span>
+        {data?.address?.map((a: any) => (
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a?.address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="text">{a?.address}</span>
+          </a>
+        ))}
+      </li>
+    )
+  }
+  {
+    data?.emails?.length && (
+      <li class="single-address-item">
+        <span class="icon-wrap color-03">
+          <i class="fa-solid fa-envelope-open icon" />
+        </span>
+        {data?.emails?.map((e: any) => (
+          <a href={`mailto:${e?.email}`}>
+            <span class="text">{e?.email}</span>
+          </a>
+        ))}
+      </li>
+    )
+  }
 </ul>

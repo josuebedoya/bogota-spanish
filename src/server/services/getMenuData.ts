@@ -9,7 +9,7 @@ export async function getMenuData(position: string | number, lang: string = defa
 
   const data = await directus?.request(
     readItems("Menu", {
-      status: { _eq: "published" },
+      filter:{status: { _eq: "published" }},
       sort: [ "id" ],
       fields: [ "*", "lang.*" ],
     }),

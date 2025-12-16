@@ -4,13 +4,20 @@ import BannerTypeOne from "@/components/species/BannerTypeOne.astro";
 import BannerSpanishCourses from "@/components/atoms/BannerSpanishCourses.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
 import { getSpanishCoursesData } from "@/server/services/getSpanishCoursesData";
+import { getCoursesData } from "@/server/services/getCoursesData";
+import { getPlansAndPricingData } from "@/server/services/getPlansAndPricingData";
 import { getLang } from "@/i18n/utils";
+import PlansAndPricing from "@/components/orgnisms/PlansAndPricing.astro";
 
 const lang = getLang(Astro.url);
 const { dataMainBanner, dataBannerSpanishCourses, page, courses, error } =
   (await getSpanishCoursesData(lang)) as any;
+const { data: coursesPlans, error: errorCourses } = (await getCoursesData(
+  lang,
+)) as any;
+const { data: dataPage, error: errorPage } = await getPlansAndPricingData(lang);
 
-if (error) {
+if (error || errorCourses) {
   return Astro.redirect("/500");
 }
 ---
@@ -23,7 +30,7 @@ if (error) {
     <BannerTypeTwo {...dataMainBanner} mainTitle={true} withGradient={false} />
     <div class="list-courses">
       {
-        courses?.reverse()?.map((c: any) => {
+        courses?.map((c: any) => {
           return c.isEven ? (
             <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
               <BannerTypeOne {...c} imageLeft={true} />
@@ -36,6 +43,11 @@ if (error) {
         })
       }
     </div>
+    <PlansAndPricing
+      courses={coursesPlans}
+      title={dataPage?.title}
+      description={dataPage?.description}
+    />
     <BannerSpanishCourses {...dataBannerSpanishCourses} />
   </div>
 </LayoutPage>

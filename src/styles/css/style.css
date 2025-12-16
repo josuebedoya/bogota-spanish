@@ -7306,11 +7306,11 @@ header.top {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background-repeat: no-repeat;
   max-width: 855px;
-  background-position: center;
+  background-position: right center;
   background-size: cover;
 }
 .chose-area-inner .bg-image::before {

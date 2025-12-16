@@ -17,7 +17,7 @@ export const getCoursesData = async (lang: string = defaultLang) => {
 
   let error = null;
 
-  const data = await directus?.request(readItems("Courses", { filter: { status: { _eq: "1" } }, fields: fieldsCourses })) as any;
+  const data = await directus?.request(readItems("Courses", { filter: { status: { _eq: "1" } }, fields: fieldsCourses, sort: ['-priority'] })) as any;
   
   if (!data) {
     return nullDataResponse;

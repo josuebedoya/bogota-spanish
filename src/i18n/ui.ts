@@ -32,7 +32,7 @@ export const ui = {
     'form.response.existemail': 'The email already exists.',
 
     'contact.form.fields.city': 'City',
-    'contact.form.fields.description': 'Write a description...',
+    'contact.form.fields.description': 'Let us how can we help you?',
     'contact.form.btn.label': 'Submit Message',
 
     'applyonline.form.fields.nationality': 'What is your nationality?',
@@ -65,11 +65,11 @@ export const ui = {
     'form.fields.email': 'Correo Electrónico',
     'form.fields.phone': 'Número de Teléfono',
     'form.response.success': '¡Tu formulario ha sido enviado con éxito!',
-     'form.response.error': 'Hubo un error al enviar el formulario.',
-     'form.response.existemail': 'El correo electrónico ya existe.',
+    'form.response.error': 'Hubo un error al enviar el formulario.',
+    'form.response.existemail': 'El correo electrónico ya existe.',
 
     'contact.form.fields.city': 'Ciudad',
-    'contact.form.fields.description': 'Escribe una descripción...',
+    'contact.form.fields.description': 'Dinos ¿cómo podemos ayudarte?',
     'contact.form.btn.label': 'Enviar Mensaje',
 
     'applyonline.form.fields.nationality': '¿Cuál es tú Nacionalidad?',

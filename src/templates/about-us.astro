@@ -3,7 +3,6 @@ import MeetExpertTutors from "@/components/orgnisms/MeetExpertTutors.astro";
 import MainBannerAbout from "@/components/orgnisms/MainBannerAbout.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
 import OurPhilosophy from "@/components/orgnisms/OurPhilosophy.astro";
-import { staticData } from "@/server/static-data";
 import { getAboutUsData } from "@/server/services/getAboutUsData";
 import { getLang } from "@/i18n/utils";
 
@@ -15,7 +14,7 @@ interface Props {
   lang?: string;
 }
 
-const description = dataMainBanner?.summary || staticData.about_us.description;
+const description = dataMainBanner?.summary || "";
 const descriptionPage = description.slice(0, 150) + "...";
 ---
 

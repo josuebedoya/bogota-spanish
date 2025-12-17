@@ -32,7 +32,7 @@ const itemsMenu = await directus.request(
 // Join items lang into a single array
 const itemsJoined = itemsMenu.flatMap((item) => [ ...item.lang ]);
 const formatItems = itemsJoined.map((item) => {
-  const path = (item.link.startsWith('/') || item.link.startsWith('http')) ? item.link : `/${item.link}`;
+  const path = (item?.link.startsWith('/') || item?.link.startsWith('http')) ? item.link : `/${item.link}`;
   return {
     title: item.title,
     link: path

@@ -14,7 +14,7 @@ interface Props {
   summary: string;
   items: item[];
 }
-const { items, phrase, title, summary } = Astro.props;
+const { items, phrase = "", title = "", summary = "" } = Astro.props;
 const configSlider = {
   "data-infinite": "true",
   "data-arrows": "true",

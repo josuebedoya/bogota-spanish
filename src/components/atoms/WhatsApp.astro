@@ -25,7 +25,7 @@ const { numbers } = Astro.props;
       </div>
       <div class="modal-body">
         {
-          numbers?.map((n) => (
+          numbers?.map((n: Number) => (
             <a
               class="num-btn"
               href={`https://wa.me/${n?.code + n?.number}?text=${encodeURIComponent(n?.message || "")}`}

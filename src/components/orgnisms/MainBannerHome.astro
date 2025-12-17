@@ -18,7 +18,7 @@ interface Props {
 
 const {
     phrase,
-    title,
+    title = "",
     summary,
     button1,
     button2,
@@ -26,9 +26,9 @@ const {
     lang,
 } = Astro.props;
 
-const wordResalted = title.split(" ")[3];
-const firstPart = title.split(" ").slice(0, 3).join(" ");
-const restOfTitle = title.split(" ").slice(4).join(" ");
+const wordResalted = title?.split(" ")[3];
+const firstPart = title?.split(" ").slice(0, 3).join(" ");
+const restOfTitle = title?.split(" ").slice(4).join(" ");
 ---
 
 <section class="banner-area home-01 b-home-main">
@@ -40,7 +40,10 @@ const restOfTitle = title.split(" ").slice(4).join(" ");
                         <p class="subtitle text-uppercase">{phrase}</p>
                         <h1 class="title">
                             {firstPart}
-                            <span style="color: var(--main-color-one) !important;">{wordResalted}</span>
+                            <span
+                                style="color: var(--main-color-one) !important;"
+                                >{wordResalted}</span
+                            >
                             {restOfTitle}
                         </h1>
                         <p>
@@ -49,16 +52,16 @@ const restOfTitle = title.split(" ").slice(4).join(" ");
                         <div class="header-btn">
                             <div class="btn-wrap">
                                 <a
-                                    href={to(button1.link, lang)}
+                                    href={to(button1?.link, lang)}
                                     class="btn-common flat-btn btn-active"
-                                    >{button1.text}</a
+                                    >{button1?.text}</a
                                 >
                             </div>
                             <div class="btn-wrap margin-left-20">
                                 <a
-                                    href={to(button2.link, lang)}
+                                    href={to(button2?.link, lang)}
                                     class="btn-common fill-btn text-secondary text-white-hover"
-                                    >{button2.text}</a
+                                    >{button2?.text}</a
                                 >
                             </div>
                         </div>

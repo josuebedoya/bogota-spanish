@@ -63,7 +63,7 @@ export function getLang(url: URL) {
 }
 
 export function to(slug: string, lang: Ui) {
-  if (slug.startsWith(`/${lang}/`) || slug === `/${lang}` || slug.startsWith('http')) {
+  if (slug?.startsWith(`/${lang}/`) || slug === `/${lang}` || slug?.startsWith('http')) {
     return slug;
   }
 

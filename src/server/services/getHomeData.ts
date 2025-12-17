@@ -26,6 +26,8 @@ const fieldsHome = [
 type L = keyof typeof languages;
 
 export const getHomeData = async (lang: string = defaultLang) => {
+ 
+  return {error: "Service disabled"};
 
   let error = null;
 

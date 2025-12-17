@@ -22,15 +22,23 @@ interface Props {
   lang: L;
 }
 
-const { items, phrase, title, lang } = Astro.props;
+const { items, phrase, title = "", lang } = Astro.props;
 ---
 
 <section class="features-section margin-top-100 courses-spanish">
   <div class="container custom-container-01">
     <div class="title-section theme-section-title">
-      <p class="subtitle text-uppercase text-center" style={{width: '100%'}}>
-        {phrase}
-      </p>
+      {
+        phrase && (
+          <p
+            class="subtitle text-uppercase text-center"
+            style={{ width: "100%" }}
+          >
+            {phrase}
+          </p>
+        )
+      }
+
       <h2 class="title">
         {title}
       </h2>

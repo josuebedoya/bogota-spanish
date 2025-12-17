@@ -10,7 +10,7 @@ interface Props {
 const { label, slug, hasItems = false, isActive = false, id } = Astro.props;
 
 const pathItem =
-  slug.startsWith("/") || slug.startsWith("http") ? slug : `/${slug}`;
+  slug?.startsWith("/") || slug?.startsWith("http") ? slug : `/${slug}`;
 ---
 
 <li

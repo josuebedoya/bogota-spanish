@@ -8,7 +8,7 @@ export const defaultLang = 'en-US';
 export const ui = {
   "en-US": {
     'spanish-courses.btnlink': '/book-a-free-class',
-    'spanish-courses.btnlabel': 'Book a Free Class',
+    'spanish-courses.btnlabel': 'Book a free class',
 
     'footer.copyright': 'All rights reserved for The Bogota Spanish.Design by ',
     'footer.titles.menu1': 'Important Links',
@@ -20,19 +20,19 @@ export const ui = {
     'footer.newsletter.form.button': 'Subscribe',
     'footer.newsletter.subscribed': 'Thank you for subscribing to our newsletter!',
 
-    'plans-and-pricing.item.btn': 'Get in Touch',
+    'plans-and-pricing.item.btn': 'Get in touch',
     'plans-and-pricing.item.btn.link': '/contact-us',
 
-    'form.title': 'Personal Information',
-    'form.fields.fullname': 'Full Name',
-    'form.fields.email': 'Email Address',
-    'form.fields.phone': 'Phone Number',
+    'form.title': 'Personal information',
+    'form.fields.fullname': 'Full name',
+    'form.fields.email': 'Email address',
+    'form.fields.phone': 'Phone number',
     'form.response.success': 'Your form has been submitted successfully!',
     'form.response.error': 'There was an error submitting the form.',
     'form.response.existemail': 'The email already exists.',
 
     'contact.form.fields.city': 'City',
-    'contact.form.fields.description': 'Let us how can we help you?',
+    'contact.form.fields.description': 'Tell us how we can help you?',
     'contact.form.btn.label': 'Submit Message',
 
     'applyonline.form.fields.nationality': 'What is your nationality?',
@@ -45,7 +45,7 @@ export const ui = {
   },
   "es-ES": {
     'spanish-courses.btnlink': '/#LANG/reservar-clase-gratis',
-    'spanish-courses.btnlabel': 'Reservar Gratis',
+    'spanish-courses.btnlabel': 'Reserva gratis',
 
     'footer.copyright': 'Todos los derechos reservados para The Bogota Spanish. Diseño por ',
     'footer.titles.menu1': 'Enlaces Importantes',
@@ -57,13 +57,13 @@ export const ui = {
     'footer.newsletter.form.button': 'Suscribirse',
     'footer.newsletter.subscribed': '¡Gracias por suscribirte a nuestro boletín!',
 
-    'plans-and-pricing.item.btn': 'Contactar Ahora',
+    'plans-and-pricing.item.btn': 'Contactar ahora',
     'plans-and-pricing.item.btn.link': '/#LANG/contactanos',
 
-    'form.title': 'Información Personal',
-    'form.fields.fullname': 'Nombre Completo',
-    'form.fields.email': 'Correo Electrónico',
-    'form.fields.phone': 'Número de Teléfono',
+    'form.title': 'Información personal',
+    'form.fields.fullname': 'Nombre completo',
+    'form.fields.email': 'Correo electrónico',
+    'form.fields.phone': 'Número de teléfono',
     'form.response.success': '¡Tu formulario ha sido enviado con éxito!',
     'form.response.error': 'Hubo un error al enviar el formulario.',
     'form.response.existemail': 'El correo electrónico ya existe.',
@@ -72,7 +72,7 @@ export const ui = {
     'contact.form.fields.description': 'Dinos ¿cómo podemos ayudarte?',
     'contact.form.btn.label': 'Enviar Mensaje',
 
-    'applyonline.form.fields.nationality': '¿Cuál es tú Nacionalidad?',
+    'applyonline.form.fields.nationality': '¿Cuál es tu nacionalidad?',
     'applyonline.form.fields.classes': '¿Cuándo puedes tomar tus clases?',
     'applyonline.form.fields.live': '¿Dónde vives actualmente?',
     'applyonline.form.fields.description': '¿Por qué quieres aprender español? ¿Tienes un objetivo específico en mente? ¿O simplemente quieres aprender por diversión?',

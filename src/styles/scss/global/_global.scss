@@ -87,10 +87,10 @@ h6 * {
 
 p {
     color: var(--paragraph-color);
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
+    -webkit-hyphens: manual;
+    -moz-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
     margin-bottom: 10px;
 }
 
@@ -1044,7 +1044,7 @@ ul {
 
 @media (min-width:992px) {
     .py-lg-30 {
-        padding-block: 8rem !important;
+        padding-block: 5rem !important;
     }
 }
 

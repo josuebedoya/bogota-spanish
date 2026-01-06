@@ -90,10 +90,10 @@ h6 * {
 
 p {
   color: var(--paragraph-color);
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+  -webkit-hyphens: manual;
+  -moz-hyphens: manual;
+  -ms-hyphens: manual;
+  hyphens: manual;
   margin-bottom: 10px;
 }
 
@@ -1016,7 +1016,7 @@ ul {
 
 @media (min-width: 992px) {
   .py-lg-30 {
-    padding-block: 8rem !important;
+    padding-block: 5rem !important;
   }
 }
 @media (max-width: 992px) {
@@ -1380,7 +1380,7 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   font-size: 18px;
   font-weight: 600;
   line-height: 0;
-  text-transform: capitalize;
+  text-transform: lowercase;
   color: var(--heading-color);
   background-color: #fff;
   padding: 37px 42px 36px;
@@ -1391,6 +1391,13 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   transition: all ease-in-out 0.2s;
   position: relative;
   z-index: 1;
+}
+.btn-common::first-letter, .btn-common *::first-letter, .more-btn::first-letter {
+  text-transform: uppercase;
+}
+.more-btn{
+  text-transform: lowercase;
+  display: block;
 }
 .btn-common::after {
   content: "";
@@ -7310,8 +7317,8 @@ header.top {
   height: 100%;
   background-repeat: no-repeat;
   max-width: 855px;
-  background-position: right center;
-  background-size: cover;
+  background-position: left center;
+  background-size: contain;
 }
 .chose-area-inner .bg-image::before {
   content: "";
@@ -7323,8 +7330,8 @@ header.top {
   background-color: rgba(255, 236, 249, 0.2);
 }
 .chose-area-inner .content-wrap {
-  padding-top: 130px;
-  padding-bottom: 140px;
+  padding-top: 70px;
+  padding-bottom: 70px;
   position: relative;
   z-index: 9;
   padding-left: 80px;

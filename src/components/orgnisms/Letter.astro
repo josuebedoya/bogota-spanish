@@ -1,12 +1,54 @@
-<section>
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  phrase?: string;
+  image?: string;
+  summary: string;
+  firm?: string;
+  position: string;
+}
+
+const { title, subtitle, phrase, image, summary, firm, position } = Astro.props;
+const firstWord = subtitle ? subtitle.split(" ")[0] : "";
+const restWords = subtitle ? subtitle.split(" ").slice(1).join(" ") : "";
+---
+
+<section class="letter-wrapper mb-lg-5">
   <div class="container">
-    <div class="row">
+    <div class="row align-items-center mb-3 pb-4">
       <div class="col-lg-6">
-        <h3 class="content-title text-left">{title}</h3>
-        <p class="subtitle">{subtitle}</p>
-        <p class="phrases"></p>
+        {title && <h2 class="title mb-3">{title}</h2>}
+        {
+          subtitle && (
+            <h4 class="subtitle text-left">
+              <strong>{firstWord}</strong> {restWords}
+            </h4>
+          )
+        }
+        {phrase && <p class="phrase mt-4">{phrase}</p>}
       </div>
-      <div class="col-lg-6"></div>
+      <div class="col-lg-6">
+        {
+          image && (
+            <div class="letter-image-wrapper">
+              <img src={image} alt={title} loading="lazy" />
+            </div>
+          )
+        }
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="paragraph large-size" set:html={summary} />
+      </div>
+    </div>
+    <div class="row mt-4 pt-lg-3">
+      <div class="col-auto">
+        <p class="firm">{firm}</p>
+        {firm && position && <hr class="figmare-separator" />}
+        <p class="firm-position">{position}</p>
+      </div>
     </div>
   </div>
 </section>

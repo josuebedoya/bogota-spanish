@@ -7,6 +7,7 @@ const nullDataResponse = {
   dataMainBanner: null,
   dataMeetTutors: null,
   dataOurPhilosophy: null,
+  dataLetter: null,
   error: "Data not found",
 };
 
@@ -36,6 +37,21 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
   const filePhilosophy = await directusMedia(data?.image_philosophy || "", dataLang?.title_philosophy, {
     width: 880, height: 1025,
   });
+
+  const fileLetter = await directusMedia(data?.image_letter || "", dataLang?.title_letter, {
+    width: 820, height: 460,
+  });
+
+
+  const dataLetter = {
+    phrase: dataLang?.phrase_letter,
+    title: dataLang?.title_letter,
+    subtitle: dataLang?.subtitle_letter,
+    summary: dataLang?.description_letter,
+    firm: dataLang?.firm_letter,
+    position: dataLang?.position_firm_letter,
+    image:fileLetter?.src_path || "",
+  };
 
   const dataMainBanner = {
     title: dataLang?.title_main_banner,
@@ -76,6 +92,7 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
     dataMainBanner,
     dataMeetTutors,
     dataOurPhilosophy,
+    dataLetter,
     error
   };
 }

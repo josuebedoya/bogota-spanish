@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -6516,6 +6517,7 @@ header.top {
   position: absolute;
   top: 45.5%;
   animation: scroll-down 3s linear infinite;
+  z-index: 3;
 }
 .banner-area .banner-wrapper .element-03 {
   position: absolute;
@@ -8928,4 +8930,79 @@ padding-block: 15px 30px;
   font-size: 14px;
   padding: 15px 20px;
 }
+}
+
+
+.letter-wrapper{
+  padding-top: 130px;
+}
+
+.letter-wrapper img{
+  border-radius: 45px;
+  aspect-ratio: 820/460;
+}
+
+.letter-wrapper .title{
+font-weight: 700;
+font-size: 45px;
+line-height: 45px;
+letter-spacing: 0%;
+}
+
+.letter-wrapper .subtitle, .letter-wrapper .subtitle *{
+  font-size: 35px;
+font-weight: 400;
+line-height: 45px;
+color: var(--main-color-one) !important;
+} 
+
+.letter-wrapper .subtitle strong{
+  font-weight: 700 !important;
+}
+
+.letter-wrapper .phrase{
+font-weight: 700;
+font-size: 18px;
+line-height: 35px;
+}
+
+.letter-wrapper .firm{
+  font-family: Story Script;
+font-weight: 400;
+font-size: 30px;
+line-height: 35px;
+}
+
+.letter-wrapper .firm-position{
+font-weight: 600;
+font-size: 18px;
+line-height: 25px;
+letter-spacing: 0%;
+}
+
+@media (max-width: 992px) {
+
+.letter-wrapper .title{
+font-size: 35px;
+}
+
+.letter-wrapper .subtitle, .letter-wrapper .subtitle *{
+  font-size: 23px;
+}
+
+.letter-wrapper .phrase{
+font-size: 16px;
+}
+.letter-wrapper .firm{
+  font-size: 25px;
+}
+.letter-wrapper .firm-position{
+font-size: 18px;
+}
+.letter-wrapper img{
+  border-radius: 20px;}
+
+  .paragraph.large-size{
+    font-size: 16px !important;
+  }
 }

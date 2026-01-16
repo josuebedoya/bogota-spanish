@@ -2687,16 +2687,16 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   font-size: 16px;
 }
 .contact-address .contact-address-list .single-address-item .icon-wrap.color-01 {
-  background-color: #F5E6FE;
+  background-color: #f9c4d3;
 }
 .contact-address .contact-address-list .single-address-item .icon-wrap.color-01 .icon {
-  color: #764AF1;
+  color: #F32424;
 }
 .contact-address .contact-address-list .single-address-item .icon-wrap.color-02 {
-  background-color: #fbe4dc;
+  background-color: #f9c4d3;
 }
 .contact-address .contact-address-list .single-address-item .icon-wrap.color-02 .icon {
-  color: #FFC44E;
+  color: #F32424;
 }
 .contact-address .contact-address-list .single-address-item .icon-wrap.color-03 {
   background-color: #f9c4d3;

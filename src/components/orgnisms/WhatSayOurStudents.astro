@@ -1,6 +1,8 @@
 ---
 import ShipeSvg1 from "@/components/atoms/ShipeSvg1.astro";
 import ItemStudentVideo from "@/components/atoms/itemStudentVideo.astro";
+import ItemSlide from "@/components/atoms/ItemSlide.astro";
+import Slider from "@/components/species/Slider.astro";
 
 type item = {
   title: string;
@@ -15,6 +17,25 @@ interface Props {
   items: item[];
 }
 const {phrase, title = "", items} = Astro.props as Props;
+const configSlider = {
+  "data-infinite": "false",
+  "data-arrows": "false",
+  "data-fade": "false",
+  "data-speed": "500",
+  "data-slidesToShow": "3",
+  "data-slidesToScroll": "1",
+  "data-swipeToSlide": "true",
+  "data-autoplay": "true",
+  "data-centerInsufficientSlides": "true",
+  "data-autoplaySpeed": "2500",
+  "data-dots": "false",
+  "data-responsive": `[
+    {"breakpoint": 1200,"settings": {"slidesToShow": 4}},
+    {"breakpoint": 992,"settings": {"slidesToShow": 3}},
+    {"breakpoint": 768, "settings": {"slidesToShow": 2}},
+    {"breakpoint": 540, "settings": {"slidesToShow": 1}}
+  ]`,
+};
 ---
 
 <section class="feedback-section margin-top-110">
@@ -31,18 +52,18 @@ const {phrase, title = "", items} = Astro.props as Props;
    </div>
   </div>
   <div class="row">
-    {
-      items?.map((item: item) => (
-        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-         <ItemStudentVideo
-           title={item?.title}
-           summary={item?.summary}
-           image={item?.image}
-           videoUrl={item?.videoUrl}
-         />
-        </div>
-      ))
-    }
+   <Slider config={configSlider}>
+     {items?.map((item: item) => (
+       <ItemSlide>
+        <ItemStudentVideo
+          title={item?.title}
+          summary={item?.summary}
+          image={item?.image}
+          videoUrl={item?.videoUrl}
+        />
+       </ItemSlide>
+     ))}
+   </Slider>
   </div>
  </div>
 </section>

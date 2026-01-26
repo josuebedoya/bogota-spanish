@@ -2,6 +2,7 @@
 import ItemTutor from "../atoms/ItemTutor.astro";
 import Slider from "../species/Slider.astro";
 import ItemSlide from "../atoms/ItemSlide.astro";
+
 type item = {
   image: string;
   name: string;
@@ -51,18 +52,16 @@ const configSlider = {
    <div class="row">
     <div class="col-lg-12">
      <Slider config={configSlider} classes="dots-style-03 dots-space">
-       {
-         items?.map((item: item) => (
-           <ItemSlide>
-            <ItemTutor
-              image={item?.image}
-              name={item?.name}
-              chargue={item?.chargue}
-              id={item?.id}
-            />
-           </ItemSlide>
-         ))
-       }
+       {items?.map((item: item) => (
+         <ItemSlide>
+          <ItemTutor
+            image={item?.image}
+            name={item?.name}
+            chargue={item?.chargue}
+            id={item?.id}
+          />
+         </ItemSlide>
+       ))}
      </Slider>
     </div>
    </div>

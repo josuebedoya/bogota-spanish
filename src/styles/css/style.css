@@ -7504,6 +7504,14 @@ header.top{
   background-repeat: no-repeat;
   background-position: center;
 }
+.courses-home .slick-item{
+  min-height: -webkit-fill-available;
+  height: 100%;
+  display: flex;
+}
+.courses-home .slick-track{
+  display: flex;
+}
 
 @keyframes planefly{
   0%{
@@ -7785,6 +7793,9 @@ header.top{
 .item-video-student, .item-video-student .thumbnail{
   min-height: 350px;
   height: 100% !important;
+}
+.item-video-student{
+  max-width: 400px !important;
 }
 
 .bg-colors-gradient{

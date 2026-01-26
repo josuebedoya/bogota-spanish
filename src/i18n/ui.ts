@@ -47,14 +47,14 @@ export const ui = {
     'spanish-courses.btnlink': '/#LANG/reservar-clase-gratis',
     'spanish-courses.btnlabel': 'Reserva gratis',
 
-    'footer.copyright': 'Todos los derechos reservados para The Bogota Spanish. Diseño por ',
+    'footer.copyright': 'Todos los derechos reservados para The Bogota Spanish. Diseñado por ',
     'footer.titles.menu1': 'Enlaces Importantes',
     'footer.titles.menu3': 'Menú',
     'footer.titles.contact': 'Contáctenos',
     'footer.newsletter.title': 'Suscríbete a nuestro boletín',
     'footer.newsletter.subtitle': 'Ingresa tu correo electrónico para recibir nuestras actualizaciones, ofertas y toda la información relacionada con estudiar en el exterior.',
     'footer.newsletter.form.input': 'Ingresa tu correo...',
-    'footer.newsletter.form.button': 'Suscribirse',
+    'footer.newsletter.form.button': 'Suscribirme',
     'footer.newsletter.subscribed': '¡Gracias por suscribirte a nuestro boletín!',
 
     'plans-and-pricing.item.btn': 'Contactar ahora',

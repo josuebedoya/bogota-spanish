@@ -3,12 +3,12 @@ import MeetExpertTutors from "@/components/orgnisms/MeetExpertTutors.astro";
 import MainBannerAbout from "@/components/orgnisms/MainBannerAbout.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
 import OurPhilosophy from "@/components/orgnisms/OurPhilosophy.astro";
-import { getAboutUsData } from "@/server/services/getAboutUsData";
-import { getLang } from "@/i18n/utils";
+import {getAboutUsData} from "@/server/services/getAboutUsData";
+import {getLang} from "@/i18n/utils";
 import Letter from "@/components/orgnisms/Letter.astro";
 
 const lang = getLang(Astro.url);
-const { dataMainBanner, dataMeetTutors, dataOurPhilosophy } =
+const {dataMainBanner, dataMeetTutors, dataOurPhilosophy} =
   (await getAboutUsData(lang)) as any;
 
 interface Props {
@@ -23,10 +23,10 @@ const descriptionPage = description.slice(0, 150) + "...";
   title={dataMainBanner?.title || "About us"}
   description={descriptionPage}
 >
-  <div class="about-page-area-wrapper single-page-section-top-space">
-    <Letter />
-    <MainBannerAbout {...dataMainBanner} />
-    <MeetExpertTutors {...dataMeetTutors} />
-    <OurPhilosophy {...dataOurPhilosophy} />
-  </div>
+ <div class="about-page-area-wrapper single-page-section-top-space">
+  <Letter/>
+  <MainBannerAbout {...dataMainBanner}/>
+  <MeetExpertTutors {...dataMeetTutors}/>
+  <OurPhilosophy {...dataOurPhilosophy}/>
+ </div>
 </LayoutPage>

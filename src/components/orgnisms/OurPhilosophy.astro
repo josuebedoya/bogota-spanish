@@ -4,40 +4,40 @@ interface Props {
   description?: string;
   image?: string;
 }
-const { title = "", description = "", image } = Astro.props as Props;
+const {title = "", description = "", image} = Astro.props as Props;
 ---
 
 <section class="chose-area-wrapper margin-top-110">
-  <div class="chose-area-inner bg-color-01">
-    <div
-      class="bg-image background-image"
-      style={`background-image: url(${image});`}
-    >
-    </div>
-    <div class="container custom-container-01">
-      <div class="row justify-content-end">
-        <div class="col-lg-6">
-          <div class="img-box"></div>
-        </div>
-        <div class="col-lg-6">
-          <div class="content-wrap py-15 py-lg-30 px-0">
-            <div class="section-title-wrapper mb-3">
-              <h4 class="section-title">{title}</h4>
-            </div>
-
-            <div class="icon-box-with-text-wrap">
-              <ul class="ul icon-box-with-text style-02">
-                <li class="single-icon-box-with-text">
-                  <div
-                    class="content paragraph large-size"
-                    set:html={description}
-                  />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="chose-area-inner bg-color-01">
+  <div
+    class="bg-image background-image"
+    style={`background-image: url(${image});`}
+  >
   </div>
+  <div class="container custom-container-01">
+   <div class="row justify-content-end">
+    <div class="col-lg-6">
+     <div class="img-box"></div>
+    </div>
+    <div class="col-lg-6">
+     <div class="content-wrap py-15 py-lg-30 px-0">
+      <div class="section-title-wrapper mb-3">
+       <h4 class="section-title">{title}</h4>
+      </div>
+
+      <div class="icon-box-with-text-wrap">
+       <ul class="ul icon-box-with-text style-02">
+        <li class="single-icon-box-with-text">
+         <div
+           class="content paragraph large-size"
+           set:html={description}
+         />
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
 </section>

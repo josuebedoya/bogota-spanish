@@ -1,7 +1,7 @@
-import { directus } from "@/server/directus";
-import { readItems } from "@directus/sdk";
-import { defaultLang } from "@/i18n/ui";
-import { getLangData } from "@/i18n/getLangData";
+import {directus} from "@/server/directus";
+import {readItems} from "@directus/sdk";
+import {defaultLang} from "@/i18n/ui";
+import {getLangData} from "@/i18n/getLangData";
 
 const nullDataResponse = {
   data: null,
@@ -17,7 +17,7 @@ export const getContactData = async (lang: string = defaultLang) => {
 
   let error = null;
 
-  const data = await directus?.request(readItems("info_contact", { fields: fieldsCourses })) as any;
+  const data = await directus?.request(readItems("info_contact", {fields: fieldsCourses})) as any;
 
   if (!data) {
     return nullDataResponse;
@@ -26,7 +26,7 @@ export const getContactData = async (lang: string = defaultLang) => {
   const langData = getLangData(data?.lang, lang);
 
   return {
-    data: { ...data, whatsapp: langData.whatsapp },
+    data: {...data, whatsapp: langData.whatsapp},
     error,
   };
 }

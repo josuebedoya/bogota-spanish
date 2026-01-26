@@ -3,17 +3,17 @@ import LayoutPage from "@/layouts/LayoutPage.astro";
 import Social from "@/components/species/Social.astro";
 import ContactList2 from "@/components/species/ContactList2.astro";
 import Form from "@/components/species/Form.astro";
-import { getPageData } from "@/server/services/getPageData";
-import { getContactData } from "@/server/services/getContactData";
-import { getLang, useTranslations } from "@/i18n/utils";
+import {getPageData} from "@/server/services/getPageData";
+import {getContactData} from "@/server/services/getContactData";
+import {getLang, useTranslations} from "@/i18n/utils";
 
 const lang = getLang(Astro.url);
-const { dataLang: data, error } = (await getPageData(
+const {dataLang: data, error} = (await getPageData(
   "Contact_us",
   lang,
 )) as any;
 
-const { data: dataSocial, error: socialError } = await getContactData(lang);
+const {data: dataSocial, error: socialError} = await getContactData(lang);
 
 const t = useTranslations(lang);
 
@@ -68,58 +68,58 @@ const dataForm = [
   title={data?.title || "Contact us"}
   description={data?.description || ""}
 >
-  <div
-    class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
-  >
-    <div class="breadcrumb-wrap style-01">
-      <div class="container custom-container-01">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="breadcrumb-content">
-              <h1 class="title">{data?.title}</h1>
-              <div class="details" set:html={data?.description} />
-            </div>
-          </div>
-        </div>
+ <div
+   class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
+ >
+  <div class="breadcrumb-wrap style-01">
+   <div class="container custom-container-01">
+    <div class="row">
+     <div class="col-lg-12">
+      <div class="breadcrumb-content">
+       <h1 class="title">{data?.title}</h1>
+       <div class="details" set:html={data?.description}/>
       </div>
+     </div>
     </div>
-    <section class="contact-form-area-wrapper section-bottom-space">
-      <div class="container custom-container-01">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="apply-form-inner">
-              <div class="row justify-content-between">
-                <div class="col-lg-5">
-                  <div class="contact-address">
-                    <h3 class="title">{t("plans-and-pricing.item.btn")}</h3>
-                    <ContactList2 data={dataSocial} />
-                    <Social
-                      data={dataSocial?.social || []}
-                      classes="ul social-media-list style-01 color-02"
-                      classesItem="single-social-item"
-                    />
-                  </div>
-                </div>
-                <div class="col-lg-7">
-                  <div class="contact-form">
-                    <Form
-                      title={t("form.title")}
-                      fields={dataForm}
-                      classesCols="col-md-6 py-3"
-                      submitLabel={t("contact.form.btn.label")}
-                      formSettings={{
-                        method: "POST",
-                        action: "/api/form/v1/submit",
-                        id: "contactForm",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+   </div>
   </div>
+  <section class="contact-form-area-wrapper section-bottom-space">
+   <div class="container custom-container-01">
+    <div class="row">
+     <div class="col-lg-12">
+      <div class="apply-form-inner">
+       <div class="row justify-content-between">
+        <div class="col-lg-5">
+         <div class="contact-address">
+          <h3 class="title">{t("plans-and-pricing.item.btn")}</h3>
+          <ContactList2 data={dataSocial}/>
+          <Social
+            data={dataSocial?.social || []}
+            classes="ul social-media-list style-01 color-02"
+            classesItem="single-social-item"
+          />
+         </div>
+        </div>
+        <div class="col-lg-7">
+         <div class="contact-form">
+          <Form
+            title={t("form.title")}
+            fields={dataForm}
+            classesCols="col-md-6 py-3"
+            submitLabel={t("contact.form.btn.label")}
+            formSettings={{
+              method: "POST",
+              action: "/api/form/v1/submit",
+              id: "contactForm",
+            }}
+          />
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+ </div>
 </LayoutPage>

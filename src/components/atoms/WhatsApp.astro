@@ -9,33 +9,33 @@ interface Props {
   numbers: Number[];
 }
 
-const { numbers } = Astro.props;
+const {numbers} = Astro.props;
 ---
 
 <div id="whatsappWrapper" class="whatsapp-container">
-  <div class="btn-whatsapp-floating">
-    <i class="fa-brands fa-whatsapp" style="color: white; font-size: 28px;"></i>
-  </div>
+ <div class="btn-whatsapp-floating">
+  <i class="fa-brands fa-whatsapp" style="color: white; font-size: 28px;"></i>
+ </div>
 
-  <div class="modal-bg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Contactános</h3>
-        <span><i class="close fa fa-close"></i></span>
-      </div>
-      <div class="modal-body">
-        {
-          numbers?.map((n: Number) => (
-            <a
-              class="num-btn"
-              href={`https://wa.me/${n?.code + n?.number}?text=${encodeURIComponent(n?.message || "")}`}
-              target="_blank"
-            >
-              {`(${n?.code}) ${n?.number}`}
-            </a>
-          ))
-        }
-      </div>
-    </div>
+ <div class="modal-bg">
+  <div class="modal-content">
+   <div class="modal-header">
+    <h3 class="modal-title">Contactános</h3>
+    <span><i class="close fa fa-close"></i></span>
+   </div>
+   <div class="modal-body">
+     {
+       numbers?.map((n: Number) => (
+         <a
+           class="num-btn"
+           href={`https://wa.me/${n?.code + n?.number}?text=${encodeURIComponent(n?.message || "")}`}
+           target="_blank"
+         >
+           {`(${n?.code}) ${n?.number}`}
+         </a>
+       ))
+     }
+   </div>
   </div>
+ </div>
 </div>

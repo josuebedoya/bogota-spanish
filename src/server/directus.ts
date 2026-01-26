@@ -1,7 +1,7 @@
 import slugify from '@/utils/slug';
-import { createDirectus, rest, staticToken } from "@directus/sdk";
-import { DIRECTUS_URL as URL, SECRET_DIRECTUS_TOKEN as TOKEN } from 'astro:env/server';
-import { buildQuery } from '@/utils/buildQuery';
+import {createDirectus, rest, staticToken} from "@directus/sdk";
+import {DIRECTUS_URL as URL, SECRET_DIRECTUS_TOKEN as TOKEN} from 'astro:env/server';
+import {buildQuery} from '@/utils/buildQuery';
 
 if (!URL || !TOKEN) {
   throw new Error('DIRECTUS_URL or SECRET_DIRECTUS_TOKEN is not defined in environment variables');
@@ -29,4 +29,4 @@ const directusMedia = async (id: string, name: string, params?: Record<string, a
 };
 
 export default directus;
-export { directusMedia, directus };
+export {directusMedia, directus};

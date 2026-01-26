@@ -1,10 +1,10 @@
 ---
 import DefaultPage from "@/components/orgnisms/DefaultPage.astro";
-import { getLang } from "@/i18n/utils";
-import { getPageData } from "@/server/services/getPageData";
+import {getLang} from "@/i18n/utils";
+import {getPageData} from "@/server/services/getPageData";
 
 const lang = getLang(Astro.url);
-const { dataLang: data, error } = (await getPageData(
+const {dataLang: data, error} = (await getPageData(
   "tersms_and_conditions",
   lang,
 )) as any;
@@ -14,4 +14,4 @@ if (error) {
 }
 ---
 
-<DefaultPage dataPage={data} />
+<DefaultPage dataPage={data}/>

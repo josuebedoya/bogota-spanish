@@ -14,7 +14,7 @@ interface Props {
   summary: string;
   items: item[];
 }
-const { items, phrase = "", title = "", summary = "" } = Astro.props;
+const {items, phrase = "", title = "", summary = ""} = Astro.props;
 const configSlider = {
   "data-infinite": "true",
   "data-arrows": "true",
@@ -35,37 +35,37 @@ const configSlider = {
 ---
 
 <section class="our-team-area-wrapper section-top-space">
-  <div class="our-team-inner">
-    <div class="container custom-container-01">
-      <div class="row justify-content-center">
-        <div class="col-lg-7">
-          <div class="section-title-wrapper text-center">
-            <h5 class="subtitle text-primary">{phrase}</h5>
-            <h4 class="section-title">{title}</h4>
-            <p class="description">
-              {summary}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <Slider config={configSlider} classes="dots-style-03 dots-space">
-            {
-              items?.map((item: item) => (
-                <ItemSlide>
-                  <ItemTutor
-                    image={item.image}
-                    name={item.name}
-                    chargue={item.chargue}
-                    id={item.id}
-                  />
-                </ItemSlide>
-              ))
-            }
-          </Slider>
-        </div>
-      </div>
+ <div class="our-team-inner">
+  <div class="container custom-container-01">
+   <div class="row justify-content-center">
+    <div class="col-lg-7">
+     <div class="section-title-wrapper text-center">
+      <h5 class="subtitle text-primary">{phrase}</h5>
+      <h4 class="section-title">{title}</h4>
+      <p class="description">
+        {summary}
+      </p>
+     </div>
     </div>
+   </div>
+   <div class="row">
+    <div class="col-lg-12">
+     <Slider config={configSlider} classes="dots-style-03 dots-space">
+       {
+         items?.map((item: item) => (
+           <ItemSlide>
+            <ItemTutor
+              image={item?.image}
+              name={item?.name}
+              chargue={item?.chargue}
+              id={item?.id}
+            />
+           </ItemSlide>
+         ))
+       }
+     </Slider>
+    </div>
+   </div>
   </div>
+ </div>
 </section>

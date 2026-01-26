@@ -1,7 +1,7 @@
-import directus, { directusMedia } from "@/server/directus";
-import { readItems } from "@directus/sdk";
-import { defaultLang } from "@/i18n/ui";
-import { getLangData } from "@/i18n/getLangData";
+import directus, {directusMedia} from "@/server/directus";
+import {readItems} from "@directus/sdk";
+import {defaultLang} from "@/i18n/ui";
+import {getLangData} from "@/i18n/getLangData";
 
 const nullDataResponse = {
   dataMainBanner: null,
@@ -17,12 +17,11 @@ const fieldsAboutUs = [
   "tutors.Tutors_id.lang.*",
 ];
 
-
 export const getAboutUsData = async (lang: string = defaultLang) => {
 
   let error = null;
 
-  const data = await directus.request(readItems("About_us", { fields: fieldsAboutUs })) as any;
+  const data = await directus.request(readItems("About_us", {fields: fieldsAboutUs})) as any;
 
   if (!data) {
     return nullDataResponse;
@@ -43,11 +42,12 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
     image: fileMainBanner?.src_path || "",
   };
 
-  const itemsTutors = await Promise.all(
+  const itemsTutors = (await Promise.all(
     data?.tutors?.filter((tu: any) => tu?.Tutors_id?.status == 1)?.map(async (t: any) => {
       const file = await directusMedia(t?.Tutors_id?.photo_tutor || "", t?.Tutors_id?.name_tutor, {
         width: 210, height: 210,
       });
+      if (!t || t?.status === '0') return null;
 
       const dataTutorLang = getLangData(t?.Tutors_id?.lang, lang);
       return {
@@ -57,7 +57,7 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
         chargue: dataTutorLang?.position || ""
       };
     }) || [],
-  );
+  ))?.filter(Boolean);
 
   const dataMeetTutors = {
     phrase: dataLang?.phrase_our_experts,

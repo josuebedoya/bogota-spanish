@@ -3,9 +3,9 @@ import SuscribeOurNewsLetter from "../orgnisms/SuscribeOurNewsLetter.astro";
 import Menu from "@/components/species/Menu.astro";
 import Copyright from "../species/Copyright.astro";
 import ContactList from "../species/ContactList.astro";
-import { getLang, useTranslations } from "@/i18n/utils";
-import { getMenuData } from "@/server/services/getMenuData";
-import { getContactData } from "@/server/services/getContactData";
+import {getLang, useTranslations} from "@/i18n/utils";
+import {getMenuData} from "@/server/services/getMenuData";
+import {getContactData} from "@/server/services/getContactData";
 import WhatsApp from "@/components/atoms/WhatsApp.astro";
 
 
@@ -14,7 +14,7 @@ const dataMenu2 = await getMenuData("0", lang);
 const dataMenu1 = await getMenuData("1", lang);
 
 const t = useTranslations(lang);
-const { data: socialData, error: socialError } = await getContactData(lang);
+const {data: socialData, error: socialError} = await getContactData(lang);
 
 if (dataMenu1?.error || dataMenu2?.error || socialError) {
   return Astro.redirect("/500");
@@ -22,40 +22,40 @@ if (dataMenu1?.error || dataMenu2?.error || socialError) {
 ---
 
 <footer class="footer-area style-01">
-  <div class="footer-top">
-    <div class="container custom-container-01">
-      <SuscribeOurNewsLetter />
-      <div class="footer-middle">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline text-white">
-                {t("footer.titles.menu1")}
-              </h4>
-              <Menu menuItems={dataMenu1} />
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline text-white">
-                {t("footer.titles.menu3")}
-              </h4>
-              <Menu menuItems={dataMenu2} />
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="footer-widget widget widget_nav_menu">
-              <h4 class="widget-headline text-white">
-                {t("footer.titles.contact")}
-              </h4>
-              <ContactList data={socialData} />
-            </div>
-          </div>
-        </div>
+ <div class="footer-top">
+  <div class="container custom-container-01">
+   <SuscribeOurNewsLetter/>
+   <div class="footer-middle">
+    <div class="row">
+     <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="footer-widget widget widget_nav_menu">
+       <h4 class="widget-headline text-white">
+         {t("footer.titles.menu1")}
+       </h4>
+       <Menu menuItems={dataMenu1}/>
       </div>
+     </div>
+     <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="footer-widget widget widget_nav_menu">
+       <h4 class="widget-headline text-white">
+         {t("footer.titles.menu3")}
+       </h4>
+       <Menu menuItems={dataMenu2}/>
+      </div>
+     </div>
+     <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="footer-widget widget widget_nav_menu">
+       <h4 class="widget-headline text-white">
+         {t("footer.titles.contact")}
+       </h4>
+       <ContactList data={socialData}/>
+      </div>
+     </div>
     </div>
-    <Copyright />
+   </div>
   </div>
+  <Copyright/>
+ </div>
 </footer>
 
-<WhatsApp numbers={socialData?.whatsapp} />
+<WhatsApp numbers={socialData?.whatsapp}/>

@@ -8,40 +8,41 @@ type item = {
   image: string;
   videoUrl: string;
 };
+
 interface Props {
   phrase?: string;
   title?: string;
   items: item[];
 }
-const { phrase, title = "", items } = Astro.props as Props;
+const {phrase, title = "", items} = Astro.props as Props;
 ---
 
 <section class="feedback-section margin-top-110">
-  <div class="container custom-container-01">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <div class="theme-section-title desktop-center text-center">
-          {phrase && <span class="subtitle text-uppercase">{phrase}</span>}
-          <h4 class="title">
-            {title}
-            <ShipeSvg1 />
-          </h4>
-        </div>
-      </div>
+ <div class="container custom-container-01">
+  <div class="row justify-content-center">
+   <div class="col-lg-12">
+    <div class="theme-section-title desktop-center text-center">
+      {phrase && <span class="subtitle text-uppercase">{phrase}</span>}
+     <h4 class="title">
+       {title}
+      <ShipeSvg1/>
+     </h4>
     </div>
-    <div class="row">
-      {
-        items?.map((item: item) => (
-          <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-            <ItemStudentVideo
-              title={item.title}
-              summary={item.summary}
-              image={item.image}
-              videoUrl={item.videoUrl}
-            />
-          </div>
-        ))
-      }
-    </div>
+   </div>
   </div>
+  <div class="row">
+    {
+      items?.map((item: item) => (
+        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+         <ItemStudentVideo
+           title={item?.title}
+           summary={item?.summary}
+           image={item?.image}
+           videoUrl={item?.videoUrl}
+         />
+        </div>
+      ))
+    }
+  </div>
+ </div>
 </section>

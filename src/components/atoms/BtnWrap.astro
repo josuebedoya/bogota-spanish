@@ -9,12 +9,12 @@ interface Props {
   action?: (e?: any) => void;
 }
 
-const { label, class: className, icon, type, link }: Props = Astro.props;
+const {label, class: className, icon, type, link}: Props = Astro.props;
 ---
 
 <div class="btn-wrap">
-  <a href={(type === "link" && link) || "#"} class={className || "btn-classic"}>
-    {icon ? <i class={icon} /> : ""}
-    {label || ""}
-  </a>
+ <a href={(type === "link" && link) || "#"} class={className || "btn-classic"}>
+   {icon ? <i class={icon}/> : ""}
+   {label || ""}
+ </a>
 </div>

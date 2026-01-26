@@ -1,6 +1,6 @@
 ---
-import { to, getLang } from "@/i18n/utils";
-import { routes } from "@/i18n/routes";
+import {to, getLang} from "@/i18n/utils";
+import {routes} from "@/i18n/routes";
 
 interface Props {
   title: string;
@@ -8,19 +8,19 @@ interface Props {
   button: string;
 }
 
-const { title, summary, button }: Props = Astro.props;
+const {title, summary, button}: Props = Astro.props;
 
 const lang = getLang(Astro.url);
 ---
 
 <div class="taster-session-spanish-courses-wrapper">
-  <div class="container">
-    <h2 class="title">{title}</h2>
-    <div class="summary" set:html={summary} />
-    <div class="btn">
-      <a href={to(routes["spanish-courses"][lang], lang)}>
-        {button}
-      </a>
-    </div>
+ <div class="container">
+  <h2 class="title">{title}</h2>
+  <div class="summary" set:html={summary}/>
+  <div class="btn">
+   <a href={to(routes["spanish-courses"][lang], lang)}>
+     {button}
+   </a>
   </div>
+ </div>
 </div>

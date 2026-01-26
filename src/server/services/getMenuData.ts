@@ -1,7 +1,7 @@
-import { readItems } from "@directus/sdk";
+import {readItems} from "@directus/sdk";
 import directus from "@/server/directus";
-import { getLangData } from "@/i18n/getLangData";
-import { defaultLang } from "@/i18n/ui";
+import {getLangData} from "@/i18n/getLangData";
+import {defaultLang} from "@/i18n/ui";
 
 export async function getMenuData(position: string | number, lang: string = defaultLang) {
 
@@ -9,9 +9,9 @@ export async function getMenuData(position: string | number, lang: string = defa
 
   const data = await directus?.request(
     readItems("Menu", {
-      filter:{status: { _eq: "published" }},
-      sort: [ "id" ],
-      fields: [ "*", "lang.*" ],
+      filter: {status: {_eq: "published"}},
+      sort: ["id"],
+      fields: ["*", "lang.*"],
     }),
   );
 
@@ -20,7 +20,7 @@ export async function getMenuData(position: string | number, lang: string = defa
   }
 
   // Filter items by position
-  const itemsPosition = data?.filter((item: any) => item?.Position?.[ 0 ] === String(position)) as any;
+  const itemsPosition = data?.filter((item: any) => item?.Position?.[0] === String(position)) as any;
 
   // Mapping items and filter by lang
   return itemsPosition?.map((item: any, i: number) => {

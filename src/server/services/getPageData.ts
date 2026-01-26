@@ -1,7 +1,7 @@
 import directus from "@/server/directus";
-import { readItems } from "@directus/sdk";
-import { defaultLang } from "@/i18n/ui";
-import { getLangData } from "@/i18n/getLangData";
+import {readItems} from "@directus/sdk";
+import {defaultLang} from "@/i18n/ui";
+import {getLangData} from "@/i18n/getLangData";
 
 const nullDataResponse = {
   data: null,
@@ -16,7 +16,7 @@ export const getPageData = async (model: string, lang: string = defaultLang, par
 
   let error = null;
 
-  const data = await directus.request(readItems(model, { fields: [ ...fields, ...(params?.fields || []) ], ...params })) as any;
+  const data = await directus.request(readItems(model, {fields: [...fields, ...(params?.fields || [])], ...params})) as any;
 
   if (!data) {
     return nullDataResponse;

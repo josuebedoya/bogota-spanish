@@ -8,23 +8,23 @@ interface Props {
   videoUrl: string;
 }
 
-const { title, summary, image, videoUrl } = Astro.props as Props;
+const {title, summary, image, videoUrl} = Astro.props as Props;
 ---
 
 <div class="image-box-item item-video-student">
-  <div class="thumbnail">
-    <img
-      src={image}
-      alt={title}
-      loading="lazy"
-      style={{ height: "100% !important" }}
-    />
-    <a class="video-play-btn mfp-iframe" href={videoUrl}>
-      <ShipeSvg2 />
-    </a>
-    <div class="content">
-      <h6 class="title text-white">{title}</h6>
-      <p>{summary}</p>
-    </div>
+ <div class="thumbnail">
+  <img
+    src={image}
+    alt={title}
+    loading="lazy"
+    style={{height: "100% !important"}}
+  />
+  <a class="video-play-btn mfp-iframe" href={videoUrl}>
+   <ShipeSvg2/>
+  </a>
+  <div class="content">
+   <h6 class="title text-white">{title}</h6>
+   <p>{summary}</p>
   </div>
+ </div>
 </div>

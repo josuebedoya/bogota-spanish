@@ -1,5 +1,5 @@
 ---
-import { getLang, to } from "@/i18n/utils";
+import {getLang, to} from "@/i18n/utils";
 import BtnWrap from "../atoms/BtnWrap.astro";
 
 interface Props {
@@ -27,35 +27,35 @@ const {
 <section
   class={`about-section-area-wrapper section-bottom-space margin-top-110 py-15 ${withGradient ? "bg-colors-gradient" : ""}`}
 >
-  <div class="container custom-container-01">
-    <div class="row align-items-center justify-content-between">
-      <div class="col-lg-6 col-md-12 order-1 order-lg-0">
-        <div class="about-content">
-          {
-            mainTitle ? (
-              <h1 class="content-title">{title}</h1>
-            ) : (
-              <h3 class="content-title text-left">{title}</h3>
-            )
-          }
-          <div class="paragraph" set:html={summary} />
-          {
-            button?.label && (
-              <BtnWrap
-                label={button?.label}
-                link={to(button?.link, getLang(Astro.url)) || ""}
-                type="link"
-                class="btn-common btn-new text-secondary text-white-hover"
-              />
-            )
-          }
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12 order-0 order-lg-1 mb-3 mb-lg-0">
-        <div class="thumbnail text-right">
-          <img src={image} alt={title} loading="lazy" />
-        </div>
-      </div>
+ <div class="container custom-container-01">
+  <div class="row align-items-center justify-content-between">
+   <div class="col-lg-6 col-md-12 order-1 order-lg-0">
+    <div class="about-content">
+      {
+        mainTitle ? (
+          <h1 class="content-title">{title}</h1>
+        ) : (
+          <h3 class="content-title text-left">{title}</h3>
+        )
+      }
+     <div class="paragraph" set:html={summary}/>
+      {
+        button?.label && (
+          <BtnWrap
+            label={button?.label}
+            link={to(button?.link, getLang(Astro.url)) || ""}
+            type="link"
+            class="btn-common btn-new text-secondary text-white-hover"
+          />
+        )
+      }
     </div>
+   </div>
+   <div class="col-lg-6 col-md-12 order-0 order-lg-1 mb-3 mb-lg-0">
+    <div class="thumbnail text-right">
+     <img src={image} alt={title} loading="lazy"/>
+    </div>
+   </div>
   </div>
+ </div>
 </section>

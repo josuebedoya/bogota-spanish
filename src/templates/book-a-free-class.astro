@@ -1,13 +1,13 @@
 ---
 import LayoutPage from "@/layouts/LayoutPage.astro";
 import Form from "@/components/species/Form.astro";
-import { useTranslations } from "@/i18n/utils";
-import { getLang } from "@/i18n/utils";
-import { getPageData } from "@/server/services/getPageData";
+import {useTranslations} from "@/i18n/utils";
+import {getLang} from "@/i18n/utils";
+import {getPageData} from "@/server/services/getPageData";
 
 const lang = getLang(Astro.url);
 const t = useTranslations(lang);
-const { dataLang: data, error } = (await getPageData(
+const {dataLang: data, error} = (await getPageData(
   "Book_a_free_class",
   lang,
 )) as any;
@@ -76,47 +76,47 @@ if (error) {
   title={data?.title}
   description={data?.description?.slice(0, 145) + "..."}
 >
-  <div
-    class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
-  >
-    <div class="breadcrumb-wrap style-01">
-      <div class="container custom-container-01">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="breadcrumb-content">
-              <h3 class="title">{data?.title}</h3>
-            </div>
-            <div class="paragraph" set:html={data?.description} />
-          </div>
-        </div>
+ <div
+   class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space margin-top-110"
+ >
+  <div class="breadcrumb-wrap style-01">
+   <div class="container custom-container-01">
+    <div class="row">
+     <div class="col-lg-12">
+      <div class="breadcrumb-content">
+       <h3 class="title">{data?.title}</h3>
       </div>
+      <div class="paragraph" set:html={data?.description}/>
+     </div>
     </div>
-    <section class="apply-form-area-wrapper">
-      <div class="container custom-container-01">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="apply-form-inner">
-              <div class="row justify-content-between">
-                <div class="col-lg-12">
-                  <div class="contact-form">
-                    <Form
-                      title={t("form.title")}
-                      fields={dataForm}
-                      classesCols="col-md-6 col-lg-4 py-3"
-                      submitLabel={t("applyonline.form.btn.label")}
-                      formSettings={{
-                        method: "POST",
-                        action: "/api/form/v1/submit",
-                        id: "bookFreeClassForm",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+   </div>
   </div>
+  <section class="apply-form-area-wrapper">
+   <div class="container custom-container-01">
+    <div class="row">
+     <div class="col-lg-12">
+      <div class="apply-form-inner">
+       <div class="row justify-content-between">
+        <div class="col-lg-12">
+         <div class="contact-form">
+          <Form
+            title={t("form.title")}
+            fields={dataForm}
+            classesCols="col-md-6 col-lg-4 py-3"
+            submitLabel={t("applyonline.form.btn.label")}
+            formSettings={{
+              method: "POST",
+              action: "/api/form/v1/submit",
+              id: "bookFreeClassForm",
+            }}
+          />
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+ </div>
 </LayoutPage>

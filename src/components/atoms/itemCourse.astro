@@ -1,5 +1,5 @@
 ---
-import { getLang, useTranslations } from "@/i18n/utils";
+import {getLang, useTranslations} from "@/i18n/utils";
 
 interface Props {
   icon: string;
@@ -12,25 +12,25 @@ interface Props {
   classes?: string;
 }
 
-const { icon, title, summary, button, classes } = Astro.props;
+const {icon, title, summary, button, classes} = Astro.props;
 
 const t = useTranslations(getLang(Astro.url));
 ---
 
 <div class={`icon-box-item ${classes ?? ""}`}>
-  <div class="icon">
-    <i class={`fa-solid fa-${icon} text-primary icon-primary`}></i>
-  </div>
-  <div class="content">
-    <h4 class="title">{title}</h4>
-    <p>
-      {summary}
-    </p>
-  </div>
-  <div class="btn-wrap">
-    <a href={button?.link} class="more-btn"
-      >{button?.label || t("btn.viewmore")}
-      <i class="fa-solid fa-angle-right icon-btn"></i>
-    </a>
-  </div>
+ <div class="icon">
+  <i class={`fa-solid fa-${icon} text-primary icon-primary`}></i>
+ </div>
+ <div class="content">
+  <h4 class="title">{title}</h4>
+  <p>
+    {summary}
+  </p>
+ </div>
+ <div class="btn-wrap">
+  <a href={button?.link} class="more-btn"
+  >{button?.label || t("btn.viewmore")}
+   <i class="fa-solid fa-angle-right icon-btn"></i>
+  </a>
+ </div>
 </div>

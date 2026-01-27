@@ -1,19 +1,19 @@
-import { SECRET_RECAPTCHA_API_KEY as SECRET_KEY } from "astro:env/server";
+import {SECRET_RECAPTCHA_API_KEY as SECRET_KEY} from "astro:env/server";
 
 /**
-  * Crea una evaluación para analizar el riesgo de una acción de la IU.
-  *
-  * projectID: El ID del proyecto de Google Cloud.
-  * recaptchaSiteKey: La clave reCAPTCHA asociada con el sitio o la aplicación
-  * token: El token generado obtenido del cliente.
-  * recaptchaAction: El nombre de la acción que corresponde al token.
-  */
-export async function createAssessment({ token }: { token: string; }): Promise<number | null> {
+ * Crea una evaluación para analizar el riesgo de una acción de la IU.
+ *
+ * projectID: El ID del proyecto de Google Cloud.
+ * recaptchaSiteKey: La clave reCAPTCHA asociada con el sitio o la aplicación
+ * token: El token generado obtenido del cliente.
+ * recaptchaAction: El nombre de la acción que corresponde al token.
+ */
+export async function createAssessment({token}: { token: string; }): Promise<number | null> {
   if (!SECRET_KEY) throw new Error("Secret RECAPTCHA key is not defined");
 
   const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
     body: `secret=${SECRET_KEY}&response=${token}`,
   });
 

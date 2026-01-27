@@ -1,8 +1,8 @@
 ---
 import BtnWrap from "@/components/atoms/BtnWrap.astro";
 import Lang from "../atoms/Lang.astro";
-import { getLang, useTranslations } from "@/i18n/utils";
-import { languages } from "@/i18n/ui";
+import {getLang, useTranslations} from "@/i18n/utils";
+import {languages} from "@/i18n/ui";
 import Search from "@/components/atoms/Search.astro";
 interface Props {
   class?: string;
@@ -20,12 +20,12 @@ const langs = Object.keys(languages)?.map((key) => ({
 ---
 
 <div id="btnsHeader" class=`nav-right-content ${Astro.props.class || ''}`>
-  <Search />
-  <BtnWrap
-    label={t("spanish-courses.btnlabel")}
-    class="btn-common nav-btn text-secondary text-white-hover"
-    type="link"
-    link={t("spanish-courses.btnlink", [{ key: "LANG", value: lang }])}
-  />
-  <Lang langs={langs} />
+ <Search/>
+ <BtnWrap
+   label={t("spanish-courses.btnlabel")}
+   class="btn-common nav-btn text-secondary text-white-hover"
+   type="link"
+   link={t("spanish-courses.btnlink", [{key: "LANG", value: lang}])}
+ />
+ <Lang langs={langs}/>
 </div>

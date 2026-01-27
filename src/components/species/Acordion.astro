@@ -9,20 +9,20 @@ interface Props {
   }[];
 }
 
-const { id, items } = Astro.props;
+const {id, items} = Astro.props;
 ---
 
 <div class="accordion-wrapper">
-  <div id={id}>
-    {
-      items?.map((item, index) => (
-        <ItemAcordion
-          title={item.title}
-          body={item.body}
-          index={index + 1}
-          parent={id}
-        />
-      ))
-    }
-  </div>
+ <div id={id}>
+   {
+     items?.map((item, index) => (
+       <ItemAcordion
+         title={item?.title}
+         body={item?.body}
+         index={index + 1}
+         parent={id}
+       />
+     ))
+   }
+ </div>
 </div>

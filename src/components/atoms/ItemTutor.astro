@@ -1,6 +1,6 @@
 ---
-import { routes } from "@/i18n/routes";
-import { getLang } from "@/i18n/utils";
+import {routes} from "@/i18n/routes";
+import {getLang} from "@/i18n/utils";
 import slugify from "@/utils/slug.ts";
 
 interface Props {
@@ -9,30 +9,30 @@ interface Props {
   chargue: string;
   id: string;
 }
-const { image, name, chargue, id } = Astro.props;
+const {image, name, chargue, id} = Astro.props;
 const lang = getLang(Astro.url);
 const tutorSlug = routes.tutors[lang] + "/" + slugify(name + "-" + id);
 ---
 
 <div class="single-team-item style-01 item-tutor">
-  <div class="thumbnail">
-    <a
-      href={"/" + lang + "/" + tutorSlug}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src={image} alt={name} loading="lazy" />
-    </a>
-  </div>
-  <div class="content">
-    <h4 class="title">
-      <a
-        href={"/" + lang + "/" + tutorSlug}
-        target="_blank"
-        rel="noopener noreferrer"
-        >{name}
-      </a>
-    </h4>
-    <p class="designation">{chargue}</p>
-  </div>
+ <div class="thumbnail">
+  <a
+    href={"/" + lang + "/" + tutorSlug}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+   <img src={image} alt={name} loading="lazy"/>
+  </a>
+ </div>
+ <div class="content">
+  <h4 class="title">
+   <a
+     href={"/" + lang + "/" + tutorSlug}
+     target="_blank"
+     rel="noopener noreferrer"
+   >{name}
+   </a>
+  </h4>
+  <p class="designation">{chargue}</p>
+ </div>
 </div>

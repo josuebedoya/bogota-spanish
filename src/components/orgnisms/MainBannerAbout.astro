@@ -13,11 +13,11 @@ interface Props {
   };
   image: string;
 }
-const { ...props }: Props = Astro.props;
+const {...props}: Props = Astro.props;
 ---
 
 <div
   class="about-page-area-wrapper single-page-section-top-space"
 >
-  <BannerTypeOne {...props} imageLeft={false} mainTitle={true} />
+ <BannerTypeOne {...props} imageLeft={false} mainTitle={true}/>
 </div>

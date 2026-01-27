@@ -1,8 +1,8 @@
 ---
-import { validateRoute } from "@/i18n/utils";
-import { getLang } from "@/i18n/utils";
-import { routes } from "@/i18n/routes";
-import { defaultLang } from "@/i18n/ui";
+import {validateRoute} from "@/i18n/utils";
+import {getLang} from "@/i18n/utils";
+import {routes} from "@/i18n/routes";
+import {defaultLang} from "@/i18n/ui";
 
 type item = {
   flag: string;
@@ -13,12 +13,12 @@ interface Props {
   langs: item[];
 }
 
-const { langs } = Astro.props;
-const { slug, lang: LangDinamic } = Astro.params;
+const {langs} = Astro.props;
+const {slug, lang: LangDinamic} = Astro.params;
 
 const lang = getLang(Astro.url);
 
-const { route } = await validateRoute(Astro.url, LangDinamic && slug);
+const {route} = await validateRoute(Astro.url, LangDinamic && slug);
 
 const activeItem = langs.find((l) => l.value === lang) || {
   flag: "/assets/img/logos/" + lang + ".webp",
@@ -27,41 +27,41 @@ const activeItem = langs.find((l) => l.value === lang) || {
 ---
 
 <div id="langSelector" class="lang-selector">
-  <div class="active-lang">
-    <img
-      src={activeItem.flag}
-      alt={activeItem.value}
-      width="30"
-      height="20"
-      title={activeItem.value}
-    />
-  </div>
-  <div id="langsItems" class="list-langs">
-    {
-      langs?.map((lang: item) => {
-        const isHOme = route === "home";
-        const path = isHOme
-          ? routes["home"][lang.value as keyof (typeof routes)["home"]]
-          : lang.value === defaultLang
-            ? routes[(route as keyof typeof routes) || "home"][
-                lang.value as keyof (typeof routes)["home"]
-              ]
-            : `${lang.value}/${routes[(route as keyof typeof routes) || "home"][lang.value as keyof (typeof routes)["home"]]}`;
-        return (
-          <a href={isHOme ? path : `/${path}`}>
-            <div class="lang" aria-label={lang.value}>
-              <img
-                src={lang.flag}
-                alt={lang.value}
-                width="30"
-                height="20"
-                title={lang.value}
-              />
-              <span>{lang.value}</span>
-            </div>
-          </a>
-        );
-      })
-    }
-  </div>
+ <div class="active-lang">
+  <img
+    src={activeItem.flag}
+    alt={activeItem.value}
+    width="30"
+    height="20"
+    title={activeItem.value}
+  />
+ </div>
+ <div id="langsItems" class="list-langs">
+   {
+     langs?.map((lang: item) => {
+       const isHOme = route === "home";
+       const path = isHOme
+         ? routes["home"][lang?.value as keyof (typeof routes)["home"]]
+         : lang?.value === defaultLang
+           ? routes[(route as keyof typeof routes) || "home"][
+             lang?.value as keyof (typeof routes)["home"]
+             ]
+           : `${lang?.value}/${routes[(route as keyof typeof routes) || "home"][lang?.value as keyof (typeof routes)["home"]]}`;
+       return (
+         <a href={isHOme ? path : `/${path}`}>
+          <div class="lang" aria-label={lang.value}>
+           <img
+             src={lang?.flag}
+             alt={lang?.value}
+             width="30"
+             height="20"
+             title={lang?.value}
+           />
+           <span>{lang?.value}</span>
+          </div>
+         </a>
+       );
+     })
+   }
+ </div>
 </div>

@@ -7,6 +7,6 @@ interface Props {
 const { classes, config } = Astro.props;
 ---
 
-<div class={`slick-main slick-main global-slick-init ${classes}`} {...config}>
+<div class={`slick-main global-slick-init ${classes}`} {...config}>
   <slot />
 </div>

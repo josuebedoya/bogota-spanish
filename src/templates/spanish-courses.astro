@@ -3,21 +3,21 @@ import BannerTypeTwo from "@/components/species/BannerTypeTwo.astro";
 import BannerTypeOne from "@/components/species/BannerTypeOne.astro";
 import BannerSpanishCourses from "@/components/atoms/BannerSpanishCourses.astro";
 import LayoutPage from "@/layouts/LayoutPage.astro";
-import { getSpanishCoursesData } from "@/server/services/getSpanishCoursesData";
-import { getCoursesData } from "@/server/services/getCoursesData";
-import { getPlansAndPricingData } from "@/server/services/getPlansAndPricingData";
-import { getLang } from "@/i18n/utils";
+import {getSpanishCoursesData} from "@/server/services/getSpanishCoursesData";
+import {getCoursesData} from "@/server/services/getCoursesData";
+import {getPlansAndPricingData} from "@/server/services/getPlansAndPricingData";
+import {getLang} from "@/i18n/utils";
 import PlansAndPricing from "@/components/orgnisms/PlansAndPricing.astro";
 
 const lang = getLang(Astro.url);
-const { dataMainBanner, dataBannerSpanishCourses, page, courses, error } =
+const {dataMainBanner, dataBannerSpanishCourses, page, courses, error} =
   (await getSpanishCoursesData(lang)) as any;
-const { data: coursesPlans, error: errorCourses } = (await getCoursesData(
+const {data: coursesPlans, error: errorCourses} = (await getCoursesData(
   lang,
 )) as any;
-const { data: dataPage, error: errorPage } = await getPlansAndPricingData(lang);
+const {data: dataPage, error: errorPage} = await getPlansAndPricingData(lang);
 
-if (error || errorCourses) {
+if (error || errorCourses || errorPage) {
   return Astro.redirect("/500");
 }
 ---
@@ -26,28 +26,28 @@ if (error || errorCourses) {
   title={page?.title_main_banner}
   description={page?.summary_main_banner?.slice(0, 150) + "..."}
 >
-  <div class="about-page-area-wrapper single-page-section-top-space">
-    <BannerTypeTwo {...dataMainBanner} mainTitle={true} withGradient={false} />
-    <div class="list-courses">
-      {
-        courses?.map((c: any) => {
-          return c.isEven ? (
-            <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
-              <BannerTypeOne {...c} imageLeft={true} />
-            </div>
-          ) : (
-            <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
-              <BannerTypeTwo {...c} withGradient={false} />
-            </div>
-          );
-        })
-      }
-    </div>
-    <PlansAndPricing
-      courses={coursesPlans}
-      title={dataPage?.title}
-      description={dataPage?.description}
-    />
-    <BannerSpanishCourses {...dataBannerSpanishCourses} />
+ <div class="about-page-area-wrapper single-page-section-top-space">
+  <BannerTypeTwo {...dataMainBanner} mainTitle={true} withGradient={false}/>
+  <div class="list-courses">
+    {
+      courses?.map((c: any) => {
+        return c.isEven ? (
+          <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+           <BannerTypeOne {...c} imageLeft={true}/>
+          </div>
+        ) : (
+          <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+           <BannerTypeTwo {...c} withGradient={false}/>
+          </div>
+        );
+      })
+    }
   </div>
+  <PlansAndPricing
+    courses={coursesPlans}
+    title={dataPage?.title}
+    description={dataPage?.description}
+  />
+  <BannerSpanishCourses {...dataBannerSpanishCourses}/>
+ </div>
 </LayoutPage>

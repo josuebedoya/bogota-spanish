@@ -1,6 +1,6 @@
 ---
-import { useTranslations } from "@/i18n/utils";
-import type { languages } from "@/i18n/ui";
+import {useTranslations} from "@/i18n/utils";
+import type {languages} from "@/i18n/ui";
 
 interface Props {
   title: string;
@@ -9,37 +9,37 @@ interface Props {
   icon: string;
   lang: keyof typeof languages;
 }
-const { title, subTitle, description, icon, lang }: Props = Astro.props;
+const {title, subTitle, description, icon, lang}: Props = Astro.props;
 
 const t = useTranslations(lang);
 ---
 
 <div class="single-team-item style-03 card-plan">
-  <div class="thumbnail">
-    <i class={icon}></i>
-  </div>
+ <div class="thumbnail">
+  <i class={icon}></i>
+ </div>
 
-  <div class="content">
-    <h4 class="title">
-      <a href="#" tabindex="-1">{title}</a>
-    </h4>
-    <p class="designation">{subTitle}</p>
+ <div class="content">
+  <h4 class="title">
+   <a href="#" tabindex="-1">{title}</a>
+  </h4>
+  <p class="designation">{subTitle}</p>
 
-    <div class="paragraph" set:html={description} />
-  </div>
+  <div class="paragraph" set:html={description}/>
+ </div>
 
-  <div class="hover-content">
-    <div class="btn-wrap">
-      <div class="btn-common btn-active">
-        <a
-          href={t("plans-and-pricing.item.btn.link", [
-            { key: "LANG", value: lang },
-          ])}
-          target="_self"
-        >
-          {t("plans-and-pricing.item.btn")}
-        </a>
-      </div>
-    </div>
+ <div class="hover-content">
+  <div class="btn-wrap">
+   <div class="btn-common btn-active">
+    <a
+      href={t("plans-and-pricing.item.btn.link", [
+        {key: "LANG", value: lang},
+      ])}
+      target="_self"
+    >
+      {t("plans-and-pricing.item.btn")}
+    </a>
+   </div>
   </div>
+ </div>
 </div>

@@ -1,9 +1,11 @@
 ---
 import ItemCourse from "@/components/atoms/ItemCourse.astro";
-import { routes } from "@/i18n/routes";
-import type { languages } from "@/i18n/ui";
+import {routes} from "@/i18n/routes";
+import type {languages} from "@/i18n/ui";
 type L = keyof typeof languages;
-import { to } from "@/i18n/utils";
+import {to} from "@/i18n/utils";
+import ItemSlide from "@/components/atoms/ItemSlide.astro";
+import Slider from "@/components/species/Slider.astro";
 
 type item = {
   icon: string;
@@ -22,39 +24,57 @@ interface Props {
   lang: L;
 }
 
-const { items, phrase, title = "", lang } = Astro.props;
+const {items, phrase, title = "", lang} = Astro.props;
+const configSlider = {
+  "data-infinite": "true",
+  "data-arrows": "false",
+  "data-fade": "false",
+  "data-speed": "500",
+  "data-slidesToShow": "3",
+  "data-slidesToScroll": "1",
+  "data-swipeToSlide": "true",
+  "data-autoplay": "true",
+  "data-centerInsufficientSlides": "true",
+  "data-autoplaySpeed": "2500",
+  "data-dots": "false",
+  "data-responsive": `[
+    {"breakpoint": 992,"settings": {"slidesToShow": 3}},
+    {"breakpoint": 768, "settings": {"slidesToShow": 2}},
+    {"breakpoint": 0, "settings": {"slidesToShow": 1}}
+  ]`,
+};
 ---
 
 <section class="features-section margin-top-100 courses-spanish">
-  <div class="container custom-container-01">
-    <div class="title-section theme-section-title">
-      {
-        phrase && (
-          <p
-            class="subtitle text-uppercase text-center"
-            style={{ width: "100%" }}
-          >
-            {phrase}
-          </p>
-        )
-      }
+ <div class="container custom-container-01">
+  <div class="title-section theme-section-title">
+    {
+      phrase && (
+        <p
+          class="subtitle text-uppercase text-center"
+          style={{width: "100%"}}
+        >
+          {phrase}
+        </p>
+      )
+    }
 
-      <h2 class="title">
-        {title}
-      </h2>
-    </div>
-    <div class="row">
-      {
-        items?.map((item: any, i: number) => (
-          <div class="col-lg-4 col-md-6">
-            <ItemCourse
-              {...item}
-              classes={`item-${(i % 3) + 1}`}
-              button={{ link: to(routes["spanish-courses"][lang as L], lang) }}
-            />
-          </div>
-        ))
-      }
-    </div>
+   <h2 class="title">
+     {title}
+   </h2>
   </div>
+  <div class="container courses-home">
+   <Slider config={configSlider}>
+     {items?.map((item: any, i: number) => (
+       <ItemSlide>
+        <ItemCourse
+          {...item}
+          classes={`item-${(i % 3) + 1}`}
+          button={{link: to(routes["spanish-courses"][lang as L], lang)}}
+        />
+       </ItemSlide>
+     ))}
+   </Slider>
+  </div>
+ </div>
 </section>

@@ -1,8 +1,8 @@
-import { defaultLang } from "@/i18n/ui";
-import directus, { directusMedia } from "@/server/directus";
-import { readItems } from "@directus/sdk";
+import {defaultLang} from "@/i18n/ui";
+import directus, {directusMedia} from "@/server/directus";
+import {readItems} from "@directus/sdk";
 import slugify from "@/utils/slug";
-import { getLangData } from "@/i18n/getLangData";
+import {getLangData} from "@/i18n/getLangData";
 
 const nullDataResponse = {
   data: null,
@@ -20,11 +20,11 @@ export const getTutorData = async (tutorSlug: string, lang: string = defaultLang
 
   const data = await directus?.request(
     readItems("Tutors", {
-      filter: {
-        status: { _eq: 1 }
-      },
-      fields: fieldsTutor,
-    }
+        filter: {
+          status: {_eq: 1}
+        },
+        fields: fieldsTutor,
+      }
     )) as any;
 
   if (!data || !tutorSlug) {
@@ -38,7 +38,7 @@ export const getTutorData = async (tutorSlug: string, lang: string = defaultLang
 
     if (slug === tutorSlug) {
       const photo = await directusMedia(t.photo_tutor, t.name_tutor);
-      tutorData = { ...t, photo, ...getLangData(t.lang || {}, lang) };
+      tutorData = {...t, photo, ...getLangData(t.lang || {}, lang)};
       break;
     }
   }

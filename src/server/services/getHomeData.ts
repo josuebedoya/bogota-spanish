@@ -1,9 +1,9 @@
-import directus, { directusMedia } from "@/server/directus";
-import { readItems } from "@directus/sdk";
-import { routes } from "@/i18n/routes";
-import { defaultLang, languages } from "@/i18n/ui";
-import { getLangData } from "@/i18n/getLangData";
-import { getCoursesData } from "./getCoursesData";
+import directus, {directusMedia} from "@/server/directus";
+import {readItems} from "@directus/sdk";
+import {routes} from "@/i18n/routes";
+import {defaultLang, languages} from "@/i18n/ui";
+import {getLangData} from "@/i18n/getLangData";
+import {getCoursesData} from "./getCoursesData";
 
 const nullDataResponse = {
   data: null,
@@ -29,7 +29,7 @@ export const getHomeData = async (lang: string = defaultLang) => {
 
   let error = null;
 
-  const data = await directus?.request(readItems("Home", { fields: fieldsHome })) as any;
+  const data = await directus?.request(readItems("Home", {fields: fieldsHome})) as any;
 
   if (!data) {
     return nullDataResponse;
@@ -37,14 +37,22 @@ export const getHomeData = async (lang: string = defaultLang) => {
 
   const dataLang = getLangData(data?.lang, lang);
 
-  const fileBanner = await directusMedia(data?.Image_Main_Banner || "", dataLang?.title_main_banner, { width: 530, height: 640 });
-  const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "", dataLang?.title_levels_starting, { width: 682, height: 790 });
-  const fileTesterSession = await directusMedia(data?.image_tester_session || "", dataLang?.title_tester_sesion, { width: 682, height: 423 });
+  const fileBanner = await directusMedia(data?.Image_Main_Banner || "", dataLang?.title_main_banner, {
+    width: 530,
+    height: 640
+  });
+  const fileBanner2 = await directusMedia(data?.Image_Levels_Starting || "", dataLang?.title_levels_starting, {
+    width: 682,
+    height: 790
+  });
+  const fileTesterSession = await directusMedia(data?.image_tester_session || "", dataLang?.title_tester_sesion, {
+    width: 682,
+    height: 423
+  });
 
   if (!dataLang || !fileBanner || !fileBanner2 || !fileTesterSession) {
     return nullDataResponse;
   }
-
 
   // Main Banner Section
   const dataMainBanner = {
@@ -53,11 +61,11 @@ export const getHomeData = async (lang: string = defaultLang) => {
     summary: dataLang?.summary_main_banner,
     button1: {
       text: dataLang?.button_main_banner_1,
-      link: routes[ "book-a-free-class" ][ lang as L ],
+      link: routes["book-a-free-class"][lang as L],
     },
     button2: {
       text: dataLang?.button_main_banner_2,
-      link: routes[ "spanish-courses" ][ lang as L ],
+      link: routes["spanish-courses"][lang as L],
     },
     image: fileBanner?.src_path || "",
   };
@@ -71,21 +79,22 @@ export const getHomeData = async (lang: string = defaultLang) => {
     listLevels: dataLang?.list_levels_starting || [],
     button: {
       label: dataLang?.button_levels_starting,
-      link: routes[ "about-us" ][ lang as L ],
+      link: routes["about-us"][lang as L],
     },
     image: fileBanner2?.src_path || "",
   };
 
   // Courses Section
-  const { data: dataCourses } = await getCoursesData(lang);
+  const {data: dataCourses} = await getCoursesData(lang);
+
   if (!dataCourses) return nullDataResponse;
   const courses = dataCourses?.map((item: any) => {
-    return {
-      title: item?.shurt_title || "",
-      summary: item?.summary || "",
-      icon: item?.icon || "",
+      return {
+        title: item?.shurt_title || "",
+        summary: item?.summary || "",
+        icon: item?.icon || "",
+      }
     }
-  }
   );
 
   const dataSpanishCourses = {
@@ -95,23 +104,29 @@ export const getHomeData = async (lang: string = defaultLang) => {
   };
 
   // Our Students Section
-  const itemsStudents = await Promise.all(
-    data?.Stories?.map(async (story: any) => {
-      const fileImage = await directusMedia(
-        story?.Stories_id?.Video_Or_Image || "", story?.Stories_id?.name,
-        { width: 330, height: 390 }
-      );
+  const itemsStudents = (
+    await Promise.all(
+      (data?.Stories || []).map(async ({Stories_id: story}: any) => {
+        if (!story || story?.status !== "1") return null;
 
-      const dataStoryLang = getLangData(story?.Stories_id?.lang, lang);
+        const dataStoryLang = getLangData(story?.lang, lang);
+        if (!dataStoryLang || story?.status !== "1") return null;
 
-      return {
-        title: story?.Stories_id?.name,
-        summary: dataStoryLang?.summary,
-        image: fileImage?.src_path,
-        videoUrl: story?.Stories_id?.Url_Video,
-      };
-    }) || [],
-  );
+        const fileImage = await directusMedia(
+          story?.Video_Or_Image || "",
+          story?.name,
+          {width: 330, height: 390}
+        );
+
+        return {
+          title: story?.name,
+          summary: dataStoryLang.summary,
+          image: fileImage?.src_path,
+          videoUrl: story?.Url_Video,
+        };
+      })
+    )
+  )?.filter(Boolean);
 
   const dataSayOurStudents = {
     phrase: dataLang?.phrase_our_students,
@@ -125,7 +140,7 @@ export const getHomeData = async (lang: string = defaultLang) => {
     summary: dataLang?.summary_tester_session,
     button: {
       label: dataLang?.button_tester_sesion,
-      link: routes[ "book-a-free-class" ][ lang as L ],
+      link: routes["book-a-free-class"][lang as L],
     },
     image: fileTesterSession?.src_path || "",
   };
@@ -134,7 +149,7 @@ export const getHomeData = async (lang: string = defaultLang) => {
   const dataFaq = {
     title: dataLang?.title_faq,
     summary: dataLang?.summary_faq,
-    items: dataLang?.list_faq.map((el: any) => el) || [],
+    items: dataLang?.list_faq?.map((el: any) => el) || [],
   };
 
   // Return all data

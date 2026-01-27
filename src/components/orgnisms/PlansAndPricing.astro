@@ -1,6 +1,6 @@
 ---
 import ItemPlan from "@/components/atoms/ItemPlan.astro";
-import { getLang } from "@/i18n/utils";
+import {getLang} from "@/i18n/utils";
 const lang = getLang(Astro.url);
 
 interface Props {
@@ -14,44 +14,44 @@ interface Props {
   }>;
 }
 
-const { title, description, courses } = Astro.props as Props;
+const {title, description, courses} = Astro.props as Props;
 ---
 
 <div
   class="instructors-wrapper plans-courses single-page-section-top-space single-page-section-bottom-space"
 >
-  <div class="breadcrumb-wrap style-01">
-    <div class="container custom-container-01">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="breadcrumb-content">
-            <h1 class="title">{title}</h1>
-            <div class="details" set:html={description} />
-          </div>
-        </div>
-      </div>
+ <div class="breadcrumb-wrap style-01">
+  <div class="container custom-container-01">
+   <div class="row">
+    <div class="col-lg-12">
+     <div class="breadcrumb-content">
+      <h1 class="title">{title}</h1>
+      <div class="details" set:html={description}/>
+     </div>
     </div>
+   </div>
   </div>
+ </div>
 
-  <section class="our-team-area-wrapper">
-    <div class="our-team-inner">
-      <div class="container custom-container-01">
-        <div class="row column-gap-50">
-          {
-            courses?.map((p) => (
-              <div class="col-md-6 col-lg-6 col-xl-4">
-                <ItemPlan
-                  title={p.shurt_title}
-                  subTitle={p.subtitle_plan}
-                  description={p.features_plan}
-                  icon={p.icon}
-                  lang={lang}
-                />
-              </div>
-            ))
-          }
-        </div>
-      </div>
+ <section class="our-team-area-wrapper">
+  <div class="our-team-inner">
+   <div class="container custom-container-01">
+    <div class="row column-gap-50">
+      {
+        courses?.map((p) => (
+          <div class="col-md-6 col-lg-6 col-xl-4">
+           <ItemPlan
+             title={p?.shurt_title}
+             subTitle={p?.subtitle_plan}
+             description={p?.features_plan}
+             icon={p?.icon}
+             lang={lang}
+           />
+          </div>
+        ))
+      }
     </div>
-  </section>
+   </div>
+  </div>
+ </section>
 </div>

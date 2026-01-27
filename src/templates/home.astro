@@ -6,8 +6,8 @@ import SpanishCoursesHome from "@/components/orgnisms/SpanishCoursesHome.astro";
 import Faq from "@/components/orgnisms/Faq.astro";
 import WhatSayOurStudents from "@/components/orgnisms/WhatSayOurStudents.astro";
 import BannerTypeTwo from "@/components/species/BannerTypeTwo.astro";
-import { getLang } from "@/i18n/utils";
-import { defaultLang } from "@/i18n/ui";
+import {getLang} from "@/i18n/utils";
+import {defaultLang} from "@/i18n/ui";
 
 interface Props {
   title: string;
@@ -35,10 +35,10 @@ const lang = getLang(Astro.url) || defaultLang;
 ---
 
 <LayoutPage title={title} description={description}>
-  <MainBannerHome {...dataMainBanner} lang={lang} />
-  <BannerHome2 {...dataBanner2} />
-  <SpanishCoursesHome {...dataSpanishCourses} lang={lang} />
-  <WhatSayOurStudents {...dataSayOurStudents} />
-  <BannerTypeTwo {...dataBookingTasterSession} />
-  <Faq {...dataFaq} />
+ <MainBannerHome {...dataMainBanner} lang={lang}/>
+ <BannerHome2 {...dataBanner2}/>
+ <SpanishCoursesHome {...dataSpanishCourses} lang={lang}/>
+ <WhatSayOurStudents {...dataSayOurStudents}/>
+ <BannerTypeTwo {...dataBookingTasterSession}/>
+ <Faq {...dataFaq}/>
 </LayoutPage>

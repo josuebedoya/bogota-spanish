@@ -5,18 +5,18 @@ interface Props {
   type: string;
   inputConfig?: any;
 }
-const { classes, icon, type, inputConfig } = Astro.props;
+const {classes, icon, type, inputConfig} = Astro.props;
 ---
 
 <div class={`input ${classes && classes}`}>
-  {icon && <i class={icon} />}
-  <div class="ui input">
-    {
-      type === "textarea" ? (
-        <textarea class="textarea" {...inputConfig} />
-      ) : (
-        <input type={type || "text"} {...inputConfig} />
-      )
-    }
-  </div>
+  {icon && <i class={icon}/>}
+ <div class="ui input">
+   {
+     type === "textarea" ? (
+       <textarea class="textarea" {...inputConfig}/>
+     ) : (
+       <input type={type || "text"} {...inputConfig}/>
+     )
+   }
+ </div>
 </div>

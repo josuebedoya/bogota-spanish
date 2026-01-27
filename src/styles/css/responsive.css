@@ -651,7 +651,21 @@
     .feedback-bar-wrap .middle-content .p-bar .single-progressbar .bar {
         width: 115px;
     }
+  section.about-section-area-wrapper.section-bottom-space.margin-top-110.py-15.bg-colors-gradient{
+    margin-top: 45px !important;
+  }
+  .faq-section-area .faq-content .subtitle {
+    font-size: 18px !important;
+  }
+  .faq-section-area .accordion-wrapper .card .card-header a{
+    font-size: 16px;
+  }
+.features-section  .icon-box-item{
 
+  padding: 20px}
+.courses-spanish.margin-top-100{
+  margin-top: 60px !important;
+}
     .simillar-course-list .single-simillar-course-item {
         flex-direction: column;
         align-items: flex-start;

@@ -16,7 +16,7 @@ export default defineConfig({
             PUBLIC_RECAPTCHA_SITE_KEY: envField.string({ context: "client", access: "public" }),
             SECRET_RECAPTCHA_API_KEY: envField.string({ context: "server", access: "secret" }),
             SECRET_RECAPTCHA_PROJECT_ID: envField.string({ context: "server", access: "secret" }),
-            SITE_URL: envField.string({ context: "client", access: "public" })
+            PUBLIC_SITE_URL: envField.string({ context: "client", access: "public" })
         }
     },
     i18n: {

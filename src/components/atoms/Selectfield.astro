@@ -5,14 +5,15 @@ interface Props {
   icon?: string;
   config?: any;
   classes?: string;
+  placeholder?: string;
 }
-const { name, options, icon, config, classes } = Astro.props;
+const { name, options, icon, config, classes, placeholder } = Astro.props;
 ---
 
 <div class={classes}>
   {icon && <i class={icon} />}
   <select name={name} id={name} {...config}>
-    <option disabled selected hidden>{name}</option>
+    <option disabled selected>{placeholder}</option>
     {options?.map((option: string) => <option value={option}>{option}</option>)}
   </select>
 </div>

@@ -18,7 +18,7 @@ const tutorSlug = routes.tutors[lang] + "/" + slugify(name + "-" + id);
  <div class="thumbnail">
   <a
     href={"/" + lang + "/" + tutorSlug}
-    target="_blank"
+    target="_self"
     rel="noopener noreferrer"
   >
    <img src={image} alt={name} loading="lazy"/>

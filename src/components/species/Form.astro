@@ -42,9 +42,10 @@ const {
                         ? "col-md-6 py-3"
                         : "col-12"
                     }
-                    name={field.name}
-                    options={field.options}
-                    icon={field.icon}
+                    name={field?.name}
+                    options={field?.options}
+                    icon={field?.icon}
+                    placeholder={field?.placeholder}
                     config={{...field}}
                   />
                 );
@@ -54,15 +55,13 @@ const {
                     classes={
                       classesCols &&
                       !field?.widthFull &&
-                      field.type !== "hidden"
+                      field?.type !== "hidden"
                         ? "col-md-6 py-3"
                         : "col-12"
                     }
-                    type={field.type}
-                    icon={field.icon}
-                    inputConfig={{
-                      ...field,
-                    }}
+                    type={field?.type}
+                    icon={field?.icon}
+                    inputConfig={{...field,}}
                   />
                 );
               }

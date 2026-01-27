@@ -3,53 +3,49 @@ interface Props {
   data: any;
 }
 const {data} = Astro.props;
+
+const {whatsapp, emails, address} = data;
 ---
 
 <ul class="ul contact-address-list">
-  {
-    data?.phones?.length && (
-      <li class="single-address-item">
-        <span class="icon-wrap color-02">
+  {whatsapp?.map((n: any) => (
+    <li class="single-address-item">
+       <span class="icon-wrap color-02">
           <i class="fa-brands fa-whatsapp icon"/>
         </span>
-        {data?.phones?.map((p: any) => (
-          <span class="text">
-            ({p?.code_phone})&nbsp;&nbsp;{p?.number}
-          </span>
-        ))}
-      </li>
-    )
-  }
-  {
-    data?.address?.length && (
-      <li class="single-address-item">
+     <span class="text">   <a
+       class="num-btn"
+       href={`https://wa.me/${n?.code + n?.number}?text=${encodeURIComponent(n?.message || "")}`}
+       target="_blank"
+     >({n?.code}) {n?.number}</a></span>
+    </li>
+  ))}
+  {address?.length && (
+    <li class="single-address-item">
         <span class="icon-wrap color-01">
           <i class="fa-sharp fa-solid fa-location-dot icon"/>
         </span>
-        {data?.address?.map((a: any) => (
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a?.address)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-           <span class="text">{a?.address}</span>
-          </a>
-        ))}
-      </li>
-    )
-  }
-  {
-    data?.emails?.length && (
-      <li class="single-address-item">
+      {data?.address?.map((a: any) => (
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a?.address)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+         <span class="text">{a?.address}</span>
+        </a>
+      ))}
+    </li>
+  )}
+  {emails?.length && (
+    <li class="single-address-item">
         <span class="icon-wrap color-03">
           <i class="fa-solid fa-envelope-open icon"/>
         </span>
-        {data?.emails?.map((e: any) => (
-          <a href={`mailto:${e?.email}`}>
-           <span class="text">{e?.email}</span>
-          </a>
-        ))}
-      </li>
-    )
-  }
+      {data?.emails?.map((e: any) => (
+        <a href={`mailto:${e?.email}`}>
+         <span class="text">{e?.email}</span>
+        </a>
+      ))}
+    </li>
+  )}
 </ul>

@@ -34,7 +34,7 @@ export async function GET({ request }: any) {
     })) as any;
 
     if (!data?.length) {
-      return new Response(JSON.stringify({ error: "Not found data", status: 404 }), {
+      return new Response(JSON.stringify({ error: "Not found items", status: 404 }), {
         headers: { "Content-Type": "application/json" }
       });
     }
@@ -52,7 +52,7 @@ export async function GET({ request }: any) {
     );
 
     if (!dataLang?.length) {
-      return new Response(JSON.stringify({ error: "Not found Lang data", status: 404 }), {
+      return new Response(JSON.stringify({ error: "Not found Lang items", status: 404 }), {
         headers: { "Content-Type": "application/json" }
       });
     }

@@ -3,47 +3,46 @@ interface Props {
   data: any;
 }
 const {data} = Astro.props;
+const {whatsapp, emails, address} = data;
 ---
 
 <ul class="contact_info_list">
-  {
-    data?.phones?.map((p: any) => (
-      <li class="single-info-item">
-       <a href={`tel:${p?.code_phone}${p?.number}`}>
-        <div class="icon">
-         <i class="fa fa-whatsapp"/>
-        </div>
-        <div class="details">({p?.code_phone})&nbsp;&nbsp;{p?.number}</div>
-       </a>
-      </li>
-    ))
-  }
-  {
-    data?.emails?.map((e: any) => (
-      <li class="single-info-item">
-       <a href={`mailto:${e?.email}`}>
-        <div class="icon">
-         <i class="fa fa-envelope"/>
-        </div>
-        <div class="details">{e?.email}</div>
-       </a>
-      </li>
-    ))
-  }
-  {
-    data?.address?.map((a: any) => (
-      <li class="single-info-item">
-       <a
-         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a?.address)}`}
-         target="_blank"
-         rel="noopener noreferrer"
-       >
-        <div class="icon">
-         <i class="fa fa-map-marker-alt"/>
-        </div>
-        <div class="details">{a?.address}</div>
-       </a>
-      </li>
-    ))
-  }
+  {whatsapp?.map((n: any) => (
+    <li class="single-info-item">
+     <a
+       class="num-btn"
+       href={`https://wa.me/${n?.code + n?.number}?text=${encodeURIComponent(n?.message || "")}`}
+       target="_blank"
+     >
+      <div class="icon">
+       <i class="fa fa-whatsapp"/>
+      </div>
+      <div class="details">({n?.code}) {n?.number}</div>
+     </a>
+    </li>
+  ))}
+  {emails?.map((e: any) => (
+    <li class="single-info-item">
+     <a href={`mailto:${e?.email}`}>
+      <div class="icon">
+       <i class="fa fa-envelope"/>
+      </div>
+      <div class="details">{e?.email}</div>
+     </a>
+    </li>
+  ))}
+  {address?.map((a: any) => (
+    <li class="single-info-item">
+     <a
+       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a?.address)}`}
+       target="_blank"
+       rel="noopener noreferrer"
+     >
+      <div class="icon">
+       <i class="fa fa-map-marker-alt"/>
+      </div>
+      <div class="details">{a?.address}</div>
+     </a>
+    </li>
+  ))}
 </ul>

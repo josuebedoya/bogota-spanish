@@ -39,6 +39,9 @@ export const ui = {
     'applyonline.form.fields.classes': 'When can you take your classes?',
     'applyonline.form.fields.live': 'Where do you currently live?',
     'applyonline.form.fields.description': 'Why do you want to learn Spanish? Do you have a specific goal in mind? Or do you just want to learn for fun?',
+    'applyonline.form.fields.level': 'Are you a total beginner or do you already have some experience?',
+    'applyonline.form.options.level.new': 'I am a beginner',
+    'applyonline.form.options.level.experience': 'I have some experience',
     'applyonline.form.btn.label': 'Submit',
 
     'btn.viewmore': 'View More',
@@ -76,6 +79,9 @@ export const ui = {
     'applyonline.form.fields.classes': '¿Cuándo puedes tomar tus clases?',
     'applyonline.form.fields.live': '¿Dónde vives actualmente?',
     'applyonline.form.fields.description': '¿Por qué quieres aprender español? ¿Tienes un objetivo específico en mente? ¿O simplemente quieres aprender por diversión?',
+    'applyonline.form.fields.level': '¿Eres un principiante total o ya tienes algo de experiencia?',
+    'applyonline.form.options.level.new': 'Soy principiante',
+    'applyonline.form.options.level.experience': 'Tengo algo de experiencia',
     'applyonline.form.btn.label': 'Enviar',
 
     'btn.viewmore': 'Ver Más',

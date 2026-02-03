@@ -90,6 +90,7 @@ export const getHomeData = async (lang: string = defaultLang) => {
   if (!dataCourses) return nullDataResponse;
   const courses = dataCourses?.map((item: any) => {
       return {
+        id: item?.id || "",
         title: item?.shurt_title || "",
         summary: item?.summary || "",
         icon: item?.icon || "",

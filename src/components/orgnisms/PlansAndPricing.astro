@@ -1,6 +1,11 @@
 ---
 import ItemPlan from "@/components/atoms/ItemPlan.astro";
 import {getLang} from "@/i18n/utils";
+import {to} from "@/i18n/utils.ts";
+import {routes} from "@/i18n/routes.ts";
+import ItemSlide from "@/components/atoms/ItemSlide.astro";
+import Slider from "@/components/species/Slider.astro";
+import ItemCourse from "@/components/atoms/ItemCourse.astro";
 const lang = getLang(Astro.url);
 
 interface Props {
@@ -15,6 +20,25 @@ interface Props {
 }
 
 const {title, description, courses} = Astro.props as Props;
+
+const configSlider = {
+  "data-infinite": "true",
+  "data-arrows": "false",
+  "data-fade": "false",
+  "data-speed": "1000",
+  "data-slidesToShow": "3",
+  "data-slidesToScroll": "1",
+  "data-swipeToSlide": "true",
+  "data-autoplay": "false",
+  "data-centerInsufficientSlides": "true",
+  "data-autoplaySpeed": "4000",
+  "data-dots": "false",
+  "data-responsive": `[
+    {"breakpoint": 1200,"settings": {"slidesToShow": 2}},
+    {"breakpoint": 992,"settings": {"slidesToShow": 2}},
+    {"breakpoint": 800, "settings": {"slidesToShow": 1}}
+  ]`,
+};
 ---
 
 <div
@@ -37,19 +61,19 @@ const {title, description, courses} = Astro.props as Props;
   <div class="our-team-inner">
    <div class="container custom-container-01">
     <div class="row column-gap-50">
-      {
-        courses?.map((p) => (
-          <div class="col-md-6 col-lg-6 col-xl-4">
-           <ItemPlan
-             title={p?.shurt_title}
-             subTitle={p?.subtitle_plan}
-             description={p?.features_plan}
-             icon={p?.icon}
-             lang={lang}
-           />
-          </div>
-        ))
-      }
+     <Slider config={configSlider}>
+       {courses?.map((p) => (
+         <ItemSlide>
+          <ItemPlan
+            title={p?.shurt_title}
+            subTitle={p?.subtitle_plan}
+            description={p?.features_plan}
+            icon={p?.icon}
+            lang={lang}
+          />
+         </ItemSlide>
+       ))}
+     </Slider>
     </div>
    </div>
   </div>

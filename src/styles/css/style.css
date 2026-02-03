@@ -2319,8 +2319,10 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   position: absolute;
   z-index: -1;
   bottom: 0;
-  right: 475px;
+  right: 50%;
+  transform: translateX(50%);
   object-fit: contain;
+  max-width: 250px;
 }
 
 .title-shape.style-01{
@@ -2368,6 +2370,8 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
 .search-popup.active .modal-result.active{
   visibility: visible !important;
   opacity: 1 !important;
+  pointer-events: all !important;
+  display: block;
 }
 
 .search-popup .search-form,
@@ -2391,10 +2395,12 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
 }
 
 .search-popup .modal-result{
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: start;
   flex-direction: column;
+  pointer-events: none;
+  max-width: 95%;
 }
 
 .search-popup .modal-result .no-items{
@@ -2850,19 +2856,20 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   border: 1px solid #E4E4E4;
   padding: 15px 20px 15px 60px;
 }
+
 .form .form-element select{
   height: 74px;
   border-radius: 20px;
   border: 1px solid #E4E4E4;
-  padding: 15px 40px 15px 20px;
+  padding: 15px 40px 15px 60px;
   width: 100%;
- color: var(--paragraph-color);
+  color: var(--paragraph-color);
   font-size: 16px;
 }
 
 .form .form-element select option{
-    font-size: 18px;
-    background-color: #ffffff;
+  font-size: 18px;
+  background-color: #ffffff;
 }
 
 .contact-inner .contact-form .form .form-element textarea{
@@ -2887,6 +2894,10 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   background-color: #f5f5f5;
   padding: 50px;
   border-radius: 15px;
+}
+
+.apply-form-inner .form-submit.text-right{
+  text-align: center !important;
 }
 
 .contact-address .contact-address-list{
@@ -6847,6 +6858,10 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   background-color: #f7f6f6;
 }
 
+.navbar-area .custom-container .responsive-menu .logo-wrapper{
+  min-width: 150px;
+}
+
 @media only screen and (max-width: 1399px){
   .navbar-area.navigation-style-02 .custom-container{
     flex-wrap: wrap;
@@ -6879,7 +6894,7 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
 @media only screen and (max-width: 1199px){
   .navbar-area.navigation-style-02 .custom-container .navbar-collapse{
     order: 3;
-    width: 100%;
+    width: auto;
   }
 
   .navbar-area.navigation-style-02 .custom-container .navbar-collapse .navbar-nav{
@@ -6889,12 +6904,33 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
   .navbar-area.navigation-style-02 .custom-container .navbar-collapse .navbar-nav li{
     font-size: 14px;
   }
-}
 
-@media only screen and (max-width: 991px){
   .navbar-area.navigation-style-02 .custom-container .navbar-toggler{
     background-color: var(--main-color-one);
   }
+
+  .navbar-area .custom-container .responsive-menu .logo-wrapper{
+    max-width: none !important;
+    flex: 1 !important;
+  }
+
+  .navbar-area .custom-container .responsive-menu{
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-area .custom-container .responsive-menu .navbar-toggler{
+    position: relative;
+    padding: 7px;
+    max-height: max-content;
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (max-width: 991px){
 
   .navbar-area.navigation-style-02 .custom-container .navbar-toggler:focus{
     outline: none;
@@ -7119,12 +7155,30 @@ blockquote:not(.has-light-gray-color):not(.has-very-dark-gray-color):not(.is-sty
     flex-wrap: wrap;
   }
 
+  .navbar-area .custom-container .responsive-menu .logo-wrapper{
+    min-width: 50px !important;
+  }
+
   .navbar-area.navigation-style-02 .custom-container .nav-right-content{
-    width: 100%;
-    flex: 1 1 100%;
+    width: auto;
+    flex: 1 1 auto;
     order: 3;
     margin-left: 0;
     margin-bottom: 10px;
+    max-width: max-content;
+  }
+
+  .navbar-area.navigation-style-02 .custom-container .nav-right-content .btn-common.nav-btn{
+    display: none;
+  }
+
+  .navbar-area .c-header-content .logo-wrapper{
+    flex: 1 !important;
+    max-width: none !important;
+  }
+
+  .navbar-area.navigation-style-02 .custom-container .nav-right-content #search{
+    margin-inline: 15px 10px !important;
   }
 
   .navbar-area.navigation-style-02 .custom-container .logo-wrapper{
@@ -7654,7 +7708,7 @@ header.top{
 }
 
 .copyright-area{
-  background-color: #000;
+  background-color: #141119ad;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8195,7 +8249,6 @@ header.top{
 }
 
 .courses-spanish .title-section .title{
-  font-weight: 700;
   margin-bottom: 4rem;
 }
 
@@ -8208,6 +8261,10 @@ header.top{
     bottom: -97px;
     left: 0 !important;
     max-width: 200px !important;
+  }
+
+  .navbar-area .custom-container .responsive-menu .logo-wrapper{
+    min-width: 110px;
   }
 
   .courses-spanish{
@@ -9931,7 +9988,7 @@ li.single-icon-box-with-text .paragraph{
   display: block !important;
   place-content: center;
   place-items: center;
-  line-height: 1 ;
+  line-height: 1;
 }
 
 .taster-session-spanish-courses-wrapper .btn a:first-letter{
@@ -9994,9 +10051,26 @@ li.single-icon-box-with-text .paragraph{
   padding-left: 10px !important;
 }
 
+.instructors-wrapper.plans-courses.single-page-section-top-space.single-page-section-bottom-space .slick-item{
+  width: 528px;
+  height: 100%;
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+
+  & > div{
+    height: 100%;
+    min-height: -webkit-fill-available;
+  }
+}
+
+.instructors-wrapper.plans-courses.single-page-section-top-space.single-page-section-bottom-space .slick-track{
+  display: flex;
+}
+
 @media (max-width: 992px){
   .taster-session-spanish-courses-wrapper{
-    padding-block: 100px 70px;
+    padding-block: 50px 40px;
   }
 
   .taster-session-spanish-courses-wrapper *{
@@ -10006,19 +10080,19 @@ li.single-icon-box-with-text .paragraph{
 
   .taster-session-spanish-courses-wrapper .title{
     font-weight: 600 !important;
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .taster-session-spanish-courses-wrapper .summary{
     font-weight: 600 !important;
-    font-size: 25px;
-    padding-block: 20px 50px;
+    font-size: 20px;
+    padding-block: 20px 30px;
   }
 
   .taster-session-spanish-courses-wrapper .btn a{
-    height: 70px;
+    height: 56px;
     font-size: 16px;
-    padding: 25px 30px;
+    padding: 16px 22px;
   }
 
   .thumbnail.text-right{
@@ -10148,6 +10222,12 @@ form input[type="date"]:focus{
   color: #6A6A6A !important;
 }
 
+@media (min-width: 575px){
+  .navbar-area .custom-container .navbar-collapse .navbar-nav li.bnt-mobile-only{
+    display: none !important;
+  }
+}
+
 @media (max-width: 992px){
 
   .letter-wrapper .title{
@@ -10156,10 +10236,12 @@ form input[type="date"]:focus{
 
   .letter-wrapper .subtitle, .letter-wrapper .subtitle *{
     font-size: 23px;
+    line-height: 35px !important;
   }
 
   .letter-wrapper .phrase{
     font-size: 16px;
+    line-height: 25px !important;
   }
 
   .letter-wrapper .firm{
@@ -10184,4 +10266,49 @@ form input[type="date"]:focus{
 
     }
   }
+}
+
+li.bnt-mobile-only{
+  color: #fff !important;
+  border-radius: 12px;
+  margin-top: 10px;
+  text-align: center;
+
+  a{
+    color: #fff !important;
+    text-align: center;
+    display: block !important;
+    background: var(--main-color-one);
+    max-width: max-content;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 0 auto;
+  }
+
+  a:first-letter{
+    text-transform: uppercase !important;
+  }
+}
+
+.icon-box-item{
+  box-shadow: 10px 10px 10px -5px #5956e61a;
+}
+
+input[type="date"]{
+  accent-color: var(--paragraph-color) !important;
+  appearance: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter: invert(0.5);
+  cursor: pointer;
+}
+
+input[type="date"]::-mox-calendar-picker-indicator{
+  filter: invert(0.5);
+  cursor: pointer;
+}
+
+.bnt-mobile-only{
+  display: none !important;
 }

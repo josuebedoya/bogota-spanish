@@ -32,11 +32,11 @@ if (error || errorCourses || errorPage) {
     {
       courses?.map((c: any) => {
         return c.isEven ? (
-          <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+          <div id={`item${c.id}`} class={`item-course ${c.isLast ? "last-item" : ""}`}>
            <BannerTypeOne {...c} imageLeft={true}/>
           </div>
         ) : (
-          <div class={`item-course ${c.isLast ? "last-item" : ""}`}>
+          <div id={`item${c.id}`} class={`item-course ${c.isLast ? "last-item" : ""}`}>
            <BannerTypeTwo {...c} withGradient={false}/>
           </div>
         );

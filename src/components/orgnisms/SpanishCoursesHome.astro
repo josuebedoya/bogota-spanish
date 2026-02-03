@@ -63,18 +63,20 @@ const configSlider = {
      {title}
    </h2>
   </div>
-  <div class="container courses-home">
-   <Slider config={configSlider}>
-     {items?.map((item: any, i: number) => (
-       <ItemSlide>
-        <ItemCourse
-          {...item}
-          classes={`item-${(i % 3) + 1}`}
-          button={{link: to(routes["spanish-courses"][lang as L], lang)}}
-        />
-       </ItemSlide>
-     ))}
-   </Slider>
+  <div class="courses-home" style="background: linear-gradient(to bottom,transparent 20%, rgba(89,86,230,0.04) 90%)">
+   <div class="container">
+    <Slider config={configSlider}>
+      {items?.map((item: any, i: number) => (
+        <ItemSlide>
+         <ItemCourse
+           {...item}
+           classes={`item-${(i % 3) + 1}`}
+           button={{link: to(`${routes["spanish-courses"][lang as L]}/#item${item.id}`, lang)}}
+         />
+        </ItemSlide>
+      ))}
+    </Slider>
+   </div>
   </div>
  </div>
 </section>

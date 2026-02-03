@@ -30,16 +30,15 @@ const t = useTranslations(lang);
 
  <div class="hover-content">
   <div class="btn-wrap">
-   <div class="btn-common btn-active">
-    <a
-      href={t("plans-and-pricing.item.btn.link", [
-        {key: "LANG", value: lang},
-      ])}
-      target="_self"
-    >
-      {t("plans-and-pricing.item.btn")}
-    </a>
-   </div>
+   <a
+     href={t("plans-and-pricing.item.btn.link", [
+       {key: "LANG", value: lang},
+     ])}
+     class="btn-common btn-active"
+     target="_self"
+   >
+     {t("plans-and-pricing.item.btn")}
+   </a>
   </div>
  </div>
 </div>

@@ -46,6 +46,7 @@ export const getSpanishCoursesData = async (lang: string = defaultLang) => {
   // Mapping courses and filter fields
   const courses = dataCourses?.map((item: any) => {
     return {
+      id: item?.id || "",
       title: item?.title || "",
       summary: item?.description || "",
       image: item?.image || "",

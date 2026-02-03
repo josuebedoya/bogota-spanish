@@ -1,7 +1,6 @@
 ---
 import {getLang, useTranslations} from "@/i18n/utils";
 import Form from "@/components/species/Form.astro";
-import {popupNewsletter} from "@/utils/popupNewsletter.js";
 
 const lang = getLang(Astro.url);
 const t = useTranslations(lang);
@@ -13,9 +12,7 @@ const t = useTranslations(lang);
     formSettings={{
       method: "POST",
       action: "/api/form/v1/submit",
-      id: "newsletterForm",
-      callback: popupNewsletter,
-      callbackName: "popupNewsletter",
+      id: "newsletterForm"
     }}
     withButton={false}
     withChildren

@@ -1,6 +1,9 @@
 ---
 import ItemMenu from "@/components/atoms/ItemMenu.astro";
+import {getLang, useTranslations} from "@/i18n/utils.ts";
 
+const lang = getLang(Astro.url);
+const t = useTranslations(lang);
 type MenuItem = {
   id?: string;
   label: string;
@@ -43,4 +46,9 @@ const isActive = (slug: string): boolean => {
       return renderMenuItem(item);
     })
   }
+ <li class="bnt-mobile-only">
+   <a href={t("spanish-courses.btnlink", [{key: "LANG", value: lang}])}>
+   {t("spanish-courses.btnlabel")}
+  </a>
+ </li>
 </ul>

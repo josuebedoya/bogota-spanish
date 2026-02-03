@@ -29,6 +29,7 @@ const t = useTranslations(getLang(Astro.url));
  </div>
  <div class="btn-wrap">
   <a href={button?.link} class="more-btn"
+     rel="noopener noreferrer"
   >{button?.label || t("btn.viewmore")}
    <i class="fa-solid fa-angle-right icon-btn"></i>
   </a>

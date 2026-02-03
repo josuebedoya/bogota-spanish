@@ -29,3 +29,24 @@ const langs = Object.keys(languages)?.map((key) => ({
  />
  <Lang langs={langs}/>
 </div>
+
+<style>
+  #btnsHeader.btns-desktop{
+    display: flex;
+  }
+
+  #btnsHeader.btns-mobile{
+    display: none;
+  }
+
+  @media (max-width: 1200px){
+    #btnsHeader.btns-desktop{
+      display: none;
+    }
+
+    #btnsHeader.btns-mobile{
+      display: flex;
+    }
+  }
+</style>
+

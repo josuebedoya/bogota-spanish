@@ -60,7 +60,7 @@ export const getAboutUsData = async (lang: string = defaultLang) => {
 
   const itemsTutors = (await Promise.all(
     data?.tutors?.filter((tu: any) => tu?.Tutors_id?.status == 1)?.map(async (t: any) => {
-      const file = await directusMedia(t?.Tutors_id?.photo_tutor || "", t?.Tutors_id?.name_tutor, {
+      const file = await directusMedia(t?.Tutors_id?.miniature_tutor || "", t?.Tutors_id?.name_tutor, {
         width: 210, height: 210,
       });
       if (!t || t?.status === '0') return null;

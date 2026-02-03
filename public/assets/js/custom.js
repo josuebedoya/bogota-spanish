@@ -21,32 +21,6 @@ const handlerClasses = ( els, classe, action ) => {
   } );
 }
 
-// Header handle btns
-function headerHanlderBtns() {
-  const mbtns = document.querySelector( "#btnsHeader.btns-mobile" );
-  const dbtns = document.querySelector( "#btnsHeader.btns-desktop" );
-
-  let mobile = window.innerWidth <= 992;
-  window.addEventListener( "resize", () => {
-    mobile = window.innerWidth <= 992;
-    controllerBtns();
-  } );
-  window.addEventListener( "load", () => {
-    mobile = window.innerWidth <= 992;
-    controllerBtns();
-  } );
-
-  function controllerBtns() {
-    if ( mobile ) {
-      mbtns && ( mbtns.style.display = "flex" );
-      dbtns && ( dbtns.style.display = "none" );
-    } else {
-      mbtns && ( mbtns.style.display = "none" );
-      dbtns && ( dbtns.style.display = "flex" );
-    }
-  }
-};
-
 // Handler Bg Header
 function handlerBgHeader() {
   const header = document.querySelector( "header" );
@@ -142,7 +116,6 @@ function getItemsFormSearch() {
 }
 
 window.addEventListener( "DOMContentLoaded", () => {
-  headerHanlderBtns();
   handlerBgHeader();
   handlerPickerLang();
   handlerModalWhatsapp();
